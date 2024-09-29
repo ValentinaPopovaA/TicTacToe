@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3792E3992CA9E53E0076892E /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3792E3982CA9E53E0076892E /* UIButton+.swift */; };
+		3792E39B2CA9EA380076892E /* NextVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3792E39A2CA9EA380076892E /* NextVC.swift */; };
 		A7F2F5002CA9A4240025A490 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F2F4FF2CA9A4240025A490 /* AppDelegate.swift */; };
 		A7F2F5022CA9A4240025A490 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F2F5012CA9A4240025A490 /* SceneDelegate.swift */; };
 		A7F2F5042CA9A4240025A490 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F2F5032CA9A4240025A490 /* ViewController.swift */; };
@@ -15,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3792E3982CA9E53E0076892E /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
+		3792E39A2CA9EA380076892E /* NextVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextVC.swift; sourceTree = "<group>"; };
 		A7F2F4FC2CA9A4240025A490 /* TicTacToe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TicTacToe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7F2F4FF2CA9A4240025A490 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A7F2F5012CA9A4240025A490 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -56,6 +60,8 @@
 			children = (
 				A7F2F5132CA9AA850025A490 /* App */,
 				A7F2F5032CA9A4240025A490 /* ViewController.swift */,
+				3792E3982CA9E53E0076892E /* UIButton+.swift */,
+				3792E39A2CA9EA380076892E /* NextVC.swift */,
 				A7F2F5152CA9AC590025A490 /* Onboarding */,
 				A7F2F5162CA9ACBB0025A490 /* SelectedGame */,
 				A7F2F5172CA9AD3F0025A490 /* SettingGame */,
@@ -201,6 +207,8 @@
 				A7F2F5042CA9A4240025A490 /* ViewController.swift in Sources */,
 				A7F2F5002CA9A4240025A490 /* AppDelegate.swift in Sources */,
 				A7F2F5022CA9A4240025A490 /* SceneDelegate.swift in Sources */,
+				3792E39B2CA9EA380076892E /* NextVC.swift in Sources */,
+				3792E3992CA9E53E0076892E /* UIButton+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
