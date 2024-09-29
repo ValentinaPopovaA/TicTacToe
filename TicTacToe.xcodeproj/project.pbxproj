@@ -10,7 +10,6 @@
 		A7F2F5002CA9A4240025A490 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F2F4FF2CA9A4240025A490 /* AppDelegate.swift */; };
 		A7F2F5022CA9A4240025A490 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F2F5012CA9A4240025A490 /* SceneDelegate.swift */; };
 		A7F2F5042CA9A4240025A490 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F2F5032CA9A4240025A490 /* ViewController.swift */; };
-		A7F2F5072CA9A4240025A490 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7F2F5052CA9A4240025A490 /* Main.storyboard */; };
 		A7F2F5092CA9A4280025A490 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7F2F5082CA9A4280025A490 /* Assets.xcassets */; };
 		A7F2F50C2CA9A4280025A490 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7F2F50A2CA9A4280025A490 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -20,7 +19,6 @@
 		A7F2F4FF2CA9A4240025A490 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A7F2F5012CA9A4240025A490 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		A7F2F5032CA9A4240025A490 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		A7F2F5062CA9A4240025A490 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A7F2F5082CA9A4280025A490 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A7F2F50B2CA9A4280025A490 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A7F2F50D2CA9A4280025A490 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -56,15 +54,78 @@
 		A7F2F4FE2CA9A4240025A490 /* TicTacToe */ = {
 			isa = PBXGroup;
 			children = (
-				A7F2F4FF2CA9A4240025A490 /* AppDelegate.swift */,
-				A7F2F5012CA9A4240025A490 /* SceneDelegate.swift */,
+				A7F2F5132CA9AA850025A490 /* App */,
 				A7F2F5032CA9A4240025A490 /* ViewController.swift */,
-				A7F2F5052CA9A4240025A490 /* Main.storyboard */,
-				A7F2F5082CA9A4280025A490 /* Assets.xcassets */,
-				A7F2F50A2CA9A4280025A490 /* LaunchScreen.storyboard */,
-				A7F2F50D2CA9A4280025A490 /* Info.plist */,
+				A7F2F5152CA9AC590025A490 /* Onboarding */,
+				A7F2F5162CA9ACBB0025A490 /* SelectedGame */,
+				A7F2F5172CA9AD3F0025A490 /* SettingGame */,
+				A7F2F5182CA9AD730025A490 /* Game */,
+				A7F2F5192CA9AD880025A490 /* HowToPlay */,
+				A7F2F51A2CA9AD950025A490 /* Result */,
+				A7F2F5142CA9AC210025A490 /* Resources */,
 			);
 			path = TicTacToe;
+			sourceTree = "<group>";
+		};
+		A7F2F5132CA9AA850025A490 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				A7F2F4FF2CA9A4240025A490 /* AppDelegate.swift */,
+				A7F2F5012CA9A4240025A490 /* SceneDelegate.swift */,
+				A7F2F50D2CA9A4280025A490 /* Info.plist */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		A7F2F5142CA9AC210025A490 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A7F2F5082CA9A4280025A490 /* Assets.xcassets */,
+				A7F2F50A2CA9A4280025A490 /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		A7F2F5152CA9AC590025A490 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		A7F2F5162CA9ACBB0025A490 /* SelectedGame */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SelectedGame;
+			sourceTree = "<group>";
+		};
+		A7F2F5172CA9AD3F0025A490 /* SettingGame */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SettingGame;
+			sourceTree = "<group>";
+		};
+		A7F2F5182CA9AD730025A490 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		A7F2F5192CA9AD880025A490 /* HowToPlay */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = HowToPlay;
+			sourceTree = "<group>";
+		};
+		A7F2F51A2CA9AD950025A490 /* Result */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Result;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,7 +188,6 @@
 			files = (
 				A7F2F50C2CA9A4280025A490 /* LaunchScreen.storyboard in Resources */,
 				A7F2F5092CA9A4280025A490 /* Assets.xcassets in Resources */,
-				A7F2F5072CA9A4240025A490 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,14 +207,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		A7F2F5052CA9A4240025A490 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A7F2F5062CA9A4240025A490 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		A7F2F50A2CA9A4280025A490 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -216,7 +268,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -270,7 +322,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -289,12 +341,12 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7YHTMAQADT;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = TicTacToe/Info.plist;
+				INFOPLIST_FILE = TicTacToe/App/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Tic Tac Toe";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -302,9 +354,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "ru.valentina-popova.TicTacToe";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -317,12 +372,12 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7YHTMAQADT;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = TicTacToe/Info.plist;
+				INFOPLIST_FILE = TicTacToe/App/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Tic Tac Toe";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -330,9 +385,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "ru.valentina-popova.TicTacToe";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
