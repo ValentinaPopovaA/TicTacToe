@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		794245032CAAA1920048F08C /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794245022CAAA1920048F08C /* Palette.swift */; };
 		A7F2F5002CA9A4240025A490 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F2F4FF2CA9A4240025A490 /* AppDelegate.swift */; };
 		A7F2F5022CA9A4240025A490 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F2F5012CA9A4240025A490 /* SceneDelegate.swift */; };
 		A7F2F5042CA9A4240025A490 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F2F5032CA9A4240025A490 /* ViewController.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		794245022CAAA1920048F08C /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
 		A7F2F4FC2CA9A4240025A490 /* TicTacToe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TicTacToe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7F2F4FF2CA9A4240025A490 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A7F2F5012CA9A4240025A490 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 		A7F2F5142CA9AC210025A490 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				794245022CAAA1920048F08C /* Palette.swift */,
 				A7F2F5082CA9A4280025A490 /* Assets.xcassets */,
 				A7F2F50A2CA9A4280025A490 /* LaunchScreen.storyboard */,
 			);
@@ -239,6 +242,7 @@
 				A7F2F51E2CA9E6830025A490 /* SelectedGameController.swift in Sources */,
 				A7F2F5202CA9E6AA0025A490 /* SettingGameController.swift in Sources */,
 				A7F2F5022CA9A4240025A490 /* SceneDelegate.swift in Sources */,
+				794245032CAAA1920048F08C /* Palette.swift in Sources */,
 				A7F2F5222CA9E6BF0025A490 /* GameController.swift in Sources */,
 				A7F2F5242CA9E6D30025A490 /* HowToPlayController.swift in Sources */,
 			);
