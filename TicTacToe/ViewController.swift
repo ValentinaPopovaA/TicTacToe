@@ -16,6 +16,8 @@ class ViewController: UIViewController {
         makeConstraints()
     }
     
+    lazy var label = UILabel.createLabel(text: "You Lose", fontSize: 20, isBold: true)
+    
     lazy var firstButton = UIButton.makeCustomButtonWithLabel(label: "Play again", buttonColor: .basic_blue, textColor: .white, fontSize: 20, borderColor: .basic_blue, target: self, action: #selector(goToNextScreen))
     lazy var secondButton = UIButton.makeCustomButtonWithLabel(label: "Back", buttonColor: .clear, textColor: .basic_blue, fontSize: 20, borderColor: .basic_blue, target: self, action: #selector(goToNextScreen))
     
@@ -34,10 +36,14 @@ private extension ViewController {
     func setViews() {
         view.addSubview(firstButton)
         view.addSubview(secondButton)
+        view.addSubview(label)
     }
     
     func makeConstraints() {
         NSLayoutConstraint.activate([
+            label.bottomAnchor.constraint(equalTo: firstButton.topAnchor, constant: -10),
+            label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
             secondButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
             secondButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             secondButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
