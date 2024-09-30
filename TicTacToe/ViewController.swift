@@ -16,16 +16,18 @@ class ViewController: UIViewController {
         makeConstraints()
     }
     
-    lazy var firstButton = UIButton(label: "Play again", buttonColor: .basicBlue, textColor: .white, target: self, action: #selector(goToNextScreen))
-    lazy var secondButton = UIButton(label: "Back", buttonColor: .clear, textColor: .basicBlue, target: self, action: #selector(goToNextScreen))
+    lazy var firstButton = UIButton.makeCustomButtonWithLabel(label: "Play again", buttonColor: .basic_blue, textColor: .white, fontSize: 20, borderColor: .basic_blue, target: self, action: #selector(goToNextScreen))
+    lazy var secondButton = UIButton.makeCustomButtonWithLabel(label: "Back", buttonColor: .clear, textColor: .basic_blue, fontSize: 20, borderColor: .basic_blue, target: self, action: #selector(goToNextScreen))
     
+//    Пример с картинкой
+//    let icon = UIImage(named: "two_players")
+//    lazy var secondButton = UIButton.makeCustomButtonWithImage(image: icon!, label: "Two players", target: self, action: #selector(goToNextScreen))
     
     
     @objc func goToNextScreen() {
         let vc = NextVC()
         navigationController?.pushViewController(vc, animated: true)
     }
-    
 }
 
 private extension ViewController {
