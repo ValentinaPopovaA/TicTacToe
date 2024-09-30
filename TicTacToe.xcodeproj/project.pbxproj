@@ -18,6 +18,8 @@
 		A7F2F5222CA9E6BF0025A490 /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F2F5212CA9E6BF0025A490 /* GameController.swift */; };
 		A7F2F5242CA9E6D30025A490 /* HowToPlayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F2F5232CA9E6D30025A490 /* HowToPlayController.swift */; };
 		A7F2F5262CA9E6E20025A490 /* ResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F2F5252CA9E6E20025A490 /* ResultController.swift */; };
+		A7F2F5292CAAA2C00025A490 /* UIButton_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F2F5282CAAA2C00025A490 /* UIButton_Extension.swift */; };
+		A7F2F52B2CAAA34A0025A490 /* NextVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F2F52A2CAAA34A0025A490 /* NextVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		A7F2F5212CA9E6BF0025A490 /* GameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameController.swift; sourceTree = "<group>"; };
 		A7F2F5232CA9E6D30025A490 /* HowToPlayController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToPlayController.swift; sourceTree = "<group>"; };
 		A7F2F5252CA9E6E20025A490 /* ResultController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultController.swift; sourceTree = "<group>"; };
+		A7F2F5282CAAA2C00025A490 /* UIButton_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton_Extension.swift; sourceTree = "<group>"; };
+		A7F2F52A2CAAA34A0025A490 /* NextVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,7 +71,9 @@
 			isa = PBXGroup;
 			children = (
 				A7F2F5132CA9AA850025A490 /* App */,
+				A7F2F5272CAAA29B0025A490 /* Extensions */,
 				A7F2F5032CA9A4240025A490 /* ViewController.swift */,
+				A7F2F52A2CAAA34A0025A490 /* NextVC.swift */,
 				A7F2F5152CA9AC590025A490 /* StartScreen */,
 				A7F2F5162CA9ACBB0025A490 /* SelectedGame */,
 				A7F2F5172CA9AD3F0025A490 /* SettingGame */,
@@ -146,6 +152,14 @@
 			path = Result;
 			sourceTree = "<group>";
 		};
+		A7F2F5272CAAA29B0025A490 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A7F2F5282CAAA2C00025A490 /* UIButton_Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -217,8 +231,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7F2F51C2CA9E63B0025A490 /* StartScreenController.swift in Sources */,
+				A7F2F52B2CAAA34A0025A490 /* NextVC.swift in Sources */,
 				A7F2F5042CA9A4240025A490 /* ViewController.swift in Sources */,
 				A7F2F5262CA9E6E20025A490 /* ResultController.swift in Sources */,
+				A7F2F5292CAAA2C00025A490 /* UIButton_Extension.swift in Sources */,
 				A7F2F5002CA9A4240025A490 /* AppDelegate.swift in Sources */,
 				A7F2F51E2CA9E6830025A490 /* SelectedGameController.swift in Sources */,
 				A7F2F5202CA9E6AA0025A490 /* SettingGameController.swift in Sources */,
