@@ -16,7 +16,8 @@ class ViewController: UIViewController {
         makeConstraints()
     }
     
-    lazy var label = UILabel.createLabel(text: "You Lose", fontSize: 20, isBold: true)
+    lazy var label = UILabel.createLabel(text: "You Lose!", fontSize: 20, isBold: true)
+    lazy var imageView = UIImageView.makeSimpleImage(imageName: "lose")
     
     lazy var firstButton = UIButton.makeCustomButtonWithLabel(label: "Play again", buttonColor: .basic_blue, textColor: .white, fontSize: 20, borderColor: .basic_blue, target: self, action: #selector(goToNextScreen))
     lazy var secondButton = UIButton.makeCustomButtonWithLabel(label: "Back", buttonColor: .clear, textColor: .basic_blue, fontSize: 20, borderColor: .basic_blue, target: self, action: #selector(goToNextScreen))
@@ -37,12 +38,18 @@ private extension ViewController {
         view.addSubview(firstButton)
         view.addSubview(secondButton)
         view.addSubview(label)
+        view.addSubview(imageView)
     }
     
     func makeConstraints() {
         NSLayoutConstraint.activate([
-            label.bottomAnchor.constraint(equalTo: firstButton.topAnchor, constant: -10),
+            label.bottomAnchor.constraint(equalTo: imageView.topAnchor, constant: 60),
             label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            imageView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -50),
+            imageView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5),
+            imageView.heightAnchor.constraint(equalTo: view.widthAnchor),
             
             secondButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
             secondButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
