@@ -10,7 +10,7 @@ import UIKit
 class ViewController: UIViewController {
     
     lazy var label = UILabel.createLabel(text: "You Lose!", fontSize: 20, isBold: true)
-    lazy var imageView = UIImageView.makeSimpleImage(imageName: "lose")
+    lazy var imageView = UIImageView.makeSimpleImage(image: Images.lose)
     lazy var playAgainButton = UIButton.makeCustomButtonWithLabel(label: "Play again", buttonColor: .basic_blue, textColor: .white, fontSize: 20, borderColor: .basic_blue, target: self, action: #selector(goToNextScreen))
 //    lazy var backButton = UIButton.makeCustomButtonWithLabel(label: "Back", buttonColor: .clear, textColor: .basic_blue, fontSize: 20, borderColor: .basic_blue, target: self, action: #selector(goToNextScreen))
     
