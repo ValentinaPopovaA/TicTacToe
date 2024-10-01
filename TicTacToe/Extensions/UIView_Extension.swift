@@ -15,6 +15,7 @@ extension UIView {
     
     func configureView(color: Color, applyShadow: Bool) {
         self.layer.cornerRadius = 30
+        self.translatesAutoresizingMaskIntoConstraints = false
         
         switch color {
         case .white:
@@ -33,4 +34,13 @@ extension UIView {
             self.layer.shadowOpacity = 0
         }
     }
+    
+    func configureCircularView(size: CGFloat = 45) {
+        self.translatesAutoresizingMaskIntoConstraints = false
+        self.widthAnchor.constraint(equalToConstant: size).isActive = true
+        self.heightAnchor.constraint(equalToConstant: size).isActive = true
+        self.layer.cornerRadius = size / 2
+        self.backgroundColor = .secondary_purple
+    }
+
 }

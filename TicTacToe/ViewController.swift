@@ -16,7 +16,6 @@ class ViewController: UIViewController {
     
     lazy var firstView: UIView = {
         let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
         view.configureView(color: .basic_light_blue, applyShadow: true)
         return view
     }()
