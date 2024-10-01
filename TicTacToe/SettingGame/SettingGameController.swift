@@ -10,23 +10,24 @@ import UIKit
 
 class SettingGameController: UIViewController {
     
+    
+    // Заголовок строка
     private lazy var headerStackView : UIStackView = {
         let element = UIStackView()
         element.translatesAutoresizingMaskIntoConstraints = false
         return element
     }()
-    
-    lazy var backButton = UIButton.makeCustomButtonWithImage(image: Images.o_pair1!, label: "", target: self, action: #selector(goToNextScreen))
-    
-    
+    // Стрелка
+    lazy var backButton = UIButton.makeCustomButtonWithLabel(label: "⬅︎", buttonColor: .clear, textColor: .black, fontSize: 40, borderColor: .clear, target: self, action: #selector(goToNextScreen))
     
     @objc func goToNextScreen() {
         let vc = NextVC()
         navigationController?.pushViewController(vc, animated: true)
     }
-    
+    // Заголовок текст
     private lazy var headerLabel = UILabel.createLabel(text: "Setting", fontSize: 20)
 
+    // Контейнер
     private lazy var container: UIView = {
         let view = UIView()
         view.frame = CGRect(x: 0, y: 0, width: 348, height: 287)
@@ -46,43 +47,46 @@ class SettingGameController: UIViewController {
         return view
     }()
     
+    // Настройка 1
     private lazy var switchGameTime : UIStackView = {
         let element = UIStackView()
         element.axis = .horizontal
-        element.spacing = 10
-        element.distribution = .fillProportionally
+        //element.spacing = 10
+        element.distribution = .equalSpacing
         element.backgroundColor = .basic_light_blue
-        element.layer.cornerRadius = 30
         
         var label = UILabel()
         label.text = "Game Time"
         label.font = .systemFont(ofSize: 20, weight: .bold)
         element.addArrangedSubview(label)
-        element.addArrangedSubview(UISwitch())
+        
+        var switchElement = UISwitch()
+        element.addArrangedSubview(switchElement)
         
         element.translatesAutoresizingMaskIntoConstraints = false
         return element
-    }()   
-    
+    }()
+    // Настройка музыка
     private lazy var switchMusic : UIStackView = {
         let element = UIStackView()
         element.axis = .horizontal
-        element.spacing = 10
-        element.distribution = .fillProportionally
+        //element.spacing = 10
+        element.distribution = .equalSpacing
         element.backgroundColor = .basic_light_blue
-        element.layer.cornerRadius = 30
         
         var label = UILabel()
         label.text = "Music"
         label.font = .systemFont(ofSize: 20, weight: .bold)
         element.addArrangedSubview(label)
-        element.addArrangedSubview(UISwitch())
+        
+        var switchElement = UISwitch()
+        element.addArrangedSubview(switchElement)
         
         element.translatesAutoresizingMaskIntoConstraints = false
         return element
     }()
     
-   
+    // Выподающий список
     private lazy var selectMusic : UIPickerView = {
         let element = UIPickerView()
         
@@ -101,15 +105,7 @@ class SettingGameController: UIViewController {
         element.translatesAutoresizingMaskIntoConstraints = false
         return element
     }()
-  
-//    private lazy var headerStackView : UIStackView = {
-//        let element = UIStackView()
-//        element.axis = .horizontal
-//        
-//        element.translatesAutoresizingMaskIntoConstraints = false
-//        return element
-//    }()
-    
+
     private lazy var settingStackView : UIStackView = {
         let element = UIStackView()
         element.axis = .vertical
@@ -117,28 +113,14 @@ class SettingGameController: UIViewController {
         element.backgroundColor = .green
         element.addArrangedSubview(switchGameTime)
         element.addArrangedSubview(switchMusic)
-        element.addArrangedSubview(selectMusic)
+        //element.addArrangedSubview(selectMusic)
        
         element.translatesAutoresizingMaskIntoConstraints = false
         return element
     }()
 
-    
-    private lazy var titleLabel : UILabel = {
-        let element = UILabel()
-        element.frame = CGRect(x: 0, y: 0, width: 185, height: 29)
-        element.textColor = .basic_black
-        element.font = .systemFont(ofSize: 24, weight: .bold)
-        element.textAlignment = .center
-        element.text = "Settings"
-        element.translatesAutoresizingMaskIntoConstraints = false
-        return element
-    }()
-
-
-
     override func viewDidLoad() {
-        navigationItem.backButtonTitle = "Setting"
+   
         setupUI()
         setupLayout()
     }
@@ -146,11 +128,12 @@ class SettingGameController: UIViewController {
 
 private extension SettingGameController {
     func setupUI(){
-        
+        view.backgroundColor = .basic_background
+        headerStackView.backgroundColor = .red
+        mainStackView.backgroundColor = .blue
         headerStackView.addArrangedSubview(backButton)
         headerStackView.addArrangedSubview(headerLabel)
         
-        view.backgroundColor = .basic_background
         mainStackView.addArrangedSubview(headerStackView)
         container.addSubview(settingStackView)
         mainStackView.addArrangedSubview(container)
@@ -160,28 +143,31 @@ private extension SettingGameController {
     
     func setupLayout(){
         NSLayoutConstraint.activate([
-            mainStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            mainStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: -20),
             mainStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             mainStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             mainStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
             
+            headerStackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 30),
             
             settingStackView.topAnchor.constraint(equalTo: container.topAnchor, constant: 20),
             settingStackView.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 20),
             settingStackView.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -20),
             
-            switchGameTime.leadingAnchor.constraint(equalTo: settingStackView.leadingAnchor, constant: 20),
-            switchGameTime.trailingAnchor.constraint(equalTo: settingStackView.trailingAnchor, constant: -20),
-            switchGameTime.heightAnchor.constraint(equalToConstant: 69),
+            switchGameTime.leadingAnchor.constraint(equalTo: settingStackView.leadingAnchor, constant: 0),
+            switchGameTime.trailingAnchor.constraint(equalTo: settingStackView.trailingAnchor, constant: 0),
+            //switchGameTime.heightAnchor.constraint(equalToConstant: 69),
            // switchGameTime.widthAnchor.constraint(equalToConstant: 268),
             
             
-            switchMusic.leadingAnchor.constraint(equalTo: settingStackView.leadingAnchor, constant: 20),
-            switchMusic.trailingAnchor.constraint(equalTo: settingStackView.trailingAnchor, constant: -20),
-            switchMusic.heightAnchor.constraint(equalToConstant: 69),
+            switchMusic.leadingAnchor.constraint(equalTo: settingStackView.leadingAnchor, constant: 0),
+            switchMusic.trailingAnchor.constraint(equalTo: settingStackView.trailingAnchor, constant: 0),
+            //switchMusic.heightAnchor.constraint(equalToConstant: 69),
             //switchMusic.widthAnchor.constraint(equalToConstant: 268),
             
         ])
         
     }
 }
+
+
