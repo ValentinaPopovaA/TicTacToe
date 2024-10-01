@@ -22,7 +22,7 @@ class ViewController: UIViewController {
     }()
     
     //    Пример с картинкой
-    lazy var backButton = UIButton.makeCustomButtonWithImage(image: UIImage(named: "two_players")!, label: "Two players", target: self, action: #selector(goToNextScreen))
+    lazy var backButton = UIButton.makeCustomButtonWithImage(image: Images.single_player, label: "Two players", target: self, action: #selector(goToNextScreen))
     
     override func viewDidLoad() {
         super.viewDidLoad()
