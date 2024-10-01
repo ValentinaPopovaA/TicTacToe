@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "o_purple@3x.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
