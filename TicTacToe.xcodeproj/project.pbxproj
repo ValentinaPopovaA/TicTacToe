@@ -23,6 +23,7 @@
 		A7F2F52B2CAAA34A0025A490 /* NextVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F2F52A2CAAA34A0025A490 /* NextVC.swift */; };
 		A7F2F52D2CAAE0C20025A490 /* UILabel_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F2F52C2CAAE0C20025A490 /* UILabel_Extension.swift */; };
 		A7F2F52F2CAAE7740025A490 /* UIImageView_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F2F52E2CAAE7740025A490 /* UIImageView_Extension.swift */; };
+		A7F2F5312CAAFC410025A490 /* UIView_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F2F5302CAAFC410025A490 /* UIView_Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		A7F2F52A2CAAA34A0025A490 /* NextVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextVC.swift; sourceTree = "<group>"; };
 		A7F2F52C2CAAE0C20025A490 /* UILabel_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel_Extension.swift; sourceTree = "<group>"; };
 		A7F2F52E2CAAE7740025A490 /* UIImageView_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView_Extension.swift; sourceTree = "<group>"; };
+		A7F2F5302CAAFC410025A490 /* UIView_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView_Extension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +167,7 @@
 				A7F2F5282CAAA2C00025A490 /* UIButton_Extension.swift */,
 				A7F2F52C2CAAE0C20025A490 /* UILabel_Extension.swift */,
 				A7F2F52E2CAAE7740025A490 /* UIImageView_Extension.swift */,
+				A7F2F5302CAAFC410025A490 /* UIView_Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -247,6 +250,7 @@
 				A7F2F5292CAAA2C00025A490 /* UIButton_Extension.swift in Sources */,
 				A7F2F5002CA9A4240025A490 /* AppDelegate.swift in Sources */,
 				A7F2F51E2CA9E6830025A490 /* SelectedGameController.swift in Sources */,
+				A7F2F5312CAAFC410025A490 /* UIView_Extension.swift in Sources */,
 				A7F2F52D2CAAE0C20025A490 /* UILabel_Extension.swift in Sources */,
 				A7F2F5202CA9E6AA0025A490 /* SettingGameController.swift in Sources */,
 				A7F2F5022CA9A4240025A490 /* SceneDelegate.swift in Sources */,
