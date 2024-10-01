@@ -7,8 +7,6 @@
 
 import UIKit
 
-import UIKit
-
 extension UILabel {
     static func createLabel(text: String,
                             fontSize: CGFloat,
