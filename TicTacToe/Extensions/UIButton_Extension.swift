@@ -77,7 +77,7 @@ extension UIButton {
     }
     
     // Кнопка с картинкой
-    static func makeCustomButtonWithImage(image: UIImage,
+    static func makeCustomButtonWithImage(image: UIImage?,
                                           label: String,
                                           target: Any?,
                                           action: Selector) -> UIButton {
