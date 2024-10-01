@@ -9,6 +9,23 @@ import UIKit
 
 
 class SettingGameController: UIViewController {
+    
+    private lazy var headerStackView : UIStackView = {
+        let element = UIStackView()
+        element.translatesAutoresizingMaskIntoConstraints = false
+        return element
+    }()
+    
+    lazy var backButton = UIButton.makeCustomButtonWithImage(image: Images.o_pair1!, label: "", target: self, action: #selector(goToNextScreen))
+    
+    
+    
+    @objc func goToNextScreen() {
+        let vc = NextVC()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    private lazy var headerLabel = UILabel.createLabel(text: "Setting", fontSize: 20)
 
     private lazy var container: UIView = {
         let view = UIView()
@@ -22,7 +39,7 @@ class SettingGameController: UIViewController {
         let shadowPath0 = UIBezierPath(roundedRect: shadows.bounds, cornerRadius: 30)
         let layer0 = CALayer()
         layer0.shadowPath = shadowPath0.cgPath
-        layer0.shadowColor = UIColor.basic_black.cgColor
+        layer0.shadowColor = UIColor.basic_black!.cgColor
         layer0.shadowOpacity = 1
         layer0.shadowRadius = 30
         layer0.shadowOffset = CGSize(width: 4, height: 4)
@@ -85,13 +102,13 @@ class SettingGameController: UIViewController {
         return element
     }()
   
-    private lazy var headerStackView : UIStackView = {
-        let element = UIStackView()
-        element.axis = .horizontal
-        
-        element.translatesAutoresizingMaskIntoConstraints = false
-        return element
-    }()
+//    private lazy var headerStackView : UIStackView = {
+//        let element = UIStackView()
+//        element.axis = .horizontal
+//        
+//        element.translatesAutoresizingMaskIntoConstraints = false
+//        return element
+//    }()
     
     private lazy var settingStackView : UIStackView = {
         let element = UIStackView()
@@ -129,8 +146,11 @@ class SettingGameController: UIViewController {
 
 private extension SettingGameController {
     func setupUI(){
+        
+        headerStackView.addArrangedSubview(backButton)
+        headerStackView.addArrangedSubview(headerLabel)
+        
         view.backgroundColor = .basic_background
-        headerStackView.addArrangedSubview(titleLabel)
         mainStackView.addArrangedSubview(headerStackView)
         container.addSubview(settingStackView)
         mainStackView.addArrangedSubview(container)
