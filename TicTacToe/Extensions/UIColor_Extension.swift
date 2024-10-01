@@ -7,40 +7,60 @@
 
 import UIKit
 
-extension UIColor {
+enum AppColors {
+    case basic_white
+    case basic_background
+    case basic_black
+    case basic_blue
+    case basic_light_blue
+    case secondary_purple
+    case secondary_pink
+    case secondary_gray
     
-    enum AppColors {
-        case basic_white
-        case basic_background
-        case basic_black
-        case basic_blue
-        case basic_light_blue
-        case secondary_purple
-        case secondary_pink
-        case secondary_gray
-        
-        var color: UIColor? {
-            switch self {
-            case .basic_blue:
-                return UIColor(named: "blue" )
-            case .basic_light_blue:
-                return UIColor(named: "light_blue")
-            case .basic_white:
-                return UIColor(named: "white" )
-            case .basic_background:
-                return UIColor(named: "background" )
-            case .basic_black:
-                return UIColor(named: "black" )
-            case .secondary_purple:
-                return UIColor(named: "purple" )
-            case .secondary_pink:
-                return UIColor(named: "pink" )
-            case .secondary_gray:
-                return UIColor(named: "gray" )
-            }
+    var color: UIColor? {
+        switch self {
+        case .basic_blue:
+            return UIColor(named: "blue" )
+        case .basic_light_blue:
+            return UIColor(named: "light_blue")
+        case .basic_white:
+            return UIColor(named: "white" )
+        case .basic_background:
+            return UIColor(named: "background" )
+        case .basic_black:
+            return UIColor(named: "black" )
+        case .secondary_purple:
+            return UIColor(named: "purple" )
+        case .secondary_pink:
+            return UIColor(named: "pink" )
+        case .secondary_gray:
+            return UIColor(named: "gray" )
         }
     }
+}
+extension UIColor {
+ 
     
+    static func appColor(_ name: AppColors) -> UIColor? {
+        switch name {
+        case .basic_blue:
+            return UIColor(named: "blue" )
+        case .basic_light_blue:
+            return UIColor(named: "light_blue")
+        case .basic_white:
+            return UIColor(named: "white" )
+        case .basic_background:
+            return UIColor(named: "background" )
+        case .basic_black:
+            return UIColor(named: "black" )
+        case .secondary_purple:
+            return UIColor(named: "purple" )
+        case .secondary_pink:
+            return UIColor(named: "pink" )
+        case .secondary_gray:
+            return UIColor(named: "gray" )
+        }
+    }
    
     static var basic_white: UIColor {
         return AppColors.basic_blue.color!
