@@ -17,9 +17,9 @@ extension UIButton {
             case .clear:
                 return .clear
             case .basic_blue:
-                return UIColor.basic_blue
+                return UIColor.basic_blue ?? UIColor.systemBlue
             case .basic_light_blue:
-                return UIColor.basic_light_blue
+                return UIColor.basic_light_blue ?? UIColor.systemTeal
             }
         }
     }
@@ -32,11 +32,11 @@ extension UIButton {
         var color: UIColor {
             switch self {
             case .white:
-                return UIColor.basic_white
+                return UIColor.basic_white ?? UIColor.white
             case .black:
-                return UIColor.basic_black
+                return UIColor.basic_black ?? UIColor.black
             case .basic_blue:
-                return UIColor.basic_blue
+                return UIColor.basic_blue ?? UIColor.systemBlue
             }
         }
     }
@@ -48,7 +48,7 @@ extension UIButton {
         var color: UIColor {
             switch self {
             case .basic_blue:
-                return UIColor.basic_blue
+                return UIColor.basic_blue ?? UIColor.systemBlue
             case .clear:
                 return UIColor.clear
             }
