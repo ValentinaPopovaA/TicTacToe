@@ -62,13 +62,13 @@ private extension ViewController {
             firstView.heightAnchor.constraint(equalToConstant: 250),
             
             backButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
-            backButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            backButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            backButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            backButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             backButton.heightAnchor.constraint(equalToConstant: 72),
             
             playAgainButton.bottomAnchor.constraint(equalTo: backButton.topAnchor, constant: -20),
-            playAgainButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            playAgainButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            playAgainButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            playAgainButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             playAgainButton.heightAnchor.constraint(equalToConstant: 72),
         ])
     }
