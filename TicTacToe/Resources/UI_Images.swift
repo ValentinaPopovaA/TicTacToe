@@ -20,7 +20,7 @@ enum Images {
     // Select Game Screen
     static let rocket = UIImage(named: "rocket")
     static let single_player = UIImage(named: "single_player")
-    static let two_player = UIImage(named: "two_player")    
+    static let two_players = UIImage(named: "two_players")    
     // XO Pairs
     static let o_pair1 = UIImage(named: "o_pair1")
     static let x_pair1 = UIImage(named: "x_pair1")
