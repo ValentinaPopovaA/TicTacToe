@@ -8,7 +8,7 @@
 import UIKit
 
 
-class SettingGameController: UIViewController {
+class SettingGameController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     
     // Заголовок строка
@@ -124,7 +124,7 @@ class SettingGameController: UIViewController {
         let element = UIStackView()
         element.axis = .vertical
         element.spacing = 30
-        element.backgroundColor = .green
+        //element.backgroundColor = .green
         
         element.addArrangedSubview(switchGameTime)
         element.addArrangedSubview(dropDownDuration)
@@ -137,11 +137,25 @@ class SettingGameController: UIViewController {
         element.translatesAutoresizingMaskIntoConstraints = false
         return element
     }()
+    
+    var collectionview: UICollectionView!
+    var cellId = "Cell"
 
     override func viewDidLoad() {
    
         setupUI()
         setupLayout()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 6
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionview.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath as IndexPath) as! PairCollectionViewCell
+        cell.setIndex(i: indexPath[1] + 1)
+        
+        return cell
     }
 }
 
@@ -149,9 +163,20 @@ private extension SettingGameController {
     func setupUI(){
         view.backgroundColor = .basic_background
         
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 10)
+        layout.itemSize = CGSize(width: 152, height: 100)
+        
+        collectionview = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
+        collectionview.dataSource = self
+        collectionview.delegate = self
+        collectionview.register(PairCollectionViewCell.self, forCellWithReuseIdentifier: cellId)
+        collectionview.showsVerticalScrollIndicator = false
+        collectionview.backgroundColor = .white
+        
         ////
-        headerStackView.backgroundColor = .red
-        mainStackView.backgroundColor = .blue
+        //headerStackView.backgroundColor = .red
+        //mainStackView.backgroundColor = .blue
         ////
         
         headerStackView.addArrangedSubview(backButton)
@@ -160,6 +185,7 @@ private extension SettingGameController {
         mainStackView.addArrangedSubview(headerStackView)
         container.addSubview(settingStackView)
         mainStackView.addArrangedSubview(container)
+        mainStackView.addArrangedSubview(collectionview)
         
         view.addSubview(mainStackView)
     }
@@ -196,6 +222,9 @@ private extension SettingGameController {
             
             dropDownDuration.widthAnchor.constraint(equalToConstant: 300),
             dropDownDuration.heightAnchor.constraint(equalToConstant: 69),
+            
+            collectionview.widthAnchor.constraint(equalToConstant: 300),
+            collectionview.heightAnchor.constraint(equalToConstant: 300),
             
             
         ])
