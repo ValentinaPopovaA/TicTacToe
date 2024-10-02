@@ -9,12 +9,16 @@ import UIKit
 
 final class ResultController: UIViewController {
     
+    // MARK: - Properties
+    
     var gameResult: GameResult?
     
     lazy var label = UILabel.createLabel(text: "You Lose!", fontSize: 20, isBold: true)
     lazy var imageView = UIImageView.makeSimpleImage(image: Images.lose)
     lazy var playAgainButton = UIButton.makeCustomButtonWithLabel(label: "Play again", buttonColor: .basic_blue, textColor: .white, fontSize: 20, borderColor: .basic_blue, target: self, action: #selector(goToNewGame))
     lazy var backButton = UIButton.makeCustomButtonWithLabel(label: "Back", buttonColor: .clear, textColor: .basic_blue, fontSize: 20, borderColor: .basic_blue, target: self, action: #selector(backToStart))
+    
+    // MARK: - Lifecycle Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +27,8 @@ final class ResultController: UIViewController {
         makeConstraints()
         updateResult()
     }
+    
+    // MARK: - Private Methods
     
     private func updateResult() {
         guard let result = gameResult else { return }
@@ -40,6 +46,8 @@ final class ResultController: UIViewController {
         }
     }
     
+    // MARK: - Actions
+    
     @objc private func goToNewGame() {
         let gameViewController = NextVC() // GameViewController()
         navigationController?.pushViewController(gameViewController, animated: true)
@@ -49,6 +57,8 @@ final class ResultController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
 }
+
+// MARK: - Layout Configuration
 
 private extension ResultController {
     func setViews() {
