@@ -15,6 +15,7 @@ class LeaderboardViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .basic_background
+        title = "Leaderboard"
         setViews()
         makeConstraints()
     }
