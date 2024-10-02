@@ -9,128 +9,184 @@ import UIKit
 
 class HowToPlayController: UIViewController {
     
-    let howToPlayStack: UIStackView = {
+   private let howToPlayStack: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
-        stack.spacing = 20
+       stack.distribution = .fill
+        stack.spacing = 15
         stack.translatesAutoresizingMaskIntoConstraints = false
-        
         return stack
     }()
     
-    let firstRuleStack: UIStackView = {
+    private let firstRuleStack: UIStackView = {
         let stack = UIStackView()
         stack.axis  = .horizontal
-        stack.spacing = 10
+        stack.spacing = 15
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
 
-    let firstRuleView: UIView = {
+    private let firstRuleView: UIView = {
         let view = UIView()
-        view.configureCircularView(size: 45)
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    let firstRuleLabel: UILabel = {
-        UILabel.createLabel(text: "1", fontSize: 22)
+    private let firstRuleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "1"
+        label.font = UIFont.systemFont(ofSize: 20)
+        label.backgroundColor = .secondary_purple
+        label.textAlignment = .center
+        label.layer.cornerRadius = 23
+        label.layer.masksToBounds = true
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
     }()
     
-    let firstRuleTextView: UIView = {
+    private let firstRuleTextView: UIView = {
         let view = UIView()
-        view.configureView(color: .basic_light_blue, applyShadow: true)
+        view.backgroundColor = .basic_light_blue
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 
-    let firstRuleTextLabel: UILabel = {
-        UILabel.createLabel(text: "Draw a grid with three rows and three columns, creating nine squares in total.", fontSize: 18, textAlignment: .left)
+   private let firstRuleTextLabel: UILabel = {
+        let label = UILabel()
+        label.text =  "Draw a grid with three rows and three columns, creating nine squares in total."
+        label.numberOfLines = 0
+        label.font = UIFont.systemFont(ofSize: 18)
+        label.textAlignment = .left
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
     }()
     
-    let secondRuleStack: UIStackView = {
+    private let secondRuleStack: UIStackView = {
         let stack = UIStackView()
         stack.axis  = .horizontal
-        stack.spacing = 10
+        stack.spacing = 15
         stack.translatesAutoresizingMaskIntoConstraints = false
-        
         return stack
     }()
     
-    let secondRuleView: UIView = {
+    private let secondRuleView: UIView = {
         let view = UIView()
-        view.configureCircularView(size: 45)
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    let secondRuleLabel: UILabel = {
-        UILabel.createLabel(text: "2", fontSize: 20)
+    private let secondRuleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "2"
+        label.font = UIFont.systemFont(ofSize: 20)
+        label.backgroundColor = .secondary_purple
+        label.layer.cornerRadius = 23
+        label.layer.masksToBounds = true
+        label.textAlignment = .center
+        return label
     }()
     
-    let secondRuleTextView: UIView = {
+    private let secondRuleTextView: UIView = {
         let view = UIView()
-        view.configureView(color: .basic_light_blue, applyShadow: true)
+        view.backgroundColor = .basic_light_blue
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    let secondRuleTextLabel: UILabel = {
-        UILabel.createLabel(text: "Players take turns placing their marker (X or O) in an empty square. To make a move, a player selects a number corresponding to the square where they want to place their marker.", fontSize: 18, textAlignment: .left)
+    private let secondRuleTextLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Players take turns placing their marker (X or O) in an empty square. To make a move, a player selects a number corresponding to the square where they want to place their marker."
+        label.numberOfLines = 0
+        label.font = UIFont.systemFont(ofSize: 18)
+        label.textAlignment = .left
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
     }()
     
-    let thirdRuleStack: UIStackView = {
+    private let thirdRuleStack: UIStackView = {
         let stack = UIStackView()
         stack.axis  = .horizontal
-
-        stack.spacing = 10
+        stack.spacing = 15
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
     
-    let thirdRuleView: UIView = {
+    private let thirdRuleView: UIView = {
         let view = UIView()
-        view.configureCircularView(size: 45)
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    let thirdRuleLabel: UILabel = {
-        UILabel.createLabel(text: "3", fontSize: 20)
+    private let thirdRuleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "3"
+        label.font = UIFont.systemFont(ofSize: 20)
+        label.backgroundColor = .secondary_purple
+        label.layer.cornerRadius = 23
+        label.layer.masksToBounds = true
+        label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
     }()
 
-    let thirdRuleTextView: UIView = {
+    private let thirdRuleTextView: UIView = {
         let view = UIView()
-        view.configureView(color: .basic_light_blue, applyShadow: true)
+        view.backgroundColor = .basic_light_blue
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    let thirdRuleTextLabel: UILabel = {
-        UILabel.createLabel(text: "Player X starts by choosing a square (e.g., square 5). Player O follows by choosing an empty square (e.g., square 1). Continue alternating turns until the game ends.", fontSize: 18, textAlignment: .left)
+    private let thirdRuleTextLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Player X starts by choosing a square (e.g., square 5). Player O follows by choosing an empty square (e.g., square 1). Continue alternating turns until the game ends."
+        label.numberOfLines = 0
+        label.font = UIFont.systemFont(ofSize: 18)
+        label.textAlignment = .left
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
     }()
     
-    let fourthRuleStack: UIStackView = {
+    private let fourthRuleStack: UIStackView = {
         let stack = UIStackView()
         stack.axis  = .horizontal
-        stack.spacing = 10
+        stack.spacing = 15
         stack.translatesAutoresizingMaskIntoConstraints = false
-        
         return stack
     }()
     
-    let fourthRuleView: UIView = {
+    private let fourthRuleView: UIView = {
         let view = UIView()
-        view.configureCircularView(size: 45)
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    let fourthRuleLabel: UILabel = {
-        UILabel.createLabel(text: "4", fontSize: 20)
+    private let fourthRuleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "4"
+        label.font = UIFont.systemFont(ofSize: 20)
+        label.backgroundColor = .secondary_purple
+        label.layer.cornerRadius = 23
+        label.layer.masksToBounds = true
+        label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
     }()
 
-    let fourthRuleTextView: UIView = {
+    private let fourthRuleTextView: UIView = {
         let view = UIView()
-        view.configureView(color: .basic_light_blue, applyShadow: true)
+        view.backgroundColor = .basic_light_blue
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    let fourthRuleTextLabel: UILabel = {
-        UILabel.createLabel(text:"The first player to align three of their markers horizontally, vertically, or diagonally wins. Examples of Winning Combinations: Horizontal: Squares 1, 2, 3 or 4, 5, 6 or 7, 8, 9 Vertical: Squares 1, 4, 7 or 2, 5, 8 or 3, 6, 9 Diagonal: Squares 1, 5, 9 or 3, 5, 7.", fontSize: 18, textAlignment: .left)
+    private let fourthRuleTextLabel: UILabel = {
+        let label = UILabel()
+        label.text = "The first player to align three of their markers horizontally, vertically, or diagonally wins. Examples of Winning Combinations: Horizontal: Squares 1, 2, 3 or 4, 5, 6 or 7, 8, 9 Vertical: Squares 1, 4, 7 or 2, 5, 8 or 3, 6, 9 Diagonal: Squares 1, 5, 9 or 3, 5, 7."
+        label.numberOfLines = 0
+        label.font = UIFont.systemFont(ofSize: 18)
+        label.textAlignment = .left
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
     }()
     
     override func viewDidLoad() {
@@ -141,81 +197,123 @@ class HowToPlayController: UIViewController {
         navigationItem.leftBarButtonItem?.image = UIImage(systemName: "icon-back")
     }
     
-    func setupUI() {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewDidLoad()
+        firstRuleTextView.layer.cornerRadius = 23
+        secondRuleTextView.layer.cornerRadius = 23
+        thirdRuleTextView.layer.cornerRadius = 23
+        fourthRuleTextView.layer.cornerRadius = 23
+    }
+    
+    private func setupUI() {
         view.backgroundColor = .basic_background
         view.addSubview(howToPlayStack)
         howToPlayStack.addArrangedSubview(firstRuleStack)
+        howToPlayStack.addArrangedSubview(secondRuleStack)
+        howToPlayStack.addArrangedSubview(thirdRuleStack)
+        howToPlayStack.addArrangedSubview(fourthRuleStack)
+        
+        firstRuleStack.addArrangedSubview(firstRuleLabel)
         firstRuleStack.addArrangedSubview(firstRuleView)
         firstRuleView.addSubview(firstRuleLabel)
+        firstRuleStack.addArrangedSubview(firstRuleTextLabel)
         firstRuleStack.addArrangedSubview(firstRuleTextView)
         firstRuleTextView.addSubview(firstRuleTextLabel)
 
-                
-        howToPlayStack.addArrangedSubview(secondRuleStack)
+        secondRuleStack.addArrangedSubview(secondRuleLabel)
         secondRuleStack.addArrangedSubview(secondRuleView)
         secondRuleView.addSubview(secondRuleLabel)
+        secondRuleStack.addArrangedSubview(secondRuleTextLabel)
         secondRuleStack.addArrangedSubview(secondRuleTextView)
         secondRuleTextView.addSubview(secondRuleTextLabel)
         
-        howToPlayStack.addArrangedSubview(thirdRuleStack)
-        thirdRuleStack.addArrangedSubview(thirdRuleView)
+        thirdRuleStack.addArrangedSubview(thirdRuleLabel)
+        thirdRuleStack.addSubview(thirdRuleView)
         thirdRuleView.addSubview(thirdRuleLabel)
+        thirdRuleStack.addArrangedSubview(thirdRuleTextLabel)
         thirdRuleStack.addArrangedSubview(thirdRuleTextView)
         thirdRuleTextView.addSubview(thirdRuleTextLabel)
         
-        howToPlayStack.addArrangedSubview(fourthRuleStack)
+        fourthRuleStack.addArrangedSubview(fourthRuleLabel)
         fourthRuleStack.addArrangedSubview(fourthRuleView)
         fourthRuleView.addSubview(fourthRuleLabel)
+        fourthRuleStack.addArrangedSubview(fourthRuleTextLabel)
         fourthRuleStack.addArrangedSubview(fourthRuleTextView)
         fourthRuleTextView.addSubview(fourthRuleTextLabel)
     }
     
-    func makeConstraints() {
+    private func makeConstraints() {
         NSLayoutConstraint.activate([
             howToPlayStack.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 13),
             howToPlayStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -13),
             howToPlayStack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-
-            firstRuleLabel.centerYAnchor.constraint(equalTo: firstRuleView.centerYAnchor),
-            firstRuleLabel.centerXAnchor.constraint(equalTo: firstRuleView.centerXAnchor),
+            howToPlayStack.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             
-            firstRuleTextLabel.leadingAnchor.constraint(equalTo: firstRuleTextView.leadingAnchor),
-            firstRuleTextLabel.trailingAnchor.constraint(equalTo: firstRuleTextView.trailingAnchor),
+            firstRuleLabel.heightAnchor.constraint(equalToConstant: 45),
+            firstRuleLabel.widthAnchor.constraint(equalToConstant: 45),
+            firstRuleLabel.leadingAnchor.constraint(equalTo: firstRuleView.leadingAnchor),
+            firstRuleLabel.topAnchor.constraint(equalTo: firstRuleView.topAnchor),
+            
+            firstRuleStack.heightAnchor.constraint(equalToConstant: 96),
+            
+            firstRuleTextView.trailingAnchor.constraint(equalTo: firstRuleStack.trailingAnchor, constant: -10),
+            firstRuleTextView.leadingAnchor.constraint(equalTo: firstRuleView.leadingAnchor, constant: 50),
+            firstRuleTextView.topAnchor.constraint(equalTo: firstRuleStack.topAnchor),
+            firstRuleTextView.bottomAnchor.constraint(equalTo: firstRuleStack.bottomAnchor),
+            
+            firstRuleTextLabel.leadingAnchor.constraint(equalTo: firstRuleTextView.leadingAnchor, constant: 16),
+            firstRuleTextLabel.trailingAnchor.constraint(equalTo: firstRuleTextView.trailingAnchor, constant: -16),
             firstRuleTextLabel.topAnchor.constraint(equalTo: firstRuleTextView.topAnchor),
             firstRuleTextLabel.bottomAnchor.constraint(equalTo: firstRuleTextView.bottomAnchor),
             
-            secondRuleView.widthAnchor.constraint(equalToConstant: 45),
-            secondRuleView.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.3),
-
-            secondRuleLabel.centerYAnchor.constraint(equalTo: secondRuleView.centerYAnchor),
-            secondRuleLabel.centerXAnchor.constraint(equalTo: secondRuleView.centerXAnchor),
+            secondRuleStack.heightAnchor.constraint(equalToConstant: 171),
             
-            secondRuleTextLabel.leadingAnchor.constraint(equalTo: secondRuleTextView.leadingAnchor),
-            secondRuleTextLabel.trailingAnchor.constraint(equalTo: secondRuleTextView.trailingAnchor),
+            secondRuleLabel.heightAnchor.constraint(equalToConstant: 45),
+            secondRuleLabel.widthAnchor.constraint(equalToConstant: 45),
+            secondRuleLabel.leadingAnchor.constraint(equalTo: secondRuleView.leadingAnchor),
+            secondRuleLabel.topAnchor.constraint(equalTo: secondRuleView.topAnchor),
+            
+            secondRuleTextView.trailingAnchor.constraint(equalTo: secondRuleStack.trailingAnchor, constant: -10),
+            secondRuleTextView.leadingAnchor.constraint(equalTo: secondRuleStack.leadingAnchor, constant: 50),
+            secondRuleTextView.topAnchor.constraint(equalTo: secondRuleStack.topAnchor),
+            secondRuleTextView.bottomAnchor.constraint(equalTo: secondRuleStack.bottomAnchor),
+            
+            secondRuleTextLabel.leadingAnchor.constraint(equalTo: secondRuleTextView.leadingAnchor, constant: 16),
+            secondRuleTextLabel.trailingAnchor.constraint(equalTo: secondRuleTextView.trailingAnchor, constant: -16),
             secondRuleTextLabel.topAnchor.constraint(equalTo: secondRuleTextView.topAnchor),
             secondRuleTextLabel.bottomAnchor.constraint(equalTo: secondRuleTextView.bottomAnchor),
             
-            thirdRuleView.widthAnchor.constraint(equalToConstant: 45),
-            thirdRuleView.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.3),
-
-            thirdRuleLabel.centerYAnchor.constraint(equalTo: thirdRuleView.centerYAnchor),
-            thirdRuleLabel.centerXAnchor.constraint(equalTo: thirdRuleView.centerXAnchor),
+            thirdRuleStack.heightAnchor.constraint(equalToConstant: 161),
             
-            thirdRuleTextLabel.leadingAnchor.constraint(equalTo: thirdRuleTextView.leadingAnchor),
-            thirdRuleTextLabel.trailingAnchor.constraint(equalTo: thirdRuleTextView.trailingAnchor),
+            thirdRuleLabel.heightAnchor.constraint(equalToConstant: 45),
+            thirdRuleLabel.widthAnchor.constraint(equalToConstant: 45),
+            thirdRuleLabel.leadingAnchor.constraint(equalTo: thirdRuleView.leadingAnchor),
+            thirdRuleLabel.topAnchor.constraint(equalTo: thirdRuleView.topAnchor),
+            
+            thirdRuleTextView.trailingAnchor.constraint(equalTo: thirdRuleStack.trailingAnchor, constant: -10),
+            thirdRuleTextView.leadingAnchor.constraint(equalTo: thirdRuleStack.leadingAnchor, constant: 50),
+            thirdRuleTextView.topAnchor.constraint(equalTo: thirdRuleStack.topAnchor),
+            thirdRuleTextView.bottomAnchor.constraint(equalTo: thirdRuleStack.bottomAnchor),
+            
+            thirdRuleTextLabel.leadingAnchor.constraint(equalTo: thirdRuleTextView.leadingAnchor, constant: 16),
+            thirdRuleTextLabel.trailingAnchor.constraint(equalTo: thirdRuleTextView.trailingAnchor, constant: -16),
             thirdRuleTextLabel.topAnchor.constraint(equalTo: thirdRuleTextView.topAnchor),
             thirdRuleTextLabel.bottomAnchor.constraint(equalTo: thirdRuleTextView.bottomAnchor),
-
-            fourthRuleView.widthAnchor.constraint(equalToConstant: 45),
-            fourthRuleView.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.3),
             
-            fourthRuleTextLabel.leadingAnchor.constraint(equalTo: fourthRuleTextView.leadingAnchor),
-            fourthRuleTextLabel.trailingAnchor.constraint(equalTo: fourthRuleTextView.trailingAnchor),
+            fourthRuleLabel.heightAnchor.constraint(equalToConstant: 45),
+            fourthRuleLabel.widthAnchor.constraint(equalToConstant: 45),
+            fourthRuleLabel.leadingAnchor.constraint(equalTo: fourthRuleView.leadingAnchor),
+            fourthRuleLabel.topAnchor.constraint(equalTo: fourthRuleView.topAnchor),
+            
+            fourthRuleTextView.trailingAnchor.constraint(equalTo: fourthRuleStack.trailingAnchor, constant: -10),
+            fourthRuleTextView.leadingAnchor.constraint(equalTo: fourthRuleStack.leadingAnchor, constant: 50),
+            fourthRuleTextView.topAnchor.constraint(equalTo: fourthRuleStack.topAnchor),
+            fourthRuleTextView.bottomAnchor.constraint(equalTo: fourthRuleStack.bottomAnchor),
+       
+            fourthRuleTextLabel.leadingAnchor.constraint(equalTo: fourthRuleTextView.leadingAnchor, constant: 16),
+            fourthRuleTextLabel.trailingAnchor.constraint(equalTo: fourthRuleTextView.trailingAnchor, constant: -16),
             fourthRuleTextLabel.topAnchor.constraint(equalTo: fourthRuleTextView.topAnchor),
             fourthRuleTextLabel.bottomAnchor.constraint(equalTo: fourthRuleTextView.bottomAnchor),
-
-            fourthRuleLabel.centerYAnchor.constraint(equalTo: fourthRuleView.centerYAnchor),
-            fourthRuleLabel.centerXAnchor.constraint(equalTo: fourthRuleView.centerXAnchor),
         ])
     }
 }
