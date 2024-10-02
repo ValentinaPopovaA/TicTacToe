@@ -32,13 +32,13 @@ class SelectedGameController: UIViewController {
         selectGameStackView.addArrangedSubview(leaderbordButton)
         selectGameStackView.axis = .vertical
         selectGameStackView.spacing = 20
+        selectGameStackView.translatesAutoresizingMaskIntoConstraints = false
         
         makeConstraints()
     
     }
     
     func makeConstraints() {
-        selectGameStackView.translatesAutoresizingMaskIntoConstraints = false
         selectGameView.addSubview(selectGameStackView)
         
         NSLayoutConstraint.activate([
