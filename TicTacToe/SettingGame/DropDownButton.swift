@@ -61,7 +61,7 @@ class DropDownButton: UIButton, DropDownProtocol {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.backgroundColor = UIColor.darkGray
+        self.backgroundColor = UIColor.basic_light_blue
         
         dropView = DropDownView.init(frame: CGRect.init(x: 0, y: 0, width: 0, height: 0))
         dropView.delegate = self
@@ -155,8 +155,8 @@ class DropDownView: UIView, UITableViewDelegate, UITableViewDataSource  {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        tableView.backgroundColor = UIColor.darkGray
-        self.backgroundColor = UIColor.green
+        //tableView.backgroundColor = UIColor.basic_light_blue
+        //self.backgroundColor = UIColor.green
         self.layer.cornerRadius = 30
   
         tableView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
@@ -192,7 +192,7 @@ class DropDownView: UIView, UITableViewDelegate, UITableViewDataSource  {
         let cell = UITableViewCell()
         
         cell.textLabel?.text = dropDownOptions[indexPath.row]
-        cell.backgroundColor = UIColor.darkGray
+        cell.backgroundColor = UIColor.basic_light_blue
         return cell
     }
     

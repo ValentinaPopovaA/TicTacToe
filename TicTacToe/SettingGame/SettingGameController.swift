@@ -119,16 +119,28 @@ class SettingGameController: UIViewController, UICollectionViewDataSource, UICol
         element.translatesAutoresizingMaskIntoConstraints = false
         return element
     }()
+    
+    lazy var firstView: UIView = {
+        let view = UIView()
+        view.configureView(color: .basic_light_blue, applyShadow: true)
+        return view
+    }()
+    lazy var secondView: UIView = {
+        let view = UIView()
+        view.configureView(color: .basic_light_blue, applyShadow: true)
+        return view
+    }()
 
     private lazy var settingStackView : UIStackView = {
         let element = UIStackView()
         element.axis = .vertical
-        element.spacing = 30
+        element.spacing = 20
         //element.backgroundColor = .green
-        
-        element.addArrangedSubview(switchGameTime)
+        firstView.addSubview(switchGameTime)
+        secondView.addSubview(switchMusic)
+        element.addArrangedSubview(firstView)
         element.addArrangedSubview(dropDownDuration)
-        element.addArrangedSubview(switchMusic)
+        element.addArrangedSubview(secondView)
         element.addArrangedSubview(dropDownMusic)
         
         
@@ -153,6 +165,8 @@ class SettingGameController: UIViewController, UICollectionViewDataSource, UICol
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionview.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath as IndexPath) as! PairCollectionViewCell
+        
+        //let cell2 = collectionView.cellForItem(at: indexPath) as! PairCollectionViewCell
         cell.setIndex(i: indexPath[1] + 1)
         
         return cell
@@ -165,14 +179,14 @@ private extension SettingGameController {
         
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 10)
-        layout.itemSize = CGSize(width: 152, height: 100)
+        layout.itemSize = CGSize(width: 152, height: 150)
         
         collectionview = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
         collectionview.dataSource = self
         collectionview.delegate = self
         collectionview.register(PairCollectionViewCell.self, forCellWithReuseIdentifier: cellId)
         collectionview.showsVerticalScrollIndicator = false
-        collectionview.backgroundColor = .white
+        collectionview.backgroundColor = UIColor.basic_background
         
         ////
         //headerStackView.backgroundColor = .red
@@ -203,14 +217,18 @@ private extension SettingGameController {
             settingStackView.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 20),
             settingStackView.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -20),
             
-            switchGameTime.leadingAnchor.constraint(equalTo: settingStackView.leadingAnchor, constant: 0),
-            switchGameTime.trailingAnchor.constraint(equalTo: settingStackView.trailingAnchor, constant: 0),
+            switchGameTime.leadingAnchor.constraint(equalTo: firstView.leadingAnchor, constant: 20),
+            switchGameTime.trailingAnchor.constraint(equalTo: firstView.trailingAnchor, constant: -20),
+            switchGameTime.centerXAnchor.constraint(equalTo: firstView.centerXAnchor),
+            switchGameTime.centerYAnchor.constraint(equalTo: firstView.centerYAnchor),
             //switchGameTime.heightAnchor.constraint(equalToConstant: 69),
            // switchGameTime.widthAnchor.constraint(equalToConstant: 268),
             
             
-            switchMusic.leadingAnchor.constraint(equalTo: settingStackView.leadingAnchor, constant: 0),
-            switchMusic.trailingAnchor.constraint(equalTo: settingStackView.trailingAnchor, constant: 0),
+            switchMusic.leadingAnchor.constraint(equalTo: secondView.leadingAnchor, constant: 20),
+            switchMusic.trailingAnchor.constraint(equalTo: secondView.trailingAnchor, constant: -20),
+            switchMusic.centerXAnchor.constraint(equalTo: secondView.centerXAnchor),
+            switchMusic.centerYAnchor.constraint(equalTo: secondView.centerYAnchor),
             //switchMusic.heightAnchor.constraint(equalToConstant: 69),
             //switchMusic.widthAnchor.constraint(equalToConstant: 268),
             
@@ -225,6 +243,13 @@ private extension SettingGameController {
             
             collectionview.widthAnchor.constraint(equalToConstant: 300),
             collectionview.heightAnchor.constraint(equalToConstant: 300),
+            
+            
+            firstView.widthAnchor.constraint(equalToConstant: 268),
+            firstView.heightAnchor.constraint(equalToConstant: 69),            
+            
+            secondView.heightAnchor.constraint(equalToConstant: 69),
+            secondView.widthAnchor.constraint(equalToConstant: 268),
             
             
         ])
