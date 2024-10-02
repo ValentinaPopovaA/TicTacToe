@@ -10,10 +10,20 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    func setupNavigationBar() {
+        UINavigationBar.appearance().barTintColor = .clear
+        UINavigationBar.appearance().tintColor = .basic_black
+        UINavigationBar.appearance().backIndicatorImage = UIImage(named: "backArrow")
+        UINavigationBar.appearance().backIndicatorTransitionMaskImage = UIImage(named: "backArrow")
+    }
 
+    func setupNavigationBarItems() {
+        UIBarButtonItem.appearance(whenContainedInInstancesOf: [UINavigationBar.self]).setTitleTextAttributes([.font: UIFont.systemFont(ofSize: 0)], for: .normal)
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        setupNavigationBar()
+        setupNavigationBarItems()
         return true
     }
 
