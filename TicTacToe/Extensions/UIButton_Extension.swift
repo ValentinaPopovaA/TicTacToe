@@ -67,7 +67,7 @@ extension UIButton {
         button.backgroundColor = buttonColor.color
         button.setTitle(label, for: .normal)
         button.setTitleColor(textColor.color, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: fontSize)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: fontSize)
         button.layer.cornerRadius = 30
         button.layer.borderColor = borderColor.color.cgColor
         button.layer.borderWidth = 2
@@ -114,5 +114,4 @@ extension UIButton {
         
         return button
     }
-    
 }

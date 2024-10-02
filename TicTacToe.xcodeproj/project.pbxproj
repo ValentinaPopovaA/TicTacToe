@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		794245032CAAA1920048F08C /* UIColor_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794245022CAAA1920048F08C /* UIColor_Extension.swift */; };
 		794245052CABEB460048F08C /* UI_Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794245042CABEB460048F08C /* UI_Images.swift */; };
+		A7B0F9DF2CAD6F2200ACFF5D /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B0F9DE2CAD6F2200ACFF5D /* Model.swift */; };
+		A7B0F9E12CAD6F5B00ACFF5D /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B0F9E02CAD6F5B00ACFF5D /* ResultView.swift */; };
 		A7F2F5002CA9A4240025A490 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F2F4FF2CA9A4240025A490 /* AppDelegate.swift */; };
 		A7F2F5022CA9A4240025A490 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F2F5012CA9A4240025A490 /* SceneDelegate.swift */; };
 		A7F2F5042CA9A4240025A490 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F2F5032CA9A4240025A490 /* ViewController.swift */; };
@@ -30,6 +32,8 @@
 /* Begin PBXFileReference section */
 		794245022CAAA1920048F08C /* UIColor_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor_Extension.swift; sourceTree = "<group>"; };
 		794245042CABEB460048F08C /* UI_Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UI_Images.swift; sourceTree = "<group>"; };
+		A7B0F9DE2CAD6F2200ACFF5D /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		A7B0F9E02CAD6F5B00ACFF5D /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		A7F2F4FC2CA9A4240025A490 /* TicTacToe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TicTacToe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7F2F4FF2CA9A4240025A490 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A7F2F5012CA9A4240025A490 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -158,6 +162,8 @@
 		A7F2F51A2CA9AD950025A490 /* Result */ = {
 			isa = PBXGroup;
 			children = (
+				A7B0F9DE2CAD6F2200ACFF5D /* Model.swift */,
+				A7B0F9E02CAD6F5B00ACFF5D /* ResultView.swift */,
 				A7F2F5252CA9E6E20025A490 /* ResultController.swift */,
 			);
 			path = Result;
@@ -255,6 +261,8 @@
 				A7F2F51E2CA9E6830025A490 /* SelectedGameController.swift in Sources */,
 				A7F2F5312CAAFC410025A490 /* UIView_Extension.swift in Sources */,
 				A7F2F52D2CAAE0C20025A490 /* UILabel_Extension.swift in Sources */,
+				A7B0F9DF2CAD6F2200ACFF5D /* Model.swift in Sources */,
+				A7B0F9E12CAD6F5B00ACFF5D /* ResultView.swift in Sources */,
 				A7F2F5202CA9E6AA0025A490 /* SettingGameController.swift in Sources */,
 				A7F2F5022CA9A4240025A490 /* SceneDelegate.swift in Sources */,
 				794245032CAAA1920048F08C /* UIColor_Extension.swift in Sources */,
