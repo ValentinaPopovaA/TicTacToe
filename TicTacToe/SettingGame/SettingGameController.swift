@@ -25,7 +25,7 @@ class SettingGameController: UIViewController, UICollectionViewDataSource, UICol
         navigationController?.pushViewController(vc, animated: true)
     }
     // Заголовок текст
-    private lazy var headerLabel = UILabel.createLabel(text: "Setting", fontSize: 20)
+    private lazy var headerLabel = UILabel.createLabel(text: "Setting", fontSize: 20, isBold: true)
 
     // Контейнер
     private lazy var container: UIView = {
@@ -61,6 +61,7 @@ class SettingGameController: UIViewController, UICollectionViewDataSource, UICol
         element.addArrangedSubview(label)
         
         var switchElement = UISwitch()
+        switchElement.onTintColor = .basic_blue
         element.addArrangedSubview(switchElement)
         
         element.translatesAutoresizingMaskIntoConstraints = false
@@ -80,6 +81,7 @@ class SettingGameController: UIViewController, UICollectionViewDataSource, UICol
         element.addArrangedSubview(label)
         
         var switchElement = UISwitch()
+        switchElement.onTintColor = .basic_blue
         element.addArrangedSubview(switchElement)
         
         element.translatesAutoresizingMaskIntoConstraints = false
@@ -102,7 +104,7 @@ class SettingGameController: UIViewController, UICollectionViewDataSource, UICol
        // element.setTitle("Duration", for: .normal)
         element.setLabel(string: "Duration")
         element.layer.cornerRadius = 30
-        //Set the drop down menu's options
+       
         element.dropView.dropDownOptions = ["30 min", "60 min", "120 min"]
         element.translatesAutoresizingMaskIntoConstraints = false
         return element
@@ -114,7 +116,6 @@ class SettingGameController: UIViewController, UICollectionViewDataSource, UICol
         element.axis = .vertical
         element.spacing = 30
         element.distribution = .fill
-//        element.alignment = .top
         
         element.translatesAutoresizingMaskIntoConstraints = false
         return element
@@ -135,16 +136,13 @@ class SettingGameController: UIViewController, UICollectionViewDataSource, UICol
         let element = UIStackView()
         element.axis = .vertical
         element.spacing = 20
-        //element.backgroundColor = .green
+      
         firstView.addSubview(switchGameTime)
         secondView.addSubview(switchMusic)
         element.addArrangedSubview(firstView)
         element.addArrangedSubview(dropDownDuration)
         element.addArrangedSubview(secondView)
         element.addArrangedSubview(dropDownMusic)
-        
-        
-        //element.addArrangedSubview(selectMusic)
        
         element.translatesAutoresizingMaskIntoConstraints = false
         return element
@@ -154,7 +152,7 @@ class SettingGameController: UIViewController, UICollectionViewDataSource, UICol
     var cellId = "Cell"
 
     override func viewDidLoad() {
-   
+//        title = "Setting"
         setupUI()
         setupLayout()
     }
@@ -165,8 +163,7 @@ class SettingGameController: UIViewController, UICollectionViewDataSource, UICol
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionview.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath as IndexPath) as! PairCollectionViewCell
-        
-        //let cell2 = collectionView.cellForItem(at: indexPath) as! PairCollectionViewCell
+                
         cell.imageX.image = UIImage(named: "x_pair\(indexPath[1]+1)")
         cell.imageO.image = UIImage(named: "o_pair\(indexPath[1]+1)")
         
@@ -189,15 +186,11 @@ private extension SettingGameController {
         collectionview.showsVerticalScrollIndicator = false
         collectionview.backgroundColor = UIColor.basic_background
         
-        ////
-        //headerStackView.backgroundColor = .red
-        //mainStackView.backgroundColor = .blue
-        ////
+                
+//        headerStackView.addArrangedSubview(backButton)
+//        headerStackView.addArrangedSubview(headerLabel)
         
-        headerStackView.addArrangedSubview(backButton)
-        headerStackView.addArrangedSubview(headerLabel)
-        
-        mainStackView.addArrangedSubview(headerStackView)
+//        mainStackView.addArrangedSubview(headerStackView)
         container.addSubview(settingStackView)
         mainStackView.addArrangedSubview(container)
         mainStackView.addArrangedSubview(collectionview)
@@ -212,7 +205,7 @@ private extension SettingGameController {
             mainStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             mainStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
             
-            headerStackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 30),
+//            headerStackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 30),
             
             settingStackView.topAnchor.constraint(equalTo: container.topAnchor, constant: 20),
             settingStackView.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 20),
@@ -222,24 +215,16 @@ private extension SettingGameController {
             switchGameTime.trailingAnchor.constraint(equalTo: firstView.trailingAnchor, constant: -20),
             switchGameTime.centerXAnchor.constraint(equalTo: firstView.centerXAnchor),
             switchGameTime.centerYAnchor.constraint(equalTo: firstView.centerYAnchor),
-            //switchGameTime.heightAnchor.constraint(equalToConstant: 69),
-           // switchGameTime.widthAnchor.constraint(equalToConstant: 268),
-            
+                     
             
             switchMusic.leadingAnchor.constraint(equalTo: secondView.leadingAnchor, constant: 20),
             switchMusic.trailingAnchor.constraint(equalTo: secondView.trailingAnchor, constant: -20),
             switchMusic.centerXAnchor.constraint(equalTo: secondView.centerXAnchor),
             switchMusic.centerYAnchor.constraint(equalTo: secondView.centerYAnchor),
-            //switchMusic.heightAnchor.constraint(equalToConstant: 69),
-            //switchMusic.widthAnchor.constraint(equalToConstant: 268),
-            
-            //button Constraints
-            //dropDownMusic.centerXAnchor.constraint(equalTo: settingStackView.centerXAnchor),
-            //dropDownMusic.centerYAnchor.constraint(equalTo: settingStackView.centerYAnchor),
-            dropDownMusic.widthAnchor.constraint(equalToConstant: 300),
+         
             dropDownMusic.heightAnchor.constraint(equalToConstant: 69),
             
-            dropDownDuration.widthAnchor.constraint(equalToConstant: 300),
+            //dropDownDuration.widthAnchor.constraint(equalToConstant: 300),
             dropDownDuration.heightAnchor.constraint(equalToConstant: 69),
             
             collectionview.widthAnchor.constraint(equalToConstant: 300),

@@ -9,12 +9,7 @@ import UIKit
 
 class PairCollectionViewCell: UICollectionViewCell {
     
-    private var cellIndex: Int = 1
     
-    func setIndex(i:Int){
-        cellIndex = i
-    }
-
     override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -41,7 +36,7 @@ class PairCollectionViewCell: UICollectionViewCell {
         let element = UIButton()
         element.backgroundColor = UIColor.basic_blue
         
-        element.setTitleColor(UIColor.basic_black, for: .normal)
+        element.setTitleColor(UIColor.basic_white, for: .normal)
         element.titleLabel?.font = UIFont.systemFont(ofSize: 20)
         element.tintColor = UIColor.basic_white
         element.layer.cornerRadius = 20
@@ -81,8 +76,7 @@ class PairCollectionViewCell: UICollectionViewCell {
 
 
     func addViews(){
-        //backgroundColor = UIColor.basic_background
-        print(cellIndex)
+                
         addSubview(containerView)
         
         imageO.heightAnchor.constraint(equalToConstant: 54).isActive = true

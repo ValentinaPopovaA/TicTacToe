@@ -39,10 +39,11 @@ class DropDownButton: UIButton, DropDownProtocol {
         element.isUserInteractionEnabled = false
         let label = UILabel()
         label.text = labelValue
-        label.font = .systemFont(ofSize: 20)
+        
+        label.font = .systemFont(ofSize: 20, weight: .bold)
         let label2 = UILabel()
         label.text = labelValue
-        label.font = .systemFont(ofSize: 20)
+        label.font = .systemFont(ofSize: 20, weight: .bold)
         element.addArrangedSubview(label)
         element.addArrangedSubview(titleText)
         
