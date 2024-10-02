@@ -39,10 +39,10 @@ class DropDownButton: UIButton, DropDownProtocol {
         element.isUserInteractionEnabled = false
         let label = UILabel()
         label.text = labelValue
-        label.font = .systemFont(ofSize: 24)
+        label.font = .systemFont(ofSize: 20)
         let label2 = UILabel()
         label.text = labelValue
-        label.font = .systemFont(ofSize: 24)
+        label.font = .systemFont(ofSize: 20)
         element.addArrangedSubview(label)
         element.addArrangedSubview(titleText)
         
@@ -53,7 +53,7 @@ class DropDownButton: UIButton, DropDownProtocol {
     private lazy var titleText : UILabel = {
         let element = UILabel()
         element.text = ""
-        element.font = .systemFont(ofSize: 24)
+        element.font = .systemFont(ofSize: 20)
         element.translatesAutoresizingMaskIntoConstraints = false
         return element
     }()

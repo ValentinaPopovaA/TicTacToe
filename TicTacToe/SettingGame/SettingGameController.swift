@@ -167,7 +167,8 @@ class SettingGameController: UIViewController, UICollectionViewDataSource, UICol
         let cell = collectionview.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath as IndexPath) as! PairCollectionViewCell
         
         //let cell2 = collectionView.cellForItem(at: indexPath) as! PairCollectionViewCell
-        cell.setIndex(i: indexPath[1] + 1)
+        cell.imageX.image = UIImage(named: "x_pair\(indexPath[1]+1)")
+        cell.imageO.image = UIImage(named: "o_pair\(indexPath[1]+1)")
         
         return cell
     }

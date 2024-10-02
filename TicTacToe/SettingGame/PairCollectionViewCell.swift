@@ -21,18 +21,18 @@ class PairCollectionViewCell: UICollectionViewCell {
         addViews()
     }
     
-    private lazy var imageX : UIImageView = {
+     var imageX : UIImageView = {
         let element = UIImageView()
         element.sizeToFit()
-        element.image = UIImage(named: "x_pair\(cellIndex)")
+        //element.image = UIImage(named: "x_pair\(cellIndex)")
         element.translatesAutoresizingMaskIntoConstraints = false
         return element
     }()
     
-    private lazy var imageO : UIImageView = {
+     var imageO : UIImageView = {
         let element = UIImageView()
         element.sizeToFit()
-        element.image = UIImage(named: "o_pair\(cellIndex)")
+        //element.image = UIImage(named: "o_pair\(cellIndex)")
         element.translatesAutoresizingMaskIntoConstraints = false
         return element
     }()
