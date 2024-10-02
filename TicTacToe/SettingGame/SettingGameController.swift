@@ -86,10 +86,23 @@ class SettingGameController: UIViewController {
         return element
     }()
     
-    // Выподающий список
-    private lazy var selectMusic : UIPickerView = {
-        let element = UIPickerView()
-        
+    // Выбор музыки
+    private lazy var dropDownMusic : DropDownButton = {
+        let element = DropDownButton.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        element.setTitle("Select Music", for: .normal)
+        element.layer.cornerRadius = 30
+        //Set the drop down menu's options
+        element.dropView.dropDownOptions = ["Classical", "Instrumental", "Nature"]
+        element.translatesAutoresizingMaskIntoConstraints = false
+        return element
+    }()
+    // Duration
+    private lazy var dropDownDuration : DropDownButton = {
+        let element = DropDownButton.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        element.setTitle("Duration", for: .normal)
+        element.layer.cornerRadius = 30
+        //Set the drop down menu's options
+        element.dropView.dropDownOptions = ["30 min", "60 min", "120 min"]
         element.translatesAutoresizingMaskIntoConstraints = false
         return element
     }()
@@ -112,7 +125,11 @@ class SettingGameController: UIViewController {
         element.spacing = 30
         element.backgroundColor = .green
         element.addArrangedSubview(switchGameTime)
+        element.addArrangedSubview(dropDownDuration)
         element.addArrangedSubview(switchMusic)
+        element.addArrangedSubview(dropDownMusic)
+        
+        
         //element.addArrangedSubview(selectMusic)
        
         element.translatesAutoresizingMaskIntoConstraints = false
@@ -129,6 +146,7 @@ class SettingGameController: UIViewController {
 private extension SettingGameController {
     func setupUI(){
         view.backgroundColor = .basic_background
+        
         headerStackView.backgroundColor = .red
         mainStackView.backgroundColor = .blue
         headerStackView.addArrangedSubview(backButton)
@@ -164,6 +182,16 @@ private extension SettingGameController {
             switchMusic.trailingAnchor.constraint(equalTo: settingStackView.trailingAnchor, constant: 0),
             //switchMusic.heightAnchor.constraint(equalToConstant: 69),
             //switchMusic.widthAnchor.constraint(equalToConstant: 268),
+            
+            //button Constraints
+            //dropDownMusic.centerXAnchor.constraint(equalTo: settingStackView.centerXAnchor),
+            //dropDownMusic.centerYAnchor.constraint(equalTo: settingStackView.centerYAnchor),
+            dropDownMusic.widthAnchor.constraint(equalToConstant: 300),
+            dropDownMusic.heightAnchor.constraint(equalToConstant: 69),
+            
+            dropDownDuration.widthAnchor.constraint(equalToConstant: 300),
+            dropDownDuration.heightAnchor.constraint(equalToConstant: 69),
+            
             
         ])
         
