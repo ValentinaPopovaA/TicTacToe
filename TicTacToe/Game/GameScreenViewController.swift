@@ -19,6 +19,14 @@ final class GameScreenViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.basic_background
         gameScreenView.delegate = self
+        
+        #warning("TO DO: load from UD")
+        gameScreenView.configureBages(
+            imageOne: UIImage.pair1Cross,
+            nameOne: "You",
+            imageTwo: UIImage.pair1Circle,
+            nameTwo: "Computer"
+        )
     }
 }
 

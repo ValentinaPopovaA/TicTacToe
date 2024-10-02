@@ -17,6 +17,30 @@ final class GameScreenView: UIView {
     weak var delegate: GameScreenViewDelegate?
     
     //MARK: - Private propirties
+    private let playerOneBadge = PlayerBadgeView()
+    private let playerTwoBadge = PlayerBadgeView()
+    
+    private let timerLabel = UILabel.createLabel(text: "", fontSize: 20, isBold: true, numberOfLines: 1)
+    
+    private let moveStack: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .horizontal
+        stack.distribution = .equalSpacing
+        stack.spacing = 20
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        return stack
+    }()
+    
+    private let moveImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage.robot
+        imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
+    private let moveLabel = UILabel.createLabel(text: "Now move...", fontSize: 24, isBold: true)
+    
     private let gameField: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.basic_white
@@ -72,15 +96,14 @@ final class GameScreenView: UIView {
         return stack
     }
     
-    private func createPlayerBadge(_ image: UIImage, _ name: String) -> UIView {
-        let view = UIView()
-        view.backgroundColor = UIColor.basic_light_blue
-        view.layer.cornerRadius = 30
-        //view.layer.masksToBounds = true
-        
-        
-        
-        return view
+    func configureBages(imageOne: UIImage, nameOne: String, imageTwo: UIImage, nameTwo: String) {
+        playerOneBadge.configure(image: imageOne, name: nameOne)
+        playerTwoBadge.configure(image: imageTwo, name: nameTwo)
+    }
+    
+    func setMove(_ image: UIImage, _ text: String) {
+        moveImageView.image = image
+        moveLabel.text = "\(text) turn"
     }
 }
 
@@ -106,8 +129,17 @@ private extension GameScreenView {
         }
         
         [
+            moveImageView,
+            moveLabel
+        ].forEach { moveStack.addArrangedSubview($0) }
+        
+        [
+            playerOneBadge,
+            timerLabel,
+            playerTwoBadge,
+            moveStack,
             gameField,
-            gameStack
+            gameStack,
         ].forEach {
             addSubview($0)
         }
@@ -115,9 +147,30 @@ private extension GameScreenView {
     
     func setupConstrains() {
         NSLayoutConstraint.activate([
+            playerOneBadge.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30),
+            playerOneBadge.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 17.0 ),
+            playerOneBadge.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 103.0 / 390.0),
+            playerOneBadge.heightAnchor.constraint(equalTo: playerOneBadge.widthAnchor),
+            
+            timerLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            timerLabel.centerYAnchor.constraint(equalTo: playerOneBadge.centerYAnchor),
+            timerLabel.leadingAnchor.constraint(equalTo: playerOneBadge.trailingAnchor),
+            timerLabel.trailingAnchor.constraint(equalTo: playerTwoBadge.leadingAnchor),
+            
+            playerTwoBadge.trailingAnchor.constraint(equalTo: trailingAnchor, constant:  -30.0),
+            playerTwoBadge.topAnchor.constraint(equalTo: playerOneBadge.topAnchor),
+            playerTwoBadge.widthAnchor.constraint(equalTo: playerOneBadge.widthAnchor),
+            playerTwoBadge.heightAnchor.constraint(equalTo: playerOneBadge.widthAnchor),
+            
+            moveStack.centerXAnchor.constraint(equalTo: centerXAnchor),
+            moveStack.topAnchor.constraint(equalTo: playerOneBadge.bottomAnchor, constant: 45),
+            
+            moveImageView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 54.0 / 390.0 ),
+            moveImageView.heightAnchor.constraint(equalTo: moveImageView.widthAnchor),
+            
+            gameField.topAnchor.constraint(equalTo: moveStack.bottomAnchor, constant: 45),
             gameField.centerXAnchor.constraint(equalTo: centerXAnchor),
-            gameField.centerYAnchor.constraint(equalTo: centerYAnchor),
-            gameField.widthAnchor.constraint(equalTo: widthAnchor, multiplier: (390.0 - 88.0)/390.0),
+            gameField.widthAnchor.constraint(equalTo: widthAnchor, multiplier: (390.0 - 88.0) / 390.0),
             gameField.heightAnchor.constraint(equalTo: gameField.widthAnchor),
             
             gameStack.leadingAnchor.constraint(equalTo: gameField.leadingAnchor, constant: 20),
