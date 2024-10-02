@@ -14,14 +14,49 @@ class DropDownButton: UIButton, DropDownProtocol {
     
     func dropDownPressed(string: String) {
         
-        self.setTitle("Duration \(string)", for: .normal)
+        self.setTitle("", for: .normal)
+        titleText.text = string
         self.dismissDropDown()
+    }
+    
+    private var labelValue: String = ""
+    private var value: String = ""
+    
+    func setLabel(string: String)
+    {
+        labelValue = string
     }
     
     var dropView = DropDownView()
     
     var height = NSLayoutConstraint()
     
+    private lazy var rowStackView : UIStackView = {
+        let element = UIStackView()
+        element.axis = .horizontal
+        element.alignment = .center
+        element.distribution = .fill
+        element.isUserInteractionEnabled = false
+        let label = UILabel()
+        label.text = labelValue
+        label.font = .systemFont(ofSize: 24)
+        let label2 = UILabel()
+        label.text = labelValue
+        label.font = .systemFont(ofSize: 24)
+        element.addArrangedSubview(label)
+        element.addArrangedSubview(titleText)
+        
+        element.translatesAutoresizingMaskIntoConstraints = false
+        return element
+    }()
+    
+    private lazy var titleText : UILabel = {
+        let element = UILabel()
+        element.text = ""
+        element.font = .systemFont(ofSize: 24)
+        element.translatesAutoresizingMaskIntoConstraints = false
+        return element
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -33,9 +68,18 @@ class DropDownButton: UIButton, DropDownProtocol {
         dropView.translatesAutoresizingMaskIntoConstraints = false
     }
     
+    
+    
     override func didMoveToSuperview() {
+        self.superview?.addSubview(rowStackView)
         self.superview?.addSubview(dropView)
         self.superview?.bringSubviewToFront(dropView)
+
+ 
+        rowStackView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        rowStackView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        rowStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
+        rowStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20).isActive = true
         dropView.topAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         dropView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         dropView.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true

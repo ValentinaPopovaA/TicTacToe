@@ -89,7 +89,7 @@ class SettingGameController: UIViewController {
     // Выбор музыки
     private lazy var dropDownMusic : DropDownButton = {
         let element = DropDownButton.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-        element.setTitle("Select Music", for: .normal)
+        element.setLabel(string:  "Select Music")
         element.layer.cornerRadius = 30
         //Set the drop down menu's options
         element.dropView.dropDownOptions = ["Classical", "Instrumental", "Nature"]
@@ -99,7 +99,8 @@ class SettingGameController: UIViewController {
     // Duration
     private lazy var dropDownDuration : DropDownButton = {
         let element = DropDownButton.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-        element.setTitle("Duration", for: .normal)
+       // element.setTitle("Duration", for: .normal)
+        element.setLabel(string: "Duration")
         element.layer.cornerRadius = 30
         //Set the drop down menu's options
         element.dropView.dropDownOptions = ["30 min", "60 min", "120 min"]
@@ -124,6 +125,7 @@ class SettingGameController: UIViewController {
         element.axis = .vertical
         element.spacing = 30
         element.backgroundColor = .green
+        
         element.addArrangedSubview(switchGameTime)
         element.addArrangedSubview(dropDownDuration)
         element.addArrangedSubview(switchMusic)
@@ -147,8 +149,11 @@ private extension SettingGameController {
     func setupUI(){
         view.backgroundColor = .basic_background
         
+        ////
         headerStackView.backgroundColor = .red
         mainStackView.backgroundColor = .blue
+        ////
+        
         headerStackView.addArrangedSubview(backButton)
         headerStackView.addArrangedSubview(headerLabel)
         
