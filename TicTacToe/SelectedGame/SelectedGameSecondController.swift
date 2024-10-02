@@ -15,9 +15,9 @@ class SelectedGameSecondController: UIViewController {
         return view
     }()
     lazy var selectGameLabel2 = UILabel.createLabel(text: "Select Game", fontSize: 24, isBold:true)
-    lazy var hardLevelButton = UIButton.makeCustomButtonWithLabel(label: "Hard", buttonColor: .basic_light_blue, textColor: .black, fontSize: 20, borderColor: .basic_blue, target: self, action: #selector(goToNextScreen2))
-    lazy var standartLevelButton = UIButton.makeCustomButtonWithLabel(label: "Standart", buttonColor: .basic_blue, textColor: .black, fontSize: 20, borderColor: .basic_blue, target: self, action: #selector(goToNextScreen2))
-    lazy var easyLevelButton = UIButton.makeCustomButtonWithLabel(label: "Easy", buttonColor: .basic_light_blue, textColor: .black, fontSize: 20, borderColor: .basic_blue, target: self, action: #selector(goToNextScreen2))
+    lazy var hardLevelButton = UIButton.makeCustomButtonWithLabel(label: "Hard", buttonColor: .basic_light_blue, textColor: .black, fontSize: 20, borderColor: .clear, target: self, action: #selector(goToNextScreen2))
+    lazy var standartLevelButton = UIButton.makeCustomButtonWithLabel(label: "Standart", buttonColor: .basic_light_blue, textColor: .black, fontSize: 20, borderColor: .clear, target: self, action: #selector(goToNextScreen2))
+    lazy var easyLevelButton = UIButton.makeCustomButtonWithLabel(label: "Easy", buttonColor: .basic_light_blue, textColor: .black, fontSize: 20, borderColor: .clear, target: self, action: #selector(goToNextScreen2))
     
     override func viewDidLoad() {
         super.viewDidLoad()
