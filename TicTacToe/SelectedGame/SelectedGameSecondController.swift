@@ -14,10 +14,10 @@ class SelectedGameSecondController: UIViewController {
         view.configureView(color: .white, applyShadow: true)
         return view
     }()
-    var selectGameLabel2 = UILabel.createLabel(text: "Select Game", fontSize: 24, isBold:true)
-    var hardLevelButton = UIButton.makeCustomButtonWithLabel(label: "Hard", buttonColor: .basic_light_blue, textColor: .black, fontSize: 20, borderColor: .basic_blue, target: SelectedGameSecondController.self, action: #selector(goToNextScreen2))
-    var standartLevelButton = UIButton.makeCustomButtonWithLabel(label: "Standart", buttonColor: .basic_blue, textColor: .black, fontSize: 20, borderColor: .basic_blue, target: SelectedGameSecondController.self, action: #selector(goToNextScreen2))
-    var easyLevelButton = UIButton.makeCustomButtonWithLabel(label: "Easy", buttonColor: .basic_light_blue, textColor: .black, fontSize: 20, borderColor: .basic_blue, target: SelectedGameSecondController.self, action: #selector(goToNextScreen2))
+    lazy var selectGameLabel2 = UILabel.createLabel(text: "Select Game", fontSize: 24, isBold:true)
+    lazy var hardLevelButton = UIButton.makeCustomButtonWithLabel(label: "Hard", buttonColor: .basic_light_blue, textColor: .black, fontSize: 20, borderColor: .basic_blue, target: self, action: #selector(goToNextScreen2))
+    lazy var standartLevelButton = UIButton.makeCustomButtonWithLabel(label: "Standart", buttonColor: .basic_blue, textColor: .black, fontSize: 20, borderColor: .basic_blue, target: self, action: #selector(goToNextScreen2))
+    lazy var easyLevelButton = UIButton.makeCustomButtonWithLabel(label: "Easy", buttonColor: .basic_light_blue, textColor: .black, fontSize: 20, borderColor: .basic_blue, target: self, action: #selector(goToNextScreen2))
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,7 +54,7 @@ class SelectedGameSecondController: UIViewController {
     }
     
     @objc func goToNextScreen2() {
-        let vc = NextVC()
+        let vc = SettingGameController()
         navigationController?.pushViewController(vc, animated: true)
     }
 }
