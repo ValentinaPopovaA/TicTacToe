@@ -17,9 +17,9 @@ extension UIButton {
             case .clear:
                 return .clear
             case .basic_blue:
-                return UIColor.basic_blue
+                return .basic_blue ?? .systemBlue
             case .basic_light_blue:
-                return UIColor.basic_light_blue
+                return .basic_light_blue ?? .systemTeal
             }
         }
     }
@@ -32,11 +32,11 @@ extension UIButton {
         var color: UIColor {
             switch self {
             case .white:
-                return UIColor.basic_white
+                return .basic_white ?? .white
             case .black:
-                return UIColor.basic_black
+                return .basic_black ?? .black
             case .basic_blue:
-                return UIColor.basic_blue
+                return .basic_blue ?? .systemBlue
             }
         }
     }
@@ -48,9 +48,9 @@ extension UIButton {
         var color: UIColor {
             switch self {
             case .basic_blue:
-                return UIColor.basic_blue
+                return .basic_blue ?? .systemBlue
             case .clear:
-                return UIColor.clear
+                return .clear
             }
         }
     }
@@ -82,14 +82,36 @@ extension UIButton {
                                           target: Any?,
                                           action: Selector) -> UIButton {
         let button = UIButton()
-        button.setImage(image, for: .normal)
-        button.backgroundColor = UIColor.basic_light_blue
-        button.setTitle(label, for: .normal)
-        button.setTitleColor(UIColor.basic_black, for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        button.backgroundColor = .basic_light_blue
         button.layer.cornerRadius = 30
-        button.addTarget(target, action: action, for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(target, action: action, for: .touchUpInside)
+        
+        let imageView = UIImageView(image: image)
+        imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.widthAnchor.constraint(equalToConstant: 38).isActive = true
+        imageView.heightAnchor.constraint(equalToConstant: 29).isActive = true
+        
+        let titleLabel = UILabel()
+        titleLabel.text = label
+        titleLabel.textColor = .basic_black
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 20)
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        let stackView = UIStackView(arrangedSubviews: [imageView, titleLabel])
+        stackView.axis = .horizontal
+        stackView.spacing = 7
+        stackView.alignment = .center
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        button.addSubview(stackView)
+        
+        NSLayoutConstraint.activate([
+            stackView.centerXAnchor.constraint(equalTo: button.centerXAnchor),
+            stackView.centerYAnchor.constraint(equalTo: button.centerYAnchor)
+        ])
+        
         return button
     }
     

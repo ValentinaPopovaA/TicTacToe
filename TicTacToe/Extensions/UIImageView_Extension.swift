@@ -8,11 +8,11 @@
 import UIKit
 
 extension UIImageView {
-    static func makeSimpleImage(imageName: String) -> UIImageView {
-        let image = UIImageView()
-        image.image = UIImage(named: imageName)
-        image.contentMode = .scaleAspectFit
-        image.translatesAutoresizingMaskIntoConstraints = false
-        return image
+    static func makeSimpleImage(image: UIImage?) -> UIImageView {
+        let imageView = UIImageView()
+        imageView.image = image
+        imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
     }
 }
