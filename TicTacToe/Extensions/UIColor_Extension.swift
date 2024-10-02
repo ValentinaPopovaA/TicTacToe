@@ -14,6 +14,7 @@ extension UIColor {
     static let basic_light_blue = UIColor(named: "light_blue")
     static let basic_blue = UIColor(named: "blue")
     static let basic_black = UIColor(named: "black")
+    static let basic_shadow = UIColor(named: "shadow")
     // Secondary
     static let secondary_purple = UIColor(named: "purple")
     static let secondary_pink = UIColor(named: "pink")
