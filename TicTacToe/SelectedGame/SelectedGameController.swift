@@ -22,9 +22,9 @@ class SelectedGameController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .basic_background
-
+        
         view.addSubview(selectGameView)
-
+        
         
         selectGameStackView.addArrangedSubview(selectGameLabel)
         selectGameStackView.addArrangedSubview(singlePlayerButton)
@@ -35,7 +35,7 @@ class SelectedGameController: UIViewController {
         selectGameStackView.translatesAutoresizingMaskIntoConstraints = false
         
         makeConstraints()
-    
+        
     }
     
     func makeConstraints() {
@@ -57,16 +57,16 @@ class SelectedGameController: UIViewController {
         ])
     }
     
-//    func setViews() {
-//            view.addSubview(selectGameStackView)
-//            view.addSubview(selectGameView)
-//            view.addSubview(selectGameLabel)
-//            view.addSubview(singlePlayerButton)
-//            view.addSubview(twoPlayersButton)
-//        }
+    //    func setViews() {
+    //            view.addSubview(selectGameStackView)
+    //            view.addSubview(selectGameView)
+    //            view.addSubview(selectGameLabel)
+    //            view.addSubview(singlePlayerButton)
+    //            view.addSubview(twoPlayersButton)
+    //        }
     @objc func goToNextScreen() {
         let vc = NextVC()
         navigationController?.pushViewController(vc, animated: true)
     }
-    }
+}
 

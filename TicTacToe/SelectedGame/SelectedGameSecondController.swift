@@ -5,9 +5,7 @@
 //  Created by Алиса on 02.10.2024.
 //
 
-import Foundation
 import UIKit
-
 
 class SelectedGameSecondController: UIViewController {
     let selectGameStackView2 = UIStackView()
