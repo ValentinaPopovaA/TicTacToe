@@ -57,4 +57,4 @@ class SelectedGameSecondController: UIViewController {
         let vc = NextVC()
         navigationController?.pushViewController(vc, animated: true)
     }
-    }
+}

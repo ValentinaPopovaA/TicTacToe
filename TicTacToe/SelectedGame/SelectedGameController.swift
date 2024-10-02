@@ -14,17 +14,16 @@ class SelectedGameController: UIViewController {
         view.configureView(color: .white, applyShadow: true)
         return view
     }()
-    var selectGameLabel = UILabel.createLabel(text: "Select Game", fontSize: 24, isBold:true)
-    var singlePlayerButton = UIButton.makeCustomButtonWithImage(image: UIImage(named: "single_player"), label:"Single Player", target: SelectedGameController.self, action: #selector(goToNextScreen))
-    var twoPlayersButton = UIButton.makeCustomButtonWithImage(image: UIImage(named: "two_players"), label: "Two Players", target: SelectedGameController.self, action: #selector(goToNextScreen))
-    var leaderbordButton = UIButton.makeCustomButtonWithImage(image: UIImage(named: "rocket"), label: "Leaderboard", target: SelectedGameController.self, action: #selector(goToNextScreen))
+    lazy var selectGameLabel = UILabel.createLabel(text: "Select Game", fontSize: 24, isBold:true)
+    lazy var singlePlayerButton = UIButton.makeCustomButtonWithImage(image: Images.single_player, label:"Single Player", target: self, action: #selector(goToDifficultySelection))
+    lazy var twoPlayersButton = UIButton.makeCustomButtonWithImage(image: Images.two_players, label: "Two Players", target: self, action: #selector(goToDifficultySelection))
+    lazy var leaderbordButton = UIButton.makeCustomButtonWithImage(image: Images.rocket, label: "Leaderboard", target: self, action: #selector(goToDifficultySelection))
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .basic_background
         
         view.addSubview(selectGameView)
-        
         
         selectGameStackView.addArrangedSubview(selectGameLabel)
         selectGameStackView.addArrangedSubview(singlePlayerButton)
@@ -35,7 +34,6 @@ class SelectedGameController: UIViewController {
         selectGameStackView.translatesAutoresizingMaskIntoConstraints = false
         
         makeConstraints()
-        
     }
     
     func makeConstraints() {
@@ -64,9 +62,9 @@ class SelectedGameController: UIViewController {
     //            view.addSubview(singlePlayerButton)
     //            view.addSubview(twoPlayersButton)
     //        }
-    @objc func goToNextScreen() {
-        let vc = NextVC()
-        navigationController?.pushViewController(vc, animated: true)
+    @objc func goToDifficultySelection() {
+        let difficultySelectionVC = SelectedGameSecondController()
+        navigationController?.pushViewController(difficultySelectionVC, animated: true)
     }
 }
 
