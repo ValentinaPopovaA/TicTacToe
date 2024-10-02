@@ -13,9 +13,11 @@ enum gameMode {
 
 struct Setting {
     let gameMode: gameMode
+    let gameTime: Bool
     let duration: Int
-    let music: String
+    let music: Bool
+    let selectedMusic: String
     let player1Image: String
     let palyer2Image: String
-    
+    let selectedPairNumber: Int
 }

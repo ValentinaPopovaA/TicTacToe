@@ -10,22 +10,23 @@ import UIKit
 
 class SettingGameController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    var gameSetting : Setting = Setting(gameMode: gameMode.singlePlayer, gameTime: true, duration: 60, music: false, selectedMusic: "", player1Image: "x_pair1", palyer2Image: "o_pair1", selectedPairNumber: 2)
     
     // Заголовок строка
-    private lazy var headerStackView : UIStackView = {
-        let element = UIStackView()
-        element.translatesAutoresizingMaskIntoConstraints = false
-        return element
-    }()
+//    private lazy var headerStackView : UIStackView = {
+//        let element = UIStackView()
+//        element.translatesAutoresizingMaskIntoConstraints = false
+//        return element
+//    }()
     // Стрелка
-    lazy var backButton = UIButton.makeCustomButtonWithLabel(label: "⬅︎", buttonColor: .clear, textColor: .black, fontSize: 40, borderColor: .clear, target: self, action: #selector(goToNextScreen))
-    
-    @objc func goToNextScreen() {
-        let vc = NextVC()
-        navigationController?.pushViewController(vc, animated: true)
-    }
+//    lazy var backButton = UIButton.makeCustomButtonWithLabel(label: "⬅︎", buttonColor: .clear, textColor: .black, fontSize: 40, borderColor: .clear, target: self, action: #selector(goToNextScreen))
+//    
+//    @objc func goToNextScreen() {
+//        let vc = NextVC()
+//        navigationController?.pushViewController(vc, animated: true)
+//    }
     // Заголовок текст
-    private lazy var headerLabel = UILabel.createLabel(text: "Setting", fontSize: 20, isBold: true)
+//    private lazy var headerLabel = UILabel.createLabel(text: "Setting", fontSize: 20, isBold: true)
 
     // Контейнер
     private lazy var container: UIView = {
@@ -163,7 +164,14 @@ class SettingGameController: UIViewController, UICollectionViewDataSource, UICol
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionview.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath as IndexPath) as! PairCollectionViewCell
-                
+        
+        let currentCellIndex = indexPath[1]+1
+        
+        if gameSetting.selectedPairNumber != currentCellIndex {
+            cell.button.backgroundColor = .basic_light_blue
+            cell.button.setTitleColor(UIColor.basic_black, for: .normal)
+            cell.button.setTitle("Choose", for: .normal)
+        }
         cell.imageX.image = UIImage(named: "x_pair\(indexPath[1]+1)")
         cell.imageO.image = UIImage(named: "o_pair\(indexPath[1]+1)")
         
@@ -185,12 +193,7 @@ private extension SettingGameController {
         collectionview.register(PairCollectionViewCell.self, forCellWithReuseIdentifier: cellId)
         collectionview.showsVerticalScrollIndicator = false
         collectionview.backgroundColor = UIColor.basic_background
-        
-                
-//        headerStackView.addArrangedSubview(backButton)
-//        headerStackView.addArrangedSubview(headerLabel)
-        
-//        mainStackView.addArrangedSubview(headerStackView)
+
         container.addSubview(settingStackView)
         mainStackView.addArrangedSubview(container)
         mainStackView.addArrangedSubview(collectionview)
@@ -204,9 +207,7 @@ private extension SettingGameController {
             mainStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             mainStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             mainStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            
-//            headerStackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 30),
-            
+           
             settingStackView.topAnchor.constraint(equalTo: container.topAnchor, constant: 20),
             settingStackView.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 20),
             settingStackView.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -20),
@@ -223,20 +224,17 @@ private extension SettingGameController {
             switchMusic.centerYAnchor.constraint(equalTo: secondView.centerYAnchor),
          
             dropDownMusic.heightAnchor.constraint(equalToConstant: 69),
-            
-            //dropDownDuration.widthAnchor.constraint(equalToConstant: 300),
+       
             dropDownDuration.heightAnchor.constraint(equalToConstant: 69),
             
             collectionview.widthAnchor.constraint(equalToConstant: 300),
             collectionview.heightAnchor.constraint(equalToConstant: 300),
-            
             
             firstView.widthAnchor.constraint(equalToConstant: 268),
             firstView.heightAnchor.constraint(equalToConstant: 69),            
             
             secondView.heightAnchor.constraint(equalToConstant: 69),
             secondView.widthAnchor.constraint(equalToConstant: 268),
-            
             
         ])
         

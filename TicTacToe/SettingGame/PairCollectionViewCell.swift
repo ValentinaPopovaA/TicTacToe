@@ -32,16 +32,16 @@ class PairCollectionViewCell: UICollectionViewCell {
         return element
     }()
     
-    private lazy var button : UIButton = {
+    var button : UIButton = {
         let element = UIButton()
         element.backgroundColor = UIColor.basic_blue
         
         element.setTitleColor(UIColor.basic_white, for: .normal)
-        element.titleLabel?.font = UIFont.systemFont(ofSize: 20)
-        element.tintColor = UIColor.basic_white
+        element.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .medium)
+//        element.tintColor = UIColor.basic_white
         element.layer.cornerRadius = 20
-        element.layer.borderColor = UIColor.basic_blue?.cgColor
-        element.layer.borderWidth = 2
+//        element.layer.borderColor = UIColor.basic_blue?.cgColor
+//        element.layer.borderWidth = 2
         element.setTitle("Picked", for: .normal)
         element.translatesAutoresizingMaskIntoConstraints = false
         return element

@@ -67,12 +67,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		794245A22CADB2190048F08C /* Models */ = {
+		794245A22CADB2190048F08C /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				794245A32CADB2520048F08C /* Setting.swift */,
 			);
-			path = Models;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		A7F2F4F32CA9A4240025A490 = {
@@ -94,7 +94,7 @@
 		A7F2F4FE2CA9A4240025A490 /* TicTacToe */ = {
 			isa = PBXGroup;
 			children = (
-				794245A22CADB2190048F08C /* Models */,
+				794245A22CADB2190048F08C /* Model */,
 				A7F2F5132CA9AA850025A490 /* App */,
 				A7F2F5272CAAA29B0025A490 /* Extensions */,
 				A7F2F5032CA9A4240025A490 /* ViewController.swift */,

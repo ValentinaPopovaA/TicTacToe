@@ -76,14 +76,15 @@ class DropDownButton: UIButton, DropDownProtocol {
         self.superview?.addSubview(dropView)
         self.superview?.bringSubviewToFront(dropView)
 
- 
-        rowStackView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        rowStackView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        rowStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
-        rowStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20).isActive = true
-        dropView.topAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-        dropView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        dropView.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
+        NSLayoutConstraint.activate([
+            rowStackView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            rowStackView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            rowStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+            rowStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
+            dropView.topAnchor.constraint(equalTo: self.bottomAnchor),
+            dropView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            dropView.widthAnchor.constraint(equalTo: self.widthAnchor),
+        ])
         height = dropView.heightAnchor.constraint(equalToConstant: 0)
     }
     
