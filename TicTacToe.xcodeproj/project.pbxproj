@@ -11,6 +11,8 @@
 		24D12E6F2CAE041A00907359 /* PlayerBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D12E6D2CAE041A00907359 /* PlayerBadgeView.swift */; };
 		24D12E702CAE041A00907359 /* GameScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D12E6C2CAE041A00907359 /* GameScreenViewController.swift */; };
 		24D12E722CAE042900907359 /* UIImage_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D12E712CAE042900907359 /* UIImage_Extension.swift */; };
+		24EAF8AC2CAF097A00F1EF6F /* GameService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EAF8AB2CAF097A00F1EF6F /* GameService.swift */; };
+		24EAF8B12CAF0F6800F1EF6F /* GameSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EAF8B02CAF0F6800F1EF6F /* GameSettings.swift */; };
 		794245032CAAA1920048F08C /* UIColor_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794245022CAAA1920048F08C /* UIColor_Extension.swift */; };
 		794245052CABEB460048F08C /* UI_Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794245042CABEB460048F08C /* UI_Images.swift */; };
 		7942452C2CAD30950048F08C /* DropDownButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7942452B2CAD30950048F08C /* DropDownButton.swift */; };
@@ -42,6 +44,8 @@
 		24D12E6C2CAE041A00907359 /* GameScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScreenViewController.swift; sourceTree = "<group>"; };
 		24D12E6D2CAE041A00907359 /* PlayerBadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerBadgeView.swift; sourceTree = "<group>"; };
 		24D12E712CAE042900907359 /* UIImage_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage_Extension.swift; sourceTree = "<group>"; };
+		24EAF8AB2CAF097A00F1EF6F /* GameService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameService.swift; sourceTree = "<group>"; };
+		24EAF8B02CAF0F6800F1EF6F /* GameSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSettings.swift; sourceTree = "<group>"; };
 		794245022CAAA1920048F08C /* UIColor_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor_Extension.swift; sourceTree = "<group>"; };
 		794245042CABEB460048F08C /* UI_Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UI_Images.swift; sourceTree = "<group>"; };
 		7942452B2CAD30950048F08C /* DropDownButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownButton.swift; sourceTree = "<group>"; };
@@ -81,6 +85,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		24EAF8AD2CAF099000F1EF6F /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				24EAF8AB2CAF097A00F1EF6F /* GameService.swift */,
+				24EAF8B02CAF0F6800F1EF6F /* GameSettings.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		794245A22CADB2190048F08C /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -116,6 +129,7 @@
 		A7F2F4FE2CA9A4240025A490 /* TicTacToe */ = {
 			isa = PBXGroup;
 			children = (
+				24EAF8AD2CAF099000F1EF6F /* Services */,
 				794245A22CADB2190048F08C /* Model */,
 				A7F2F5132CA9AA850025A490 /* App */,
 				A7F2F5272CAAA29B0025A490 /* Extensions */,
@@ -249,7 +263,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 1600;
 				TargetAttributes = {
 					A7F2F4FB2CA9A4240025A490 = {
 						CreatedOnToolsVersion = 14.3.1;
@@ -303,6 +317,7 @@
 				24D12E722CAE042900907359 /* UIImage_Extension.swift in Sources */,
 				24D12E6F2CAE041A00907359 /* PlayerBadgeView.swift in Sources */,
 				24D12E702CAE041A00907359 /* GameScreenViewController.swift in Sources */,
+				24EAF8AC2CAF097A00F1EF6F /* GameService.swift in Sources */,
 				A7F2F51E2CA9E6830025A490 /* SelectedGameController.swift in Sources */,
 				A7F2F5312CAAFC410025A490 /* UIView_Extension.swift in Sources */,
 				A7F2F52D2CAAE0C20025A490 /* UILabel_Extension.swift in Sources */,
@@ -310,6 +325,7 @@
 				7942452C2CAD30950048F08C /* DropDownButton.swift in Sources */,
 				A7B0F9DF2CAD6F2200ACFF5D /* Model.swift in Sources */,
 				A7F2F5202CA9E6AA0025A490 /* SettingGameController.swift in Sources */,
+				24EAF8B12CAF0F6800F1EF6F /* GameSettings.swift in Sources */,
 				A7F2F5022CA9A4240025A490 /* SceneDelegate.swift in Sources */,
 				794245032CAAA1920048F08C /* UIColor_Extension.swift in Sources */,
 				A7F2F5222CA9E6BF0025A490 /* GameController.swift in Sources */,
@@ -338,6 +354,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -370,6 +387,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -398,6 +416,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -430,6 +449,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
