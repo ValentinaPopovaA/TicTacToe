@@ -63,7 +63,7 @@ class SelectedGameController: UIViewController {
     //            view.addSubview(twoPlayersButton)
     //        }
     @objc func goToDifficultySelection() {
-        let difficultySelectionVC = SelectedGameSecondController()
+        let difficultySelectionVC = SelectedGameSecondController(gameMode: .singlePlayer)
         navigationController?.pushViewController(difficultySelectionVC, animated: true)
     }
     
@@ -73,7 +73,7 @@ class SelectedGameController: UIViewController {
     }
     
     @objc func goToGameScreen() {
-        let gameVC = GameScreenViewController()
+        let gameVC = GameScreenViewController(gameMode: .twoPlayer, gameDifficulty: .easy)
         navigationController?.pushViewController(gameVC, animated: true)
     }
 }

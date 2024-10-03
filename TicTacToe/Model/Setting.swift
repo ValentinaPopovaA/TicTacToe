@@ -6,16 +6,21 @@
 //
 
 
-enum gameMode: Codable {
+enum GameMode {
     case singlePlayer
     case twoPlayer
 }
 
+enum GameDifficulty {
+    case easy
+    case standart
+    case hard
+}
+
 struct Setting: Codable {
-    let gameMode: gameMode
     let gameTime: Bool
     let duration: Int
-    let music: Bool
+    let musicEnable: Bool
     let selectedMusic: String
     let player1Image: String
     let palyer2Image: String

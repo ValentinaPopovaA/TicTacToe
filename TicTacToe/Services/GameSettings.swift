@@ -14,10 +14,9 @@ final class GameSettings {
     
     private init () {
         defaultSettings = Setting(
-            gameMode: gameMode.singlePlayer,
             gameTime: false,
             duration: 30,
-            music: false,
+            musicEnable: false,
             selectedMusic: "",
             player1Image: "x_pair1",
             palyer2Image: "o_pair1",

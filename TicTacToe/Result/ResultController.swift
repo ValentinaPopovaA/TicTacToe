@@ -49,11 +49,11 @@ final class ResultController: UIViewController {
     // MARK: - Actions
     
     @objc private func goToNewGame() {
-        let gameVC = GameScreenViewController()
-        navigationController?.pushViewController(gameVC, animated: true)
+        navigationController?.popViewController(animated: true)
     }
     
     @objc private func backToSelectGame() {
+        #warning("есть ощущение, что мы тут на второй круг пошли переполнять память")
         let selectGameVC = SelectedGameController()
         navigationController?.pushViewController(selectGameVC, animated: true)
     }
