@@ -11,39 +11,41 @@ class StartViewController: UIViewController {
     
 //UI
     private lazy var settingsButton: UIButton = {
-        let element = UIButton()
+        let element = UIButton(type: .system)
         element.backgroundColor = .clear
-        element.setImage( UIImage(named: "setting_icon"), for: .normal)
-        //element.setImage(Images.settingsButton, for: .normal)
+        let config = UIImage.SymbolConfiguration(pointSize: 36, weight: .bold)
+        let image = UIImage(systemName: "gearshape", withConfiguration: config)
+        element.setImage(image, for: .normal)
+        element.tintColor = .basic_black
         element.addTarget(self, action: #selector(showSettings), for: .touchUpInside)
         element.translatesAutoresizingMaskIntoConstraints = false
         return element
     }()
     
     private lazy var rulesButton: UIButton = {
-        let element = UIButton()
+        let element = UIButton(type: .system)
         element.backgroundColor = .clear
-        element.setImage( UIImage(named: "instruction"), for: .normal)
-        //element.setImage(Images.rulesButton, for: .normal)
+        let config = UIImage.SymbolConfiguration(pointSize: 36, weight: .regular)
+        let image = UIImage(systemName: "questionmark.circle.fill", withConfiguration: config)
+        element.setImage(image, for: .normal)
+        element.tintColor = .secondary_pink
         element.addTarget(self, action: #selector(showRules), for: .touchUpInside)
         element.translatesAutoresizingMaskIntoConstraints = false
         return element
     }()
     
     lazy var label = UILabel.createLabel(text: "TIC-TAC-TOE", fontSize: 20, isBold: true)
-    lazy var imageView = UIImageView.makeSimpleImage(image: Images.logo) // прописал через точку
+    lazy var imageView = UIImageView.makeSimpleImage(image: Images.logo)
     lazy var playStartButton = UIButton.makeCustomButtonWithLabel(label: "Let`s play", buttonColor: .basic_blue, textColor: .white, fontSize: 20, borderColor: .basic_blue, target: self, action: #selector(showSelectGameScreen))
     
     
 // Life Cycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         
         setViews()
         makeConstraints()
-       //navigationController?.isNavigationBarHidden = true //?
        navigationController?.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: settingsButton)
         
     }
@@ -105,13 +107,13 @@ private extension StartViewController {
             playStartButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
             playStartButton.heightAnchor.constraint(equalToConstant: 80),
             
-            rulesButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 21),
-            rulesButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 21),
+            rulesButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            rulesButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
             rulesButton.heightAnchor.constraint(equalToConstant: 36),
             rulesButton.widthAnchor.constraint(equalToConstant: 36),
             
-            settingsButton.leadingAnchor.constraint(equalTo: view.trailingAnchor, constant: -60),
-            settingsButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 21),
+            settingsButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            settingsButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
             settingsButton.heightAnchor.constraint(equalToConstant: 36),
             settingsButton.widthAnchor.constraint(equalToConstant: 36),
         ])
