@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		24D12E6E2CAE041A00907359 /* GameScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D12E6B2CAE041A00907359 /* GameScreenView.swift */; };
+		24D12E6F2CAE041A00907359 /* PlayerBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D12E6D2CAE041A00907359 /* PlayerBadgeView.swift */; };
+		24D12E702CAE041A00907359 /* GameScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D12E6C2CAE041A00907359 /* GameScreenViewController.swift */; };
+		24D12E722CAE042900907359 /* UIImage_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D12E712CAE042900907359 /* UIImage_Extension.swift */; };
 		794245032CAAA1920048F08C /* UIColor_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794245022CAAA1920048F08C /* UIColor_Extension.swift */; };
 		794245052CABEB460048F08C /* UI_Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794245042CABEB460048F08C /* UI_Images.swift */; };
 		7942452C2CAD30950048F08C /* DropDownButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7942452B2CAD30950048F08C /* DropDownButton.swift */; };
@@ -14,6 +18,7 @@
 		794245A42CADB2520048F08C /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794245A32CADB2520048F08C /* Setting.swift */; };
 		A7B0F9DF2CAD6F2200ACFF5D /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B0F9DE2CAD6F2200ACFF5D /* Model.swift */; };
 		A7B0F9E32CADC6D000ACFF5D /* SelectedGameSecondController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B0F9E22CADC6D000ACFF5D /* SelectedGameSecondController.swift */; };
+		A7B0F9E82CADDCB700ACFF5D /* LeaderboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B0F9E72CADDCB700ACFF5D /* LeaderboardController.swift */; };
 		A7F2F5002CA9A4240025A490 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F2F4FF2CA9A4240025A490 /* AppDelegate.swift */; };
 		A7F2F5022CA9A4240025A490 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F2F5012CA9A4240025A490 /* SceneDelegate.swift */; };
 		A7F2F5042CA9A4240025A490 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F2F5032CA9A4240025A490 /* ViewController.swift */; };
@@ -33,6 +38,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		24D12E6B2CAE041A00907359 /* GameScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScreenView.swift; sourceTree = "<group>"; };
+		24D12E6C2CAE041A00907359 /* GameScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScreenViewController.swift; sourceTree = "<group>"; };
+		24D12E6D2CAE041A00907359 /* PlayerBadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerBadgeView.swift; sourceTree = "<group>"; };
+		24D12E712CAE042900907359 /* UIImage_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage_Extension.swift; sourceTree = "<group>"; };
 		794245022CAAA1920048F08C /* UIColor_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor_Extension.swift; sourceTree = "<group>"; };
 		794245042CABEB460048F08C /* UI_Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UI_Images.swift; sourceTree = "<group>"; };
 		7942452B2CAD30950048F08C /* DropDownButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownButton.swift; sourceTree = "<group>"; };
@@ -40,6 +49,7 @@
 		794245A32CADB2520048F08C /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		A7B0F9DE2CAD6F2200ACFF5D /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		A7B0F9E22CADC6D000ACFF5D /* SelectedGameSecondController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedGameSecondController.swift; sourceTree = "<group>"; };
+		A7B0F9E72CADDCB700ACFF5D /* LeaderboardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardController.swift; sourceTree = "<group>"; };
 		A7F2F4FC2CA9A4240025A490 /* TicTacToe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TicTacToe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7F2F4FF2CA9A4240025A490 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A7F2F5012CA9A4240025A490 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -79,6 +89,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		A7B0F9E62CADDC9400ACFF5D /* Leaderboard */ = {
+			isa = PBXGroup;
+			children = (
+				A7B0F9E72CADDCB700ACFF5D /* LeaderboardController.swift */,
+			);
+			path = Leaderboard;
+			sourceTree = "<group>";
+		};
 		A7F2F4F32CA9A4240025A490 = {
 			isa = PBXGroup;
 			children = (
@@ -109,6 +127,7 @@
 				A7F2F5182CA9AD730025A490 /* Game */,
 				A7F2F5192CA9AD880025A490 /* HowToPlay */,
 				A7F2F51A2CA9AD950025A490 /* Result */,
+				A7B0F9E62CADDC9400ACFF5D /* Leaderboard */,
 				A7F2F5142CA9AC210025A490 /* Resources */,
 			);
 			path = TicTacToe;
@@ -164,6 +183,9 @@
 		A7F2F5182CA9AD730025A490 /* Game */ = {
 			isa = PBXGroup;
 			children = (
+				24D12E6B2CAE041A00907359 /* GameScreenView.swift */,
+				24D12E6C2CAE041A00907359 /* GameScreenViewController.swift */,
+				24D12E6D2CAE041A00907359 /* PlayerBadgeView.swift */,
 				A7F2F5212CA9E6BF0025A490 /* GameController.swift */,
 			);
 			path = Game;
@@ -189,6 +211,7 @@
 		A7F2F5272CAAA29B0025A490 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				24D12E712CAE042900907359 /* UIImage_Extension.swift */,
 				794245022CAAA1920048F08C /* UIColor_Extension.swift */,
 				A7F2F5282CAAA2C00025A490 /* UIButton_Extension.swift */,
 				A7F2F52C2CAAE0C20025A490 /* UILabel_Extension.swift */,
@@ -273,8 +296,13 @@
 				A7F2F52F2CAAE7740025A490 /* UIImageView_Extension.swift in Sources */,
 				A7F2F5042CA9A4240025A490 /* ViewController.swift in Sources */,
 				A7F2F5262CA9E6E20025A490 /* ResultController.swift in Sources */,
+				A7B0F9E82CADDCB700ACFF5D /* LeaderboardController.swift in Sources */,
 				A7F2F5292CAAA2C00025A490 /* UIButton_Extension.swift in Sources */,
 				A7F2F5002CA9A4240025A490 /* AppDelegate.swift in Sources */,
+				24D12E6E2CAE041A00907359 /* GameScreenView.swift in Sources */,
+				24D12E722CAE042900907359 /* UIImage_Extension.swift in Sources */,
+				24D12E6F2CAE041A00907359 /* PlayerBadgeView.swift in Sources */,
+				24D12E702CAE041A00907359 /* GameScreenViewController.swift in Sources */,
 				A7F2F51E2CA9E6830025A490 /* SelectedGameController.swift in Sources */,
 				A7F2F5312CAAFC410025A490 /* UIView_Extension.swift in Sources */,
 				A7F2F52D2CAAE0C20025A490 /* UILabel_Extension.swift in Sources */,
