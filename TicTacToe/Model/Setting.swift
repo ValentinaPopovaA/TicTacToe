@@ -6,12 +6,12 @@
 //
 
 
-enum gameMode {
+enum gameMode: Codable {
     case singlePlayer
     case twoPlayer
 }
 
-struct Setting {
+struct Setting: Codable {
     let gameMode: gameMode
     let gameTime: Bool
     let duration: Int
