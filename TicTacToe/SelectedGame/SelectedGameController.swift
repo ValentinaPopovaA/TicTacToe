@@ -16,7 +16,7 @@ class SelectedGameController: UIViewController {
     }()
     lazy var selectGameLabel = UILabel.createLabel(text: "Select Game", fontSize: 24, isBold:true)
     lazy var singlePlayerButton = UIButton.makeCustomButtonWithImage(image: Images.single_player, label:"Single Player", target: self, action: #selector(goToDifficultySelection))
-    lazy var twoPlayersButton = UIButton.makeCustomButtonWithImage(image: Images.two_players, label: "Two Players", target: self, action: #selector(goToDifficultySelection))
+    lazy var twoPlayersButton = UIButton.makeCustomButtonWithImage(image: Images.two_players, label: "Two Players", target: self, action: #selector(goToGameScreen))
     lazy var leaderbordButton = UIButton.makeCustomButtonWithImage(image: Images.rocket, label: "Leaderboard", target: self, action: #selector(goToLeaderboard))
     
     override func viewDidLoad() {
@@ -70,6 +70,11 @@ class SelectedGameController: UIViewController {
     @objc func goToLeaderboard() {
         let leaderboardVC = LeaderboardViewController()
         navigationController?.pushViewController(leaderboardVC, animated: true)
+    }
+    
+    @objc func goToGameScreen() {
+        let gameVC = GameScreenViewController()
+        navigationController?.pushViewController(gameVC, animated: true)
     }
 }
 
