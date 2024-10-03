@@ -263,8 +263,8 @@ class HowToPlayController: UIViewController {
             scrollView.topAnchor.constraint(equalTo: view.topAnchor),
             scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             
-            howToPlayStack.leadingAnchor.constraint(equalTo: scrollFrameGuide.leadingAnchor/*,constant: 13*/),
-            howToPlayStack.trailingAnchor.constraint(equalTo: scrollFrameGuide.trailingAnchor/*, constant: -13*/),
+            howToPlayStack.leadingAnchor.constraint(equalTo: scrollFrameGuide.leadingAnchor,constant: 13),
+            howToPlayStack.trailingAnchor.constraint(equalTo: scrollFrameGuide.trailingAnchor, constant: -13),
             howToPlayStack.topAnchor.constraint(equalTo: scrollContentGuide.topAnchor),
             howToPlayStack.bottomAnchor.constraint(equalTo: scrollContentGuide.bottomAnchor),
             
@@ -280,8 +280,8 @@ class HowToPlayController: UIViewController {
             
             firstRuleTextLabel.leadingAnchor.constraint(equalTo: firstRuleTextView.leadingAnchor, constant: 16),
             firstRuleTextLabel.trailingAnchor.constraint(equalTo: firstRuleTextView.trailingAnchor, constant: -16),
-            firstRuleTextLabel.topAnchor.constraint(equalTo: firstRuleTextView.topAnchor),
-            firstRuleTextLabel.bottomAnchor.constraint(equalTo: firstRuleTextView.bottomAnchor),
+            firstRuleTextLabel.topAnchor.constraint(equalTo: firstRuleTextView.topAnchor, constant: 16),
+            firstRuleTextLabel.bottomAnchor.constraint(equalTo: firstRuleTextView.bottomAnchor, constant: -16),
 
             secondRuleLabel.heightAnchor.constraint(equalToConstant: 45),
             secondRuleLabel.widthAnchor.constraint(equalToConstant: 45),
@@ -295,8 +295,8 @@ class HowToPlayController: UIViewController {
             
             secondRuleTextLabel.leadingAnchor.constraint(equalTo: secondRuleTextView.leadingAnchor, constant: 16),
             secondRuleTextLabel.trailingAnchor.constraint(equalTo: secondRuleTextView.trailingAnchor, constant: -16),
-            secondRuleTextLabel.topAnchor.constraint(equalTo: secondRuleTextView.topAnchor),
-            secondRuleTextLabel.bottomAnchor.constraint(equalTo: secondRuleTextView.bottomAnchor),
+            secondRuleTextLabel.topAnchor.constraint(equalTo: secondRuleTextView.topAnchor, constant: 16),
+            secondRuleTextLabel.bottomAnchor.constraint(equalTo: secondRuleTextView.bottomAnchor, constant: -16),
             
             thirdRuleLabel.heightAnchor.constraint(equalToConstant: 45),
             thirdRuleLabel.widthAnchor.constraint(equalToConstant: 45),
@@ -310,8 +310,8 @@ class HowToPlayController: UIViewController {
             
             thirdRuleTextLabel.leadingAnchor.constraint(equalTo: thirdRuleTextView.leadingAnchor, constant: 16),
             thirdRuleTextLabel.trailingAnchor.constraint(equalTo: thirdRuleTextView.trailingAnchor, constant: -16),
-            thirdRuleTextLabel.topAnchor.constraint(equalTo: thirdRuleTextView.topAnchor),
-            thirdRuleTextLabel.bottomAnchor.constraint(equalTo: thirdRuleTextView.bottomAnchor),
+            thirdRuleTextLabel.topAnchor.constraint(equalTo: thirdRuleTextView.topAnchor, constant: 16),
+            thirdRuleTextLabel.bottomAnchor.constraint(equalTo: thirdRuleTextView.bottomAnchor, constant: -16),
             
             fourthRuleLabel.heightAnchor.constraint(equalToConstant: 45),
             fourthRuleLabel.widthAnchor.constraint(equalToConstant: 45),
@@ -325,8 +325,8 @@ class HowToPlayController: UIViewController {
        
             fourthRuleTextLabel.leadingAnchor.constraint(equalTo: fourthRuleTextView.leadingAnchor, constant: 16),
             fourthRuleTextLabel.trailingAnchor.constraint(equalTo: fourthRuleTextView.trailingAnchor, constant: -16),
-            fourthRuleTextLabel.topAnchor.constraint(equalTo: fourthRuleTextView.topAnchor),
-            fourthRuleTextLabel.bottomAnchor.constraint(equalTo: fourthRuleTextView.bottomAnchor),
+            fourthRuleTextLabel.topAnchor.constraint(equalTo: fourthRuleTextView.topAnchor, constant: 16),
+            fourthRuleTextLabel.bottomAnchor.constraint(equalTo: fourthRuleTextView.bottomAnchor, constant: -16),
         ])
     }
 }
