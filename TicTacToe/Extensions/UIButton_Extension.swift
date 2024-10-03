@@ -88,7 +88,6 @@ extension UIButton {
         button.backgroundColor = .basic_light_blue
         button.layer.cornerRadius = 30
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(target, action: action, for: .touchUpInside)
         
         let imageView = UIImageView(image: image)
         imageView.contentMode = .scaleAspectFit
