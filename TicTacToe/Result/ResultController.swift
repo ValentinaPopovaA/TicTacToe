@@ -16,7 +16,7 @@ final class ResultController: UIViewController {
     lazy var label = UILabel.createLabel(text: "You Lose!", fontSize: 20, isBold: true)
     lazy var imageView = UIImageView.makeSimpleImage(image: Images.lose)
     lazy var playAgainButton = UIButton.makeCustomButtonWithLabel(label: "Play again", buttonColor: .basic_blue, textColor: .white, fontSize: 20, borderColor: .basic_blue, target: self, action: #selector(goToNewGame))
-    lazy var backButton = UIButton.makeCustomButtonWithLabel(label: "Back", buttonColor: .clear, textColor: .basic_blue, fontSize: 20, borderColor: .basic_blue, target: self, action: #selector(backToStart))
+    lazy var backButton = UIButton.makeCustomButtonWithLabel(label: "Back", buttonColor: .clear, textColor: .basic_blue, fontSize: 20, borderColor: .basic_blue, target: self, action: #selector(backToSelectGame))
     
     // MARK: - Lifecycle Methods
     
@@ -49,12 +49,13 @@ final class ResultController: UIViewController {
     // MARK: - Actions
     
     @objc private func goToNewGame() {
-        let gameViewController = NextVC() // GameViewController()
-        navigationController?.pushViewController(gameViewController, animated: true)
+        navigationController?.popViewController(animated: true)
     }
     
-    @objc private func backToStart() {
-        navigationController?.popViewController(animated: true)
+    @objc private func backToSelectGame() {
+        #warning("есть ощущение, что мы тут на второй круг пошли переполнять память")
+        let selectGameVC = SelectedGameController()
+        navigationController?.pushViewController(selectGameVC, animated: true)
     }
 }
 

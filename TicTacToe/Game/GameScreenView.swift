@@ -70,7 +70,6 @@ final class GameScreenView: UIView {
         super.init(frame: frame)
         setupViews()
         setupConstrains()
-        setupTargetActions()
     }
     
     required init?(coder: NSCoder) {
@@ -82,6 +81,8 @@ final class GameScreenView: UIView {
         button.backgroundColor = UIColor.basic_light_blue
         button.layer.cornerRadius = 20
         button.layer.masksToBounds = true
+        button.imageEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+
         button.tag = tag
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -178,9 +179,5 @@ private extension GameScreenView {
             gameStack.topAnchor.constraint(equalTo: gameField.topAnchor, constant: 20),
             gameStack.bottomAnchor.constraint(equalTo: gameField.bottomAnchor, constant: -20)
         ])
-    }
-    
-    func setupTargetActions() {
-        
     }
 }

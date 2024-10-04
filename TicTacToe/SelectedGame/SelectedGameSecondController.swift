@@ -14,10 +14,49 @@ class SelectedGameSecondController: UIViewController {
         view.configureView(color: .white, applyShadow: true)
         return view
     }()
-    lazy var selectGameLabel2 = UILabel.createLabel(text: "Select Game", fontSize: 24, isBold:true)
-    lazy var hardLevelButton = UIButton.makeCustomButtonWithLabel(label: "Hard", buttonColor: .basic_light_blue, textColor: .black, fontSize: 20, borderColor: .clear, target: self, action: #selector(goToNextScreen2))
-    lazy var standartLevelButton = UIButton.makeCustomButtonWithLabel(label: "Standart", buttonColor: .basic_light_blue, textColor: .black, fontSize: 20, borderColor: .clear, target: self, action: #selector(goToNextScreen2))
-    lazy var easyLevelButton = UIButton.makeCustomButtonWithLabel(label: "Easy", buttonColor: .basic_light_blue, textColor: .black, fontSize: 20, borderColor: .clear, target: self, action: #selector(goToNextScreen2))
+    lazy var selectGameLabel2 = UILabel.createLabel(
+        text: "Select Game",
+        fontSize: 24,
+        isBold:true
+    )
+    lazy var hardLevelButton = UIButton.makeCustomButtonWithLabel(
+        label: "Hard",
+        buttonColor: .basic_light_blue,
+        textColor: .black,
+        fontSize: 20,
+        borderColor: .clear,
+        target: self,
+        action: #selector(goToGame)
+    )
+    lazy var standartLevelButton = UIButton.makeCustomButtonWithLabel(
+        label: "Standart",
+        buttonColor: .basic_light_blue,
+        textColor: .black,
+        fontSize: 20,
+        borderColor: .clear,
+        target: self,
+        action: #selector(goToGame)
+    )
+    lazy var easyLevelButton = UIButton.makeCustomButtonWithLabel(
+        label: "Easy",
+        buttonColor: .basic_light_blue,
+        textColor: .black,
+        fontSize: 20,
+        borderColor: .clear,
+        target: self,
+        action: #selector(goToGame)
+    )
+    
+    private let gameMode: GameMode
+    
+    init(gameMode: GameMode) {
+        self.gameMode = gameMode
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,8 +92,12 @@ class SelectedGameSecondController: UIViewController {
         ])
     }
     
-    @objc func goToNextScreen2() {
-        let vc = SettingGameController()
-        navigationController?.pushViewController(vc, animated: true)
+    @objc func goToGame(_ sender: UIButton) {
+        
+        #warning("TO DO: реализовать передачу данных с кнопок с помощью tag-ов")
+        let gameDifficulty: GameDifficulty = .easy
+        
+        let gameVC = GameScreenViewController(gameMode: gameMode, gameDifficulty: gameDifficulty)
+        navigationController?.pushViewController(gameVC, animated: true)
     }
 }

@@ -9,11 +9,18 @@ import UIKit
 
 class HowToPlayController: UIViewController {
     
+    private lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.alwaysBounceVertical = true
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        return scrollView
+    }()
+    
    private let howToPlayStack: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
-       stack.distribution = .fill
-        stack.spacing = 15
+        stack.distribution = .fill
+        stack.spacing = 20
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
@@ -191,6 +198,7 @@ class HowToPlayController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        scrollView.contentSize = CGSize(width: howToPlayStack.frame.width, height: howToPlayStack.frame.height + 200)
         setupUI()
         makeConstraints()
         title = "How to play"
@@ -207,7 +215,9 @@ class HowToPlayController: UIViewController {
     
     private func setupUI() {
         view.backgroundColor = .basic_background
-        view.addSubview(howToPlayStack)
+        view.addSubview(scrollView)
+        scrollView.addSubview(howToPlayStack)
+
         howToPlayStack.addArrangedSubview(firstRuleStack)
         howToPlayStack.addArrangedSubview(secondRuleStack)
         howToPlayStack.addArrangedSubview(thirdRuleStack)
@@ -243,19 +253,26 @@ class HowToPlayController: UIViewController {
     }
     
     private func makeConstraints() {
+        
+        let scrollContentGuide = scrollView.contentLayoutGuide
+        let scrollFrameGuide = scrollView.frameLayoutGuide
+        
         NSLayoutConstraint.activate([
-            howToPlayStack.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 13),
-            howToPlayStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -13),
-            howToPlayStack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            howToPlayStack.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            howToPlayStack.leadingAnchor.constraint(equalTo: scrollFrameGuide.leadingAnchor,constant: 13),
+            howToPlayStack.trailingAnchor.constraint(equalTo: scrollFrameGuide.trailingAnchor, constant: -13),
+            howToPlayStack.topAnchor.constraint(equalTo: scrollContentGuide.topAnchor),
+            howToPlayStack.bottomAnchor.constraint(equalTo: scrollContentGuide.bottomAnchor),
             
             firstRuleLabel.heightAnchor.constraint(equalToConstant: 45),
             firstRuleLabel.widthAnchor.constraint(equalToConstant: 45),
             firstRuleLabel.leadingAnchor.constraint(equalTo: firstRuleView.leadingAnchor),
             firstRuleLabel.topAnchor.constraint(equalTo: firstRuleView.topAnchor),
-            
-            firstRuleStack.heightAnchor.constraint(equalToConstant: 96),
-            
+
             firstRuleTextView.trailingAnchor.constraint(equalTo: firstRuleStack.trailingAnchor, constant: -10),
             firstRuleTextView.leadingAnchor.constraint(equalTo: firstRuleView.leadingAnchor, constant: 50),
             firstRuleTextView.topAnchor.constraint(equalTo: firstRuleStack.topAnchor),
@@ -263,11 +280,9 @@ class HowToPlayController: UIViewController {
             
             firstRuleTextLabel.leadingAnchor.constraint(equalTo: firstRuleTextView.leadingAnchor, constant: 16),
             firstRuleTextLabel.trailingAnchor.constraint(equalTo: firstRuleTextView.trailingAnchor, constant: -16),
-            firstRuleTextLabel.topAnchor.constraint(equalTo: firstRuleTextView.topAnchor),
-            firstRuleTextLabel.bottomAnchor.constraint(equalTo: firstRuleTextView.bottomAnchor),
-            
-            secondRuleStack.heightAnchor.constraint(equalToConstant: 171),
-            
+            firstRuleTextLabel.topAnchor.constraint(equalTo: firstRuleTextView.topAnchor, constant: 16),
+            firstRuleTextLabel.bottomAnchor.constraint(equalTo: firstRuleTextView.bottomAnchor, constant: -16),
+
             secondRuleLabel.heightAnchor.constraint(equalToConstant: 45),
             secondRuleLabel.widthAnchor.constraint(equalToConstant: 45),
             secondRuleLabel.leadingAnchor.constraint(equalTo: secondRuleView.leadingAnchor),
@@ -280,10 +295,8 @@ class HowToPlayController: UIViewController {
             
             secondRuleTextLabel.leadingAnchor.constraint(equalTo: secondRuleTextView.leadingAnchor, constant: 16),
             secondRuleTextLabel.trailingAnchor.constraint(equalTo: secondRuleTextView.trailingAnchor, constant: -16),
-            secondRuleTextLabel.topAnchor.constraint(equalTo: secondRuleTextView.topAnchor),
-            secondRuleTextLabel.bottomAnchor.constraint(equalTo: secondRuleTextView.bottomAnchor),
-            
-            thirdRuleStack.heightAnchor.constraint(equalToConstant: 161),
+            secondRuleTextLabel.topAnchor.constraint(equalTo: secondRuleTextView.topAnchor, constant: 16),
+            secondRuleTextLabel.bottomAnchor.constraint(equalTo: secondRuleTextView.bottomAnchor, constant: -16),
             
             thirdRuleLabel.heightAnchor.constraint(equalToConstant: 45),
             thirdRuleLabel.widthAnchor.constraint(equalToConstant: 45),
@@ -297,8 +310,8 @@ class HowToPlayController: UIViewController {
             
             thirdRuleTextLabel.leadingAnchor.constraint(equalTo: thirdRuleTextView.leadingAnchor, constant: 16),
             thirdRuleTextLabel.trailingAnchor.constraint(equalTo: thirdRuleTextView.trailingAnchor, constant: -16),
-            thirdRuleTextLabel.topAnchor.constraint(equalTo: thirdRuleTextView.topAnchor),
-            thirdRuleTextLabel.bottomAnchor.constraint(equalTo: thirdRuleTextView.bottomAnchor),
+            thirdRuleTextLabel.topAnchor.constraint(equalTo: thirdRuleTextView.topAnchor, constant: 16),
+            thirdRuleTextLabel.bottomAnchor.constraint(equalTo: thirdRuleTextView.bottomAnchor, constant: -16),
             
             fourthRuleLabel.heightAnchor.constraint(equalToConstant: 45),
             fourthRuleLabel.widthAnchor.constraint(equalToConstant: 45),
@@ -312,8 +325,8 @@ class HowToPlayController: UIViewController {
        
             fourthRuleTextLabel.leadingAnchor.constraint(equalTo: fourthRuleTextView.leadingAnchor, constant: 16),
             fourthRuleTextLabel.trailingAnchor.constraint(equalTo: fourthRuleTextView.trailingAnchor, constant: -16),
-            fourthRuleTextLabel.topAnchor.constraint(equalTo: fourthRuleTextView.topAnchor),
-            fourthRuleTextLabel.bottomAnchor.constraint(equalTo: fourthRuleTextView.bottomAnchor),
+            fourthRuleTextLabel.topAnchor.constraint(equalTo: fourthRuleTextView.topAnchor, constant: 16),
+            fourthRuleTextLabel.bottomAnchor.constraint(equalTo: fourthRuleTextView.bottomAnchor, constant: -16),
         ])
     }
 }

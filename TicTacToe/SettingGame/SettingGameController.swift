@@ -10,7 +10,7 @@ import UIKit
 
 class SettingGameController: UIViewController, UIScrollViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    var gameSetting : Setting = Setting(gameMode: gameMode.singlePlayer, gameTime: true, duration: 60, music: false, selectedMusic: "", player1Image: "x_pair1", palyer2Image: "o_pair1", selectedPairNumber: 2)
+    var gameSetting = GameSettings.shared.getSettingsLoad()
     
     var dropDownMusicViewHeightConstraint: NSLayoutConstraint?
     var dropDownGameTimeViewHeightConstraint: NSLayoutConstraint?

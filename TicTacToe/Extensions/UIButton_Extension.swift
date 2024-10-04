@@ -71,8 +71,11 @@ extension UIButton {
         button.layer.cornerRadius = 30
         button.layer.borderColor = borderColor.color.cgColor
         button.layer.borderWidth = 2
-        button.addTarget(target, action: action, for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
+        
+        button.addTarget(target, action: action, for: .touchUpInside)
+        button.addTarget(button, action: #selector(buttonTouchedDown), for: .touchDown)
+        
         return button
     }
     
@@ -85,7 +88,6 @@ extension UIButton {
         button.backgroundColor = .basic_light_blue
         button.layer.cornerRadius = 30
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(target, action: action, for: .touchUpInside)
         
         let imageView = UIImageView(image: image)
         imageView.contentMode = .scaleAspectFit
@@ -105,6 +107,9 @@ extension UIButton {
         stackView.alignment = .center
         stackView.translatesAutoresizingMaskIntoConstraints = false
         
+        button.addTarget(target, action: action, for: .touchUpInside)
+        button.addTarget(button, action: #selector(buttonTouchedDown), for: .touchDown)
+        
         button.addSubview(stackView)
         
         NSLayoutConstraint.activate([
@@ -113,5 +118,16 @@ extension UIButton {
         ])
         
         return button
+    }
+    
+    @objc private func buttonTouchedDown(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.1) {
+            sender.alpha = 0.5
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            UIView.animate(withDuration: 0.1) {
+                sender.alpha = 1.0
+            }
+        }
     }
 }
