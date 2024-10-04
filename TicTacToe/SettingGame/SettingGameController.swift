@@ -234,6 +234,7 @@ class SettingGameController: UIViewController, UIScrollViewDelegate, UICollectio
     
     func pairChoosed(index:Int)
     {
+        // Save Setting
         self.gameSetting = Setting(
             gameTime: false,
             duration: 30,
@@ -243,13 +244,29 @@ class SettingGameController: UIViewController, UIScrollViewDelegate, UICollectio
             palyer2Image: "o_pair1\(index)",
             selectedPairNumber: index
         )
+        var i = 0
+        for cell in self.collectionview.visibleCells {
+            i = i + 1
+            if let cell = cell as? PairCollectionViewCell {
+                if i == index {
+                   cell.button.backgroundColor = UIColor.basic_blue
+                   cell.button.setTitleColor(UIColor.basic_white, for: .normal)
+                   cell.button.setTitle("Picked", for: .normal)
+                } else {
+                    cell.button.backgroundColor = .basic_light_blue
+                    cell.button.setTitleColor(UIColor.basic_black, for: .normal)   
+                    cell.button.setTitle("Choose", for: .normal)
+                }
+                   
+                }
+            }
         
-        print("choose")
-        var indexPath = IndexPath(index: index)
-        collectionview.cellForItem(at: indexPath)
-        UIView.animate(withDuration: 0.1) {
-            self.view.layoutIfNeeded()
-        }
+//        print("choose")
+//        var indexPath = IndexPath(index: index)
+//        collectionview.cellForItem(at: indexPath)
+//        UIView.animate(withDuration: 0.1) {
+//            self.view.layoutIfNeeded()
+//        }
         
     }
     

@@ -50,10 +50,10 @@ class PairCollectionViewCell: UICollectionViewCell {
     @objc func buttonPressed(_ sender: UIButton) {
                 
         let imageName = (imageX.image!.imageAsset!.value(forKey: "assetName")! as? String ?? "")
-        var toIndex = (imageName.last! as? Int ?? 1)
-        //print(imageName.last!)
-        self.delegate?.pairChoosed(index: toIndex)
-        //print(sender.titleLabel?.text ?? "Cyjgrf")
+        let intValue = imageName.last!.wholeNumberValue!
+        
+        self.delegate?.pairChoosed(index: intValue)
+        
     }
     
     private lazy var row : UIStackView = {
