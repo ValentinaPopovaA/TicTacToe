@@ -46,16 +46,18 @@ final class GameScreenViewController: UIViewController {
     private func performComputerMove() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
             guard let self = self else { return }
-            
+
             if let computerMove = self.gameService.getComputerMove() {
                 if let button = self.gameScreenView.viewWithTag(computerMove) as? UIButton {
                     button.setImage(UIImage.pair1Cross, for: .normal)
                     button.isUserInteractionEnabled = false
-                    
+
                     let result = self.gameService.moveMade(by: .cross, at: computerMove)
-                    
+
                     if let gameResult = result {
-                        handleGameResult(gameResult)
+                        self.handleGameResult(gameResult)
+                    } else {
+                        self.enableBoard()
                     }
                 }
             }
@@ -68,23 +70,43 @@ final class GameScreenViewController: UIViewController {
         resultVC.modalPresentationStyle = .fullScreen
         present(resultVC, animated: true, completion: nil)
     }
+    
+    private func disableBoard() {
+        for tag in 1...9 {
+            if let button = gameScreenView.viewWithTag(tag) as? UIButton {
+                button.isUserInteractionEnabled = false
+            }
+        }
+    }
+    
+    private func enableBoard() {
+        for tag in 1...9 {
+            if let button = gameScreenView.viewWithTag(tag) as? UIButton {
+                if button.currentImage == nil {
+                    button.isUserInteractionEnabled = true
+                }
+            }
+        }
+    }
 }
 
 extension GameScreenViewController: GameScreenViewDelegate {
     func cellPressed(_ sender: UIButton) {
         print("Tapped cell № \(sender.tag)")
-        
+
+        disableBoard()
+
         sender.isUserInteractionEnabled = false
         sender.setImage(UIImage.pair1Circle, for: .normal)
-        
+
         let result = gameService.moveMade(by: .circle, at: sender.tag)
-        
+
         if let gameResult = result {
             handleGameResult(gameResult)
-        }
-        
-        if gameService.gameMode == .singlePlayer {
+        } else if gameService.gameMode == .singlePlayer {
             performComputerMove()
+        } else {
+            enableBoard()
         }
     }
 }
