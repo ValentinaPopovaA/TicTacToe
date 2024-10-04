@@ -51,7 +51,7 @@ class SettingGameController: UIViewController, UIScrollViewDelegate, UICollectio
         //element.spacing = 10
         element.distribution = .equalSpacing
         element.backgroundColor = .basic_light_blue
-        
+                
         var label = UILabel()
         label.text = "Game Time"
         label.font = .systemFont(ofSize: 20, weight: .bold)
@@ -59,6 +59,7 @@ class SettingGameController: UIViewController, UIScrollViewDelegate, UICollectio
         
         var switchElement = UISwitch()
         switchElement.onTintColor = .basic_blue
+        switchElement.addTarget(self, action: #selector(switchGameTimeDidChange), for: .valueChanged)
         element.addArrangedSubview(switchElement)
         
         element.translatesAutoresizingMaskIntoConstraints = false
@@ -79,6 +80,7 @@ class SettingGameController: UIViewController, UIScrollViewDelegate, UICollectio
         
         var switchElement = UISwitch()
         switchElement.onTintColor = .basic_blue
+        switchElement.addTarget(self, action: #selector(switchMusicDidChange), for: .valueChanged)
         element.addArrangedSubview(switchElement)
         
         element.translatesAutoresizingMaskIntoConstraints = false
@@ -117,6 +119,8 @@ class SettingGameController: UIViewController, UIScrollViewDelegate, UICollectio
         let element = UIView()
         element.addSubview(dropDownDuration)
         element.translatesAutoresizingMaskIntoConstraints = false
+        //element.isHidden = false
+        //element.alpha = 0.0
         return element
     }()
     
@@ -165,7 +169,68 @@ class SettingGameController: UIViewController, UIScrollViewDelegate, UICollectio
 //        title = "Setting"
         setupUI()
         setupLayout()
+        
+        UIView.animate(
+            withDuration: 0.2,
+            delay: 0.0,
+            options: [.curveEaseOut],
+            animations: {
+                self.dropDownDurationView.isHidden = !self.gameSetting.gameTime
+                self.dropDownDurationView.alpha = (self.gameSetting.gameTime ? 1.0 : 0.0)
+                self.dropDownMusicView.isHidden = !self.gameSetting.musicEnable
+                self.dropDownMusicView.alpha = (self.gameSetting.musicEnable ? 1.0 : 0.0)
+        })
     }
+    
+    
+    @objc func switchGameTimeDidChange(_ sender: UISwitch!)
+    {
+        if (sender.isOn == true){
+            UIView.animate(
+                withDuration: 0.2,
+                delay: 0.0,
+                options: [.curveEaseOut],
+                animations: {
+                    self.dropDownDurationView.isHidden = false
+                    self.dropDownDurationView.alpha = 1.0
+            })
+        }
+        else{
+            UIView.animate(
+                withDuration: 0.2,
+                delay: 0.0,
+                options: [.curveEaseOut],
+                animations: {
+                    self.dropDownDurationView.isHidden = true
+                    self.dropDownDurationView.alpha = 0.0
+            })
+        }
+    }
+    @objc func switchMusicDidChange(_ sender: UISwitch!)
+    {
+        if (sender.isOn == true){
+            UIView.animate(
+                withDuration: 0.2,
+                delay: 0.0,
+                options: [.curveEaseOut],
+                animations: {
+                    self.dropDownMusicView.isHidden = false
+                    self.dropDownMusicView.alpha = 1.0
+            })
+        }
+        else{
+            UIView.animate(
+                withDuration: 0.2,
+                delay: 0.0,
+                options: [.curveEaseOut],
+                animations: {
+                    self.dropDownMusicView.isHidden = true
+                    self.dropDownMusicView.alpha = 0.0
+            })
+        }
+    }
+    
+    
     
     func pairChoosed(index:Int)
     {
@@ -268,8 +333,8 @@ private extension SettingGameController {
         dropDownMusicViewHeightConstraint = dropDownMusicView.heightAnchor.constraint(equalToConstant: 69)
         dropDownMusicViewHeightConstraint?.isActive = true
         
-        dropDownDuration.heightAnchor.constraint(equalToConstant: 69).isActive = true
-        dropDownGameTimeViewHeightConstraint = dropDownDurationView.heightAnchor.constraint(equalToConstant: 69)
+        dropDownDuration.heightAnchor.constraint(equalToConstant: heightDuration).isActive = true
+        dropDownGameTimeViewHeightConstraint = dropDownDurationView.heightAnchor.constraint(equalToConstant: heightDuration)
         dropDownGameTimeViewHeightConstraint?.isActive = true
         
         NSLayoutConstraint.activate([
