@@ -12,11 +12,17 @@ class SettingGameController: UIViewController, UIScrollViewDelegate, UICollectio
     
     var gameSetting = GameSettings.shared.getSettingsLoad()
     
-    var dropDownMusicViewHeightConstraint: NSLayoutConstraint?
-    var dropDownGameTimeViewHeightConstraint: NSLayoutConstraint?
+    private var dropDownMusicViewHeightConstraint: NSLayoutConstraint?
+    private var dropDownGameTimeViewHeightConstraint: NSLayoutConstraint?
     
-    var isHiddenMusicSelect = true
-    var isHiddenGameTimeSelect = true
+    private var isHiddenMusicSelect = true
+    private var isHiddenGameTimeSelect = true
+    
+    private var isMusic = false
+    private var isGameTime = false
+    
+    private var heightDuration = CGFloat(69)
+    private var heightSelectMusic = CGFloat(69)
 
     // Контейнер
     private lazy var container: UIView = {
@@ -161,13 +167,33 @@ class SettingGameController: UIViewController, UIScrollViewDelegate, UICollectio
         setupLayout()
     }
     
+    func pairChoosed(index:Int)
+    {
+        self.gameSetting = Setting(
+            gameTime: false,
+            duration: 30,
+            musicEnable: false,
+            selectedMusic: "",
+            player1Image: "x_pair\(index)",
+            palyer2Image: "o_pair1\(index)",
+            selectedPairNumber: index
+        )
+        
+        print("choose")
+        collectionview.reloadData()
+        UIView.animate(withDuration: 0.1) {
+            self.view.layoutIfNeeded()
+        }
+        
+    }
+    
     func showMusicSelect() {
         if isHiddenMusicSelect {
             isHiddenMusicSelect = false
             dropDownMusicViewHeightConstraint?.constant = 219
         } else {
             isHiddenMusicSelect = true
-            dropDownMusicViewHeightConstraint?.constant = 69
+            dropDownMusicViewHeightConstraint?.constant = heightSelectMusic
         }
         UIView.animate(withDuration: 0.1) {
             self.view.layoutIfNeeded()
@@ -179,7 +205,7 @@ class SettingGameController: UIViewController, UIScrollViewDelegate, UICollectio
             dropDownGameTimeViewHeightConstraint?.constant = 219
         } else {
             isHiddenGameTimeSelect = true
-            dropDownGameTimeViewHeightConstraint?.constant = 69
+            dropDownGameTimeViewHeightConstraint?.constant = heightDuration
         }
         UIView.animate(withDuration: 0.1) {
             self.view.layoutIfNeeded()
@@ -195,13 +221,15 @@ class SettingGameController: UIViewController, UIScrollViewDelegate, UICollectio
         
         let currentCellIndex = indexPath[1]+1
         
-        if gameSetting.selectedPairNumber != currentCellIndex {
-            cell.button.backgroundColor = .basic_light_blue
-            cell.button.setTitleColor(UIColor.basic_black, for: .normal)
-            cell.button.setTitle("Choose", for: .normal)
+        if gameSetting.selectedPairNumber == currentCellIndex {
+            
+            cell.button.backgroundColor = UIColor.basic_blue
+            cell.button.setTitleColor(UIColor.basic_white, for: .normal)
+            cell.button.setTitle("Picked", for: .normal)
         }
         cell.imageX.image = UIImage(named: "x_pair\(indexPath[1]+1)")
         cell.imageO.image = UIImage(named: "o_pair\(indexPath[1]+1)")
+        cell.delegate = self
         
         return cell
     }

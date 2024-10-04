@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import Foundation
 
 class PairCollectionViewCell: UICollectionViewCell {
     
+    weak var delegate : SettingGameController?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -19,7 +21,6 @@ class PairCollectionViewCell: UICollectionViewCell {
      var imageX : UIImageView = {
         let element = UIImageView()
         element.sizeToFit()
-        //element.image = UIImage(named: "x_pair\(cellIndex)")
         element.translatesAutoresizingMaskIntoConstraints = false
         return element
     }()
@@ -27,25 +28,33 @@ class PairCollectionViewCell: UICollectionViewCell {
      var imageO : UIImageView = {
         let element = UIImageView()
         element.sizeToFit()
-        //element.image = UIImage(named: "o_pair\(cellIndex)")
         element.translatesAutoresizingMaskIntoConstraints = false
         return element
     }()
     
     var button : UIButton = {
         let element = UIButton()
-        element.backgroundColor = UIColor.basic_blue
         
-        element.setTitleColor(UIColor.basic_white, for: .normal)
         element.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .medium)
-//        element.tintColor = UIColor.basic_white
+        
+        element.backgroundColor = .basic_light_blue
+        element.setTitleColor(UIColor.basic_black, for: .normal)
+        
         element.layer.cornerRadius = 20
-//        element.layer.borderColor = UIColor.basic_blue?.cgColor
-//        element.layer.borderWidth = 2
-        element.setTitle("Picked", for: .normal)
+        element.setTitle("Choose", for: .normal)
+        element.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         element.translatesAutoresizingMaskIntoConstraints = false
         return element
     }()
+    
+    @objc func buttonPressed(_ sender: UIButton) {
+                
+        let imageName = (imageX.image!.imageAsset!.value(forKey: "assetName")! as? String ?? "")
+        var toIndex = (imageName.last! as? Int ?? 1)
+        //print(imageName.last!)
+        self.delegate?.pairChoosed(index: toIndex)
+        //print(sender.titleLabel?.text ?? "Cyjgrf")
+    }
     
     private lazy var row : UIStackView = {
         let element = UIStackView()
