@@ -15,10 +15,34 @@ class DropDownButton: UIButton, DropDownProtocol {
     weak var delegate: SettingGameController?
             
     func dropDownPressed(string: String) {
-        
+        var gameSetting = GameSettings.shared.getSettingsLoad()
         self.setTitle("", for: .normal)
         titleText.text = string
         self.dismissDropDown()
+        
+        if (labelValue == "Select Music"){
+            
+            gameSetting = Setting(gameTime: gameSetting.gameTime,
+                                  duration: gameSetting.duration,
+                                  musicEnable: gameSetting.musicEnable,
+                                  selectedMusic: string,
+                                  player1Image: gameSetting.player1Image,
+                                  palyer2Image: gameSetting.player1Image,
+                                  selectedPairNumber: gameSetting.selectedPairNumber)
+        }
+        if (labelValue == "Duration"){
+            let duration = switch string { case "120 sec" : 120 case "60 sec": 60 default: 30 }
+            
+            gameSetting = Setting(gameTime: gameSetting.gameTime,
+                                  duration: duration,
+                                  musicEnable: gameSetting.musicEnable,
+                                  selectedMusic: gameSetting.selectedMusic,
+                                  player1Image: gameSetting.player1Image,
+                                  palyer2Image: gameSetting.player1Image,
+                                  selectedPairNumber: gameSetting.selectedPairNumber)
+        }        
+        
+        GameSettings.shared.saveSettings(gameSetting)
     }
     
     private var labelValue: String = ""
@@ -27,6 +51,11 @@ class DropDownButton: UIButton, DropDownProtocol {
     func setLabel(string: String)
     {
         labelValue = string
+    }
+    
+    func setValue(string: String)
+    {
+        value = string
     }
     
     var dropView = DropDownView()
@@ -40,9 +69,9 @@ class DropDownButton: UIButton, DropDownProtocol {
         element.distribution = .fill
         element.isUserInteractionEnabled = false
         let label = UILabel()
-        label.text = labelValue
-        
-        label.font = .systemFont(ofSize: 20, weight: .bold)
+//        label.text = labelValue
+//        
+//        label.font = .systemFont(ofSize: 20, weight: .bold)
         label.text = labelValue
         label.font = .systemFont(ofSize: 20, weight: .bold)
         element.addArrangedSubview(label)
@@ -54,7 +83,7 @@ class DropDownButton: UIButton, DropDownProtocol {
     
     private lazy var titleText : UILabel = {
         let element = UILabel()
-        element.text = ""
+        element.text = value
         element.font = .systemFont(ofSize: 20)
         element.translatesAutoresizingMaskIntoConstraints = false
         return element
@@ -142,7 +171,7 @@ class DropDownButton: UIButton, DropDownProtocol {
             
             self.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner, .layerMaxXMaxYCorner, .layerMinXMaxYCorner]
 
-            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
+            UIView.animate(withDuration: 0.1, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
                 self.dropView.center.y -= self.dropView.frame.height / 2
                 self.dropView.layoutIfNeeded()
             }, completion: nil)
@@ -164,7 +193,7 @@ class DropDownButton: UIButton, DropDownProtocol {
         self.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner, .layerMaxXMaxYCorner, .layerMinXMaxYCorner]
 
         NSLayoutConstraint.activate([self.height])
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: 0.1, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
             self.dropView.center.y -= self.dropView.frame.height / 2
             self.dropView.layoutIfNeeded()
         }, completion: nil)
@@ -178,7 +207,7 @@ class DropDownButton: UIButton, DropDownProtocol {
 class DropDownView: UIView, UITableViewDelegate, UITableViewDataSource  {
     
     var dropDownOptions = [String]()
-    
+        
     var tableView = UITableView()
     
     var delegate : DropDownProtocol!

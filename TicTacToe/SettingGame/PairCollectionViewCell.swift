@@ -18,19 +18,9 @@ class PairCollectionViewCell: UICollectionViewCell {
         addViews()
     }
     
-     var imageX : UIImageView = {
-        let element = UIImageView()
-        element.sizeToFit()
-        element.translatesAutoresizingMaskIntoConstraints = false
-        return element
-    }()
+    var imageX = UIImageView.makeSimpleImage(image: UIImage.pair1Cross)
     
-     var imageO : UIImageView = {
-        let element = UIImageView()
-        element.sizeToFit()
-        element.translatesAutoresizingMaskIntoConstraints = false
-        return element
-    }()
+    var imageO = UIImageView.makeSimpleImage(image: UIImage.pair1Circle)
     
     var button : UIButton = {
         let element = UIButton()

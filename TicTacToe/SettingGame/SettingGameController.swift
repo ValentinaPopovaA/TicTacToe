@@ -24,6 +24,14 @@ class SettingGameController: UIViewController, UIScrollViewDelegate, UICollectio
     private var heightDuration = CGFloat(69)
     private var heightSelectMusic = CGFloat(69)
 
+    
+//    let scrollView: UIScrollView = {
+//            let scrollView = UIScrollView()
+//
+//            scrollView.translatesAutoresizingMaskIntoConstraints = false
+//            return scrollView
+//        }()
+    
     // Контейнер
     private lazy var container: UIView = {
         let view = UIView()
@@ -59,6 +67,7 @@ class SettingGameController: UIViewController, UIScrollViewDelegate, UICollectio
         
         var switchElement = UISwitch()
         switchElement.onTintColor = .basic_blue
+        switchElement.isOn = self.gameSetting.gameTime
         switchElement.addTarget(self, action: #selector(switchGameTimeDidChange), for: .valueChanged)
         element.addArrangedSubview(switchElement)
         
@@ -80,6 +89,7 @@ class SettingGameController: UIViewController, UIScrollViewDelegate, UICollectio
         
         var switchElement = UISwitch()
         switchElement.onTintColor = .basic_blue
+        switchElement.isOn = self.gameSetting.musicEnable
         switchElement.addTarget(self, action: #selector(switchMusicDidChange), for: .valueChanged)
         element.addArrangedSubview(switchElement)
         
@@ -91,9 +101,11 @@ class SettingGameController: UIViewController, UIScrollViewDelegate, UICollectio
     private lazy var dropDownMusic : DropDownButton = {
         let element = DropDownButton.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         element.setLabel(string:  "Select Music")
+        element.setValue(string: gameSetting.selectedMusic)
         element.layer.cornerRadius = 30
         element.delegate = self
         element.dropView.dropDownOptions = ["Classical", "Instrumental", "Nature"]
+        
         element.translatesAutoresizingMaskIntoConstraints = false
         return element
     }()
@@ -108,9 +120,13 @@ class SettingGameController: UIViewController, UIScrollViewDelegate, UICollectio
     private lazy var dropDownDuration : DropDownButton = {
         let element = DropDownButton.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         element.setLabel(string: "Duration")
+        let sec = switch gameSetting.duration { case 120 :  "120 sec" case 60 :  "60 sec"
+        default:
+             "30 sec" }
+        element.setValue(string: sec)
         element.layer.cornerRadius = 30
         element.delegate = self
-        element.dropView.dropDownOptions = ["30 min", "60 min", "120 min"]
+        element.dropView.dropDownOptions = ["30 sec", "60 sec", "120 sec"]
         element.translatesAutoresizingMaskIntoConstraints = false
         return element
     }()
@@ -170,6 +186,12 @@ class SettingGameController: UIViewController, UIScrollViewDelegate, UICollectio
         setupUI()
         setupLayout()
         
+        
+//        isHiddenMusicSelect = self.gameSetting.musicEnable
+        isMusic = self.gameSetting.musicEnable
+//        isHiddenGameTimeSelect = self.gameSetting.gameTime
+        isGameTime = self.gameSetting.gameTime
+        
         UIView.animate(
             withDuration: 0.2,
             delay: 0.0,
@@ -185,7 +207,18 @@ class SettingGameController: UIViewController, UIScrollViewDelegate, UICollectio
     
     @objc func switchGameTimeDidChange(_ sender: UISwitch!)
     {
-        if (sender.isOn == true){
+        // MARK:  Save setting Game Time
+        gameSetting = Setting(gameTime: sender.isOn,
+                              duration: gameSetting.duration,
+                              musicEnable: gameSetting.musicEnable,
+                              selectedMusic: gameSetting.selectedMusic,
+                              player1Image: gameSetting.player1Image,
+                              palyer2Image: gameSetting.player1Image,
+                              selectedPairNumber: gameSetting.selectedPairNumber)
+        
+        GameSettings.shared.saveSettings(gameSetting)
+        
+        if sender.isOn {
             UIView.animate(
                 withDuration: 0.2,
                 delay: 0.0,
@@ -208,7 +241,19 @@ class SettingGameController: UIViewController, UIScrollViewDelegate, UICollectio
     }
     @objc func switchMusicDidChange(_ sender: UISwitch!)
     {
-        if (sender.isOn == true){
+        
+        // MARK:  Save setting Game Time
+        gameSetting = Setting(gameTime: gameSetting.gameTime,
+                              duration: gameSetting.duration,
+                              musicEnable: sender.isOn,
+                              selectedMusic: gameSetting.selectedMusic,
+                              player1Image: gameSetting.player1Image,
+                              palyer2Image: gameSetting.player1Image,
+                              selectedPairNumber: gameSetting.selectedPairNumber)
+        
+        GameSettings.shared.saveSettings(gameSetting)
+
+        if sender.isOn {
             UIView.animate(
                 withDuration: 0.2,
                 delay: 0.0,
@@ -234,16 +279,17 @@ class SettingGameController: UIViewController, UIScrollViewDelegate, UICollectio
     
     func pairChoosed(index:Int)
     {
-        // Save Setting
-        self.gameSetting = Setting(
-            gameTime: false,
-            duration: 30,
-            musicEnable: false,
-            selectedMusic: "",
-            player1Image: "x_pair\(index)",
-            palyer2Image: "o_pair1\(index)",
-            selectedPairNumber: index
-        )
+        // MARK:  Save setting Choose pair Cross Circle
+        gameSetting = Setting(gameTime: gameSetting.gameTime,
+                              duration: gameSetting.duration,
+                              musicEnable: gameSetting.musicEnable ,
+                              selectedMusic: gameSetting.selectedMusic,
+                              player1Image: "x_pair\(index)",
+                              palyer2Image: "o_pair1\(index)",
+                              selectedPairNumber: index)
+        
+        GameSettings.shared.saveSettings(gameSetting)
+        
         var i = 0
         for cell in self.collectionview.visibleCells {
             i = i + 1
@@ -260,40 +306,25 @@ class SettingGameController: UIViewController, UIScrollViewDelegate, UICollectio
                    
                 }
             }
-        
-//        print("choose")
-//        var indexPath = IndexPath(index: index)
-//        collectionview.cellForItem(at: indexPath)
-//        UIView.animate(withDuration: 0.1) {
-//            self.view.layoutIfNeeded()
-//        }
-        
     }
     
     func showMusicSelect() {
-        if isHiddenMusicSelect {
-            isHiddenMusicSelect = false
-            dropDownMusicViewHeightConstraint?.constant = 219
-        } else {
-            isHiddenMusicSelect = true
-            dropDownMusicViewHeightConstraint?.constant = heightSelectMusic
-        }
+        dropDownMusicViewHeightConstraint?.constant = isHiddenMusicSelect ? 219 : heightSelectMusic
+        isHiddenMusicSelect = !isHiddenMusicSelect
+     
         UIView.animate(withDuration: 0.1) {
             self.view.layoutIfNeeded()
         }
-        }
+    }
+    
     func showDurationSelect() {
-        if isHiddenGameTimeSelect {
-            isHiddenGameTimeSelect = false
-            dropDownGameTimeViewHeightConstraint?.constant = 219
-        } else {
-            isHiddenGameTimeSelect = true
-            dropDownGameTimeViewHeightConstraint?.constant = heightDuration
-        }
+        dropDownGameTimeViewHeightConstraint?.constant = isHiddenGameTimeSelect ? 219 : heightDuration
+        isHiddenGameTimeSelect = !isHiddenGameTimeSelect
+        
         UIView.animate(withDuration: 0.1) {
             self.view.layoutIfNeeded()
         }
-        }
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 6
