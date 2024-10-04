@@ -12,6 +12,8 @@ protocol DropDownProtocol {
 
 class DropDownButton: UIButton, DropDownProtocol {
     
+    weak var delegate: SettingGameController?
+    
     func dropDownPressed(string: String) {
         
         self.setTitle("", for: .normal)
@@ -74,7 +76,7 @@ class DropDownButton: UIButton, DropDownProtocol {
     override func didMoveToSuperview() {
         self.superview?.addSubview(rowStackView)
         self.superview?.addSubview(dropView)
-        self.superview?.bringSubviewToFront(dropView)
+        //self.superview?.bringSubviewToFront(dropView)
 
         NSLayoutConstraint.activate([
             rowStackView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
@@ -84,12 +86,15 @@ class DropDownButton: UIButton, DropDownProtocol {
             dropView.topAnchor.constraint(equalTo: self.bottomAnchor),
             dropView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             dropView.widthAnchor.constraint(equalTo: self.widthAnchor),
+            
         ])
         height = dropView.heightAnchor.constraint(equalToConstant: 0)
     }
     
     var isOpen = false
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        delegate?.showMusicSelect()
+        delegate?.showSelect(vewHeightConstraint: delegate?.dropDownGameTimeViewHeightConstraint)
         if isOpen == false {
             
             isOpen = true
@@ -129,6 +134,7 @@ class DropDownButton: UIButton, DropDownProtocol {
     }
     
     func dismissDropDown() {
+        delegate?.showMusicSelect()
         isOpen = false
         NSLayoutConstraint.deactivate([self.height])
         self.height.constant = 0
