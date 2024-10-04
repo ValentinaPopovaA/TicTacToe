@@ -62,6 +62,10 @@ class SelectedGameSecondController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .basic_background
         
+        hardLevelButton.tag = 3
+        standartLevelButton.tag = 2
+        easyLevelButton.tag = 1
+        
         view.addSubview(selectGameView2)
         selectGameStackView2.addArrangedSubview(selectGameLabel2)
         selectGameStackView2.addArrangedSubview(hardLevelButton)
@@ -93,9 +97,18 @@ class SelectedGameSecondController: UIViewController {
     }
     
     @objc func goToGame(_ sender: UIButton) {
-        
+        let gameDifficulty: GameDifficulty
         #warning("TO DO: реализовать передачу данных с кнопок с помощью tag-ов")
-        let gameDifficulty: GameDifficulty = .easy
+        switch sender.tag {
+        case 3:
+            gameDifficulty = .hard
+        case 2:
+            gameDifficulty = .standart
+        case 1:
+            gameDifficulty = .easy
+        default:
+            gameDifficulty = .hard
+        }
         
         let gameVC = GameScreenViewController(gameMode: gameMode, gameDifficulty: gameDifficulty)
         navigationController?.pushViewController(gameVC, animated: true)
