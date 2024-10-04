@@ -74,6 +74,28 @@ final class GameService {
     }
     
     func getComputerMove() -> Int? {
+        switch gameDifficulty {
+        case .easy:
+            return getRandomMove()
+        case .standart:
+            return getMediumMove()
+        case .hard:
+            return getHardMove()
+        }
+    }
+    
+    private func getRandomMove() -> Int? {
+        return availableCells.randomElement()
+    }
+    
+    private func getMediumMove() -> Int? {
+        if let blokingMove = findWinningMove(for: .playerOne) {
+            return blokingMove
+        }
+        return getRandomMove()
+    }
+    
+    private func getHardMove() -> Int? {
         if let winningMove = findWinningMove(for: .playerTwo) {
             return winningMove
         }
@@ -103,11 +125,11 @@ final class GameService {
         if availableCells.contains(5) {
             return 5
         }
-        
+
         if let corner = Set([1, 3, 7, 9]).intersection(availableCells).randomElement() {
             return corner
         }
-        
+
         return availableCells.randomElement()
     }
 }
