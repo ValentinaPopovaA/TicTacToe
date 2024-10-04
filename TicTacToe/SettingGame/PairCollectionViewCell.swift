@@ -77,10 +77,11 @@ class PairCollectionViewCell: UICollectionViewCell {
     
 
     lazy var containerView: UIView = {
-        let view = UIView()
-        view.configureView(color: .white, applyShadow: true)
-        view.addSubview(column)
-        return view
+        let element = UIView()
+        element.configureView(color: .white, applyShadow: true)
+        element.addSubview(column)
+        element.translatesAutoresizingMaskIntoConstraints = false
+        return element
     }()
 
 
@@ -88,23 +89,24 @@ class PairCollectionViewCell: UICollectionViewCell {
                 
         addSubview(containerView)
         
-        imageO.heightAnchor.constraint(equalToConstant: 54).isActive = true
-        imageO.widthAnchor.constraint(equalToConstant: 54).isActive = true
+        NSLayoutConstraint.activate([
+            imageO.heightAnchor.constraint(equalToConstant: 54),
+            imageO.widthAnchor.constraint(equalToConstant: 54),
 
-        imageX.heightAnchor.constraint(equalToConstant: 54).isActive = true
-        imageX.widthAnchor.constraint(equalToConstant: 54).isActive = true
-        
-        column.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 20).isActive = true
-        column.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -20).isActive = true
-        column.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20).isActive = true
-        column.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20).isActive = true
-        
-        button.heightAnchor.constraint(equalToConstant: 39).isActive = true
-        button.widthAnchor.constraint(equalToConstant: 112).isActive = true
-        
-        containerView.heightAnchor.constraint(equalToConstant: 150).isActive = true
-        containerView.widthAnchor.constraint(equalToConstant: 152).isActive = true
-        
+            imageX.heightAnchor.constraint(equalToConstant: 54),
+            imageX.widthAnchor.constraint(equalToConstant: 54),
+            
+            column.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 20),
+            column.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -20),
+            column.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
+            column.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20),
+            
+            button.heightAnchor.constraint(equalToConstant: 39),
+            button.widthAnchor.constraint(equalToConstant: 112),
+            
+            containerView.heightAnchor.constraint(equalToConstant: 150),
+            containerView.widthAnchor.constraint(equalToConstant: 152),
+        ])
         
     }
 

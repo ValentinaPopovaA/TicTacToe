@@ -180,7 +180,8 @@ class SettingGameController: UIViewController, UIScrollViewDelegate, UICollectio
         )
         
         print("choose")
-        collectionview.reloadData()
+        var indexPath = IndexPath(index: index)
+        collectionview.cellForItem(at: indexPath)
         UIView.animate(withDuration: 0.1) {
             self.view.layoutIfNeeded()
         }
