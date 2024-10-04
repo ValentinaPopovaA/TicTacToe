@@ -33,6 +33,7 @@ final class GameService {
     private var playerOneCombination: Set<Int> = []
     private var playerTwoCombination: Set<Int> = []
     private var moveCounter = 0
+    private var availableCells: Set<Int> = Set(1...9)
     
     
     
@@ -57,13 +58,55 @@ final class GameService {
         return nil
     }
     
-    func moveMade(by player: PlayerFigure) -> RoundResult? {
+    func moveMade(by player: PlayerFigure, at position: Int) -> RoundResult? {
         moveCounter += 1
+        availableCells.remove(position)
         if player == .circle {
-            playerOneCombination.insert(moveCounter)
+            playerOneCombination.insert(position)
         } else {
-            playerTwoCombination.insert(moveCounter)
+            playerTwoCombination.insert(position)
         }
         return getResult()
+    }
+    
+    private func findWinningMove(for player: PlayerFigure) -> Int? {
+        let currentCombination = player == .circle ? playerOneCombination : playerTwoCombination
+        
+        for combination in winningCombinations {
+            let missingCells = combination.subtracting(currentCombination)
+            
+            if missingCells.count == 1, let move = missingCells.first, availableCells.contains(move) {
+                return move
+            }
+        }
+        
+        return nil
+    }
+    
+    private func chooseOptimalMove() -> Int? {
+        if availableCells.contains(5) {
+            return 5
+        }
+        
+        let corners = [1, 3, 7, 9]
+        let availableCorners = corners.filter { availableCells.contains($0) }
+        
+        if let cornerMove = availableCorners.randomElement() {
+            return cornerMove
+        }
+        
+        return availableCells.randomElement()
+    }
+    
+    func getComputerMove() -> Int? {
+        if let winningMove = findWinningMove(for: .cross) {
+            return winningMove
+        }
+
+        if let blockingMove = findWinningMove(for: .circle) {
+            return blockingMove
+        }
+
+        return chooseOptimalMove()
     }
 }

@@ -11,7 +11,7 @@ final class ResultController: UIViewController {
     
     // MARK: - Properties
     
-    var gameResult: GameResult?
+    var gameResult: RoundResult?
     
     lazy var label = UILabel.createLabel(text: "You Lose!", fontSize: 20, isBold: true)
     lazy var imageView = UIImageView.makeSimpleImage(image: Images.lose)

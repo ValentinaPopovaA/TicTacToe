@@ -42,6 +42,32 @@ final class GameScreenViewController: UIViewController {
             nameTwo: gameService.gameMode == .singlePlayer ? "Computer" : "Player Two"
         )
     }
+    
+    private func performComputerMove() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
+            guard let self = self else { return }
+            
+            if let computerMove = self.gameService.getComputerMove() {
+                if let button = self.gameScreenView.viewWithTag(computerMove) as? UIButton {
+                    button.setImage(UIImage.pair1Cross, for: .normal)
+                    button.isUserInteractionEnabled = false
+                    
+                    let result = self.gameService.moveMade(by: .cross, at: computerMove)
+                    
+                    if let gameResult = result {
+                        handleGameResult(gameResult)
+                    }
+                }
+            }
+        }
+    }
+    
+    private func handleGameResult(_ result: RoundResult) {
+        let resultVC = ResultController()
+        resultVC.gameResult = result
+        resultVC.modalPresentationStyle = .fullScreen
+        present(resultVC, animated: true, completion: nil)
+    }
 }
 
 extension GameScreenViewController: GameScreenViewDelegate {
@@ -50,6 +76,16 @@ extension GameScreenViewController: GameScreenViewDelegate {
         
         sender.isUserInteractionEnabled = false
         sender.setImage(UIImage.pair1Circle, for: .normal)
+        
+        let result = gameService.moveMade(by: .circle, at: sender.tag)
+        
+        if let gameResult = result {
+            handleGameResult(gameResult)
+        }
+        
+        if gameService.gameMode == .singlePlayer {
+            performComputerMove()
+        }
     }
 }
 
