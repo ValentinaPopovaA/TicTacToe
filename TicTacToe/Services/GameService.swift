@@ -74,15 +74,115 @@ final class GameService {
     }
     
     func getComputerMove() -> Int? {
+        switch gameDifficulty {
+        case .easy:
+            return getRandomMove()
+        case .standart:
+            return getMediumMove()
+        case .hard:
+            return getHardMove()
+        }
+    }
+    
+    private func getRandomMove() -> Int? {
+        return availableCells.randomElement()
+    }
+    
+    private func getMediumMove() -> Int? {
+        if let blokingMove = findWinningMove(for: .playerOne) {
+            return blokingMove
+        }
+        return getRandomMove()
+    }
+    
+    private func getHardMove() -> Int? {
         if let winningMove = findWinningMove(for: .playerTwo) {
             return winningMove
         }
-
         if let blockingMove = findWinningMove(for: .playerOne) {
             return blockingMove
         }
-
-        return chooseOptimalMove()
+        return minimaxMove()
+    }
+    
+    private func minimaxMove() -> Int? {
+        var bestScore = Int.min
+        var bestMove: Int? = nil
+        
+        for move in availableCells {
+            makeMove(at: move, for: .playerTwo)
+            let score = minimax(isMaximizing: false)
+            undoMove(at: move)
+            
+            if score > bestScore {
+                bestScore = score
+                bestMove = move
+            }
+        }
+        
+        return bestMove
+    }
+    
+    private func minimax(isMaximizing: Bool) -> Int {
+        if let winner = checkWinner() {
+            switch winner {
+            case .playerOne:
+                return -10
+            case .playerTwo:
+                return 10
+            default:
+                return 0
+            }
+        }
+        
+        if isMaximizing {
+            var bestScore = Int.min
+            for move in availableCells {
+                makeMove(at: move, for: .playerTwo)
+                let score = minimax(isMaximizing: false)
+                undoMove(at: move)
+                bestScore = max(score, bestScore)
+            }
+            return bestScore
+        } else {
+            var bestScore = Int.max
+            for move in availableCells {
+                makeMove(at: move, for: .playerOne)
+                let score = minimax(isMaximizing: true)
+                undoMove(at: move)
+                bestScore = min(score, bestScore)
+            }
+            return bestScore
+        }
+    }
+    
+    // Симуляция выполнения хода
+    private func makeMove(at index: Int, for player: Turn) {
+        availableCells.remove(index)
+        if player == .playerOne {
+            playerOneCombination.insert(index)
+        } else {
+            playerTwoCombination.insert(index)
+        }
+    }
+    
+    // Отмена хода
+    private func undoMove(at index: Int) {
+        availableCells.insert(index)
+        playerOneCombination.remove(index)
+        playerTwoCombination.remove(index)
+    }
+    
+    // Проверка победителя
+    private func checkWinner() -> Turn? {
+        for combination in winningCombinations {
+            if combination.isSubset(of: playerOneCombination) {
+                return .playerOne
+            } else if combination.isSubset(of: playerTwoCombination) {
+                return .playerTwo
+            }
+        }
+        return nil
     }
     
     private func findWinningMove(for player: Turn) -> Int? {
@@ -97,17 +197,5 @@ final class GameService {
         }
         
         return nil
-    }
-    
-    private func chooseOptimalMove() -> Int? {
-        if availableCells.contains(5) {
-            return 5
-        }
-        
-        if let corner = Set([1, 3, 7, 9]).intersection(availableCells).randomElement() {
-            return corner
-        }
-        
-        return availableCells.randomElement()
     }
 }
