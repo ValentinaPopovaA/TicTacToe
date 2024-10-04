@@ -14,16 +14,33 @@ class SelectedGameController: UIViewController {
         view.configureView(color: .white, applyShadow: true)
         return view
     }()
-    lazy var selectGameLabel = UILabel.createLabel(text: "Select Game", fontSize: 24, isBold:true)
-    lazy var singlePlayerButton = UIButton.makeCustomButtonWithImage(image: Images.single_player, label:"Single Player", target: self, action: #selector(goToDifficultySelection))
-    lazy var twoPlayersButton = UIButton.makeCustomButtonWithImage(image: Images.two_players, label: "Two Players", target: self, action: #selector(goToGameScreen))
-    lazy var leaderbordButton = UIButton.makeCustomButtonWithImage(image: Images.rocket, label: "Leaderboard", target: self, action: #selector(goToLeaderboard))
+    lazy var selectGameLabel = UILabel.createLabel(
+        text: "Select Game",
+        fontSize: 24,
+        isBold:true
+    )
+    lazy var singlePlayerButton = UIButton.makeCustomButtonWithImage(
+        image: Images.single_player,
+        label:"Single Player",
+        target: self,
+        action: #selector(goToDifficultySelection)
+    )
+    lazy var twoPlayersButton = UIButton.makeCustomButtonWithImage(
+        image: Images.two_players,
+        label: "Two Players",
+        target: self,
+        action: #selector(goToGameScreen)
+    )
+    lazy var leaderbordButton = UIButton.makeCustomButtonWithImage(
+        image: Images.rocket,
+        label: "Leaderboard",
+        target: self,
+        action: #selector(goToLeaderboard)
+    )
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .basic_background
-        
-        view.addSubview(selectGameView)
         
         selectGameStackView.addArrangedSubview(selectGameLabel)
         selectGameStackView.addArrangedSubview(singlePlayerButton)
@@ -32,7 +49,9 @@ class SelectedGameController: UIViewController {
         selectGameStackView.axis = .vertical
         selectGameStackView.spacing = 20
         selectGameStackView.translatesAutoresizingMaskIntoConstraints = false
-        
+      
+        view.addSubview(selectGameView)
+     
         makeConstraints()
     }
     
@@ -54,14 +73,7 @@ class SelectedGameController: UIViewController {
             leaderbordButton.heightAnchor.constraint(equalToConstant: 69)
         ])
     }
-    
-    //    func setViews() {
-    //            view.addSubview(selectGameStackView)
-    //            view.addSubview(selectGameView)
-    //            view.addSubview(selectGameLabel)
-    //            view.addSubview(singlePlayerButton)
-    //            view.addSubview(twoPlayersButton)
-    //        }
+  
     @objc func goToDifficultySelection() {
         let difficultySelectionVC = SelectedGameSecondController(gameMode: .singlePlayer)
         navigationController?.pushViewController(difficultySelectionVC, animated: true)
