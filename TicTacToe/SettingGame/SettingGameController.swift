@@ -17,21 +17,6 @@ class SettingGameController: UIViewController, UIScrollViewDelegate, UICollectio
     
     var isHiddenMusicSelect = true
     var isHiddenGameTimeSelect = true
-    // Заголовок строка
-//    private lazy var headerStackView : UIStackView = {
-//        let element = UIStackView()
-//        element.translatesAutoresizingMaskIntoConstraints = false
-//        return element
-//    }()
-    // Стрелка
-//    lazy var backButton = UIButton.makeCustomButtonWithLabel(label: "⬅︎", buttonColor: .clear, textColor: .black, fontSize: 40, borderColor: .clear, target: self, action: #selector(goToNextScreen))
-//    
-//    @objc func goToNextScreen() {
-//        let vc = NextVC()
-//        navigationController?.pushViewController(vc, animated: true)
-//    }
-    // Заголовок текст
-//    private lazy var headerLabel = UILabel.createLabel(text: "Setting", fontSize: 20, isBold: true)
 
     // Контейнер
     private lazy var container: UIView = {
@@ -100,7 +85,6 @@ class SettingGameController: UIViewController, UIScrollViewDelegate, UICollectio
         element.setLabel(string:  "Select Music")
         element.layer.cornerRadius = 30
         element.delegate = self
-        //Set the drop down menu's options
         element.dropView.dropDownOptions = ["Classical", "Instrumental", "Nature"]
         element.translatesAutoresizingMaskIntoConstraints = false
         return element
@@ -115,12 +99,17 @@ class SettingGameController: UIViewController, UIScrollViewDelegate, UICollectio
     // Duration
     private lazy var dropDownDuration : DropDownButton = {
         let element = DropDownButton.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-       // element.setTitle("Duration", for: .normal)
-        
         element.setLabel(string: "Duration")
         element.layer.cornerRadius = 30
-       
+        element.delegate = self
         element.dropView.dropDownOptions = ["30 min", "60 min", "120 min"]
+        element.translatesAutoresizingMaskIntoConstraints = false
+        return element
+    }()
+    
+    private lazy var dropDownDurationView : UIView = {
+        let element = UIView()
+        element.addSubview(dropDownDuration)
         element.translatesAutoresizingMaskIntoConstraints = false
         return element
     }()
@@ -155,10 +144,9 @@ class SettingGameController: UIViewController, UIScrollViewDelegate, UICollectio
         musicView.addSubview(switchMusic)
         
         element.addArrangedSubview(gameTimeView)
-        element.addArrangedSubview(dropDownDuration)
+        element.addArrangedSubview(dropDownDurationView)
         element.addArrangedSubview(musicView)
         element.addArrangedSubview(dropDownMusicView)
-        
         
         element.translatesAutoresizingMaskIntoConstraints = false
         return element
@@ -185,13 +173,13 @@ class SettingGameController: UIViewController, UIScrollViewDelegate, UICollectio
             self.view.layoutIfNeeded()
         }
         }
-    func showSelect(vewHeightConstraint: NSLayoutConstraint?) {
+    func showDurationSelect() {
         if isHiddenGameTimeSelect {
             isHiddenGameTimeSelect = false
-            vewHeightConstraint?.constant = 219
+            dropDownGameTimeViewHeightConstraint?.constant = 219
         } else {
             isHiddenGameTimeSelect = true
-            vewHeightConstraint?.constant = 69
+            dropDownGameTimeViewHeightConstraint?.constant = 69
         }
         UIView.animate(withDuration: 0.1) {
             self.view.layoutIfNeeded()
@@ -234,6 +222,7 @@ private extension SettingGameController {
         collectionview.register(PairCollectionViewCell.self, forCellWithReuseIdentifier: cellId)
         collectionview.showsVerticalScrollIndicator = false
         collectionview.backgroundColor = UIColor.basic_background
+        collectionview.translatesAutoresizingMaskIntoConstraints = false
 
         container.addSubview(settingStackView)
         mainStackView.addArrangedSubview(container)
@@ -250,11 +239,16 @@ private extension SettingGameController {
         dropDownMusicViewHeightConstraint = dropDownMusicView.heightAnchor.constraint(equalToConstant: 69)
         dropDownMusicViewHeightConstraint?.isActive = true
         
+        dropDownDuration.heightAnchor.constraint(equalToConstant: 69).isActive = true
+        dropDownGameTimeViewHeightConstraint = dropDownDurationView.heightAnchor.constraint(equalToConstant: 69)
+        dropDownGameTimeViewHeightConstraint?.isActive = true
+        
         NSLayoutConstraint.activate([
-            mainStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: -20),
-            mainStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            mainStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            mainStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            mainStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
+            mainStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0),
+            mainStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            mainStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            
            
             settingStackView.topAnchor.constraint(equalTo: container.topAnchor, constant: 20),
             settingStackView.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 20),
@@ -268,9 +262,10 @@ private extension SettingGameController {
             gameTimeView.widthAnchor.constraint(equalToConstant: 268),
             gameTimeView.heightAnchor.constraint(equalToConstant: 69),       
             
-            dropDownDuration.heightAnchor.constraint(equalToConstant: 69),
-            dropDownDuration.topAnchor.constraint(equalTo: gameTimeView.bottomAnchor, constant: 20),
-           
+            //dropDownDuration.heightAnchor.constraint(equalToConstant: 69),
+            //dropDownDuration.topAnchor.constraint(equalTo: gameTimeView.bottomAnchor, constant: 20),
+            dropDownDuration.trailingAnchor.constraint(equalTo: dropDownDurationView.trailingAnchor, constant: 0),
+            dropDownDuration.leadingAnchor.constraint(equalTo: dropDownDurationView.leadingAnchor, constant: 0),
             
             switchMusic.leadingAnchor.constraint(equalTo: musicView.leadingAnchor, constant: 20),
             switchMusic.trailingAnchor.constraint(equalTo: musicView.trailingAnchor, constant: -20),

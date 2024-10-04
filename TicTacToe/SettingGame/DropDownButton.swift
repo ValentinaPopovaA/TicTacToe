@@ -13,7 +13,7 @@ protocol DropDownProtocol {
 class DropDownButton: UIButton, DropDownProtocol {
     
     weak var delegate: SettingGameController?
-    
+            
     func dropDownPressed(string: String) {
         
         self.setTitle("", for: .normal)
@@ -43,12 +43,11 @@ class DropDownButton: UIButton, DropDownProtocol {
         label.text = labelValue
         
         label.font = .systemFont(ofSize: 20, weight: .bold)
-        let label2 = UILabel()
         label.text = labelValue
         label.font = .systemFont(ofSize: 20, weight: .bold)
         element.addArrangedSubview(label)
         element.addArrangedSubview(titleText)
-        
+        label.translatesAutoresizingMaskIntoConstraints = false
         element.translatesAutoresizingMaskIntoConstraints = false
         return element
     }()
@@ -93,8 +92,13 @@ class DropDownButton: UIButton, DropDownProtocol {
     
     var isOpen = false
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        delegate?.showMusicSelect()
-        delegate?.showSelect(vewHeightConstraint: delegate?.dropDownGameTimeViewHeightConstraint)
+        if (labelValue == "Select Music"){
+            delegate?.showMusicSelect()
+        }
+        if (labelValue == "Duration"){
+            delegate?.showDurationSelect()
+        }
+       
         if isOpen == false {
             
             isOpen = true
@@ -134,7 +138,13 @@ class DropDownButton: UIButton, DropDownProtocol {
     }
     
     func dismissDropDown() {
-        delegate?.showMusicSelect()
+        
+        if (labelValue == "Select Music"){
+            delegate?.showMusicSelect()
+        }
+        if (labelValue == "Duration"){
+            delegate?.showDurationSelect()
+        }
         isOpen = false
         NSLayoutConstraint.deactivate([self.height])
         self.height.constant = 0
@@ -162,9 +172,7 @@ class DropDownView: UIView, UITableViewDelegate, UITableViewDataSource  {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        //tableView.backgroundColor = UIColor.basic_light_blue
-        //self.backgroundColor = UIColor.green
+     
         self.layer.cornerRadius = 30
   
         tableView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
