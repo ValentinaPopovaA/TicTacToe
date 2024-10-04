@@ -106,6 +106,7 @@ extension UIButton {
         stackView.spacing = 7
         stackView.alignment = .center
         stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.isUserInteractionEnabled = false
         
         button.addTarget(target, action: action, for: .touchUpInside)
         button.addTarget(button, action: #selector(buttonTouchedDown), for: .touchDown)
