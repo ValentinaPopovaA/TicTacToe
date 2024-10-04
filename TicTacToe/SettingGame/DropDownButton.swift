@@ -12,6 +12,8 @@ protocol DropDownProtocol {
 
 class DropDownButton: UIButton, DropDownProtocol {
     
+    weak var delegate: SettingGameController?
+            
     func dropDownPressed(string: String) {
         
         self.setTitle("", for: .normal)
@@ -41,12 +43,11 @@ class DropDownButton: UIButton, DropDownProtocol {
         label.text = labelValue
         
         label.font = .systemFont(ofSize: 20, weight: .bold)
-        let label2 = UILabel()
         label.text = labelValue
         label.font = .systemFont(ofSize: 20, weight: .bold)
         element.addArrangedSubview(label)
         element.addArrangedSubview(titleText)
-        
+        label.translatesAutoresizingMaskIntoConstraints = false
         element.translatesAutoresizingMaskIntoConstraints = false
         return element
     }()
@@ -67,29 +68,50 @@ class DropDownButton: UIButton, DropDownProtocol {
         dropView = DropDownView.init(frame: CGRect.init(x: 0, y: 0, width: 0, height: 0))
         dropView.delegate = self
         dropView.translatesAutoresizingMaskIntoConstraints = false
-    }
-    
-    
-    
-    override func didMoveToSuperview() {
+        
         self.superview?.addSubview(rowStackView)
         self.superview?.addSubview(dropView)
+        self.superview?.bringSubviewToFront(rowStackView)
         self.superview?.bringSubviewToFront(dropView)
 
-        NSLayoutConstraint.activate([
-            rowStackView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            rowStackView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            rowStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
-            rowStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
-            dropView.topAnchor.constraint(equalTo: self.bottomAnchor),
-            dropView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            dropView.widthAnchor.constraint(equalTo: self.widthAnchor),
-        ])
-        height = dropView.heightAnchor.constraint(equalToConstant: 0)
     }
+        
+    
+    override func didMoveToSuperview() {
+        
+        self.superview?.addSubview(rowStackView)
+        self.superview?.addSubview(dropView)
+        self.superview?.bringSubviewToFront(rowStackView)
+        self.superview?.bringSubviewToFront(dropView)
+       
+        if (self.subviews.isEmpty) {
+                        
+            
+            NSLayoutConstraint.activate([
+                rowStackView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+                rowStackView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+                rowStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+                rowStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
+                dropView.topAnchor.constraint(equalTo: self.bottomAnchor),
+                dropView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+                dropView.widthAnchor.constraint(equalTo: self.widthAnchor),
+                
+            ])
+            height = dropView.heightAnchor.constraint(equalToConstant: 0)
+        }
+        
+    }
+    
     
     var isOpen = false
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if (labelValue == "Select Music"){
+            delegate?.showMusicSelect()
+        }
+        if (labelValue == "Duration"){
+            delegate?.showDurationSelect()
+        }
+       
         if isOpen == false {
             
             isOpen = true
@@ -129,6 +151,13 @@ class DropDownButton: UIButton, DropDownProtocol {
     }
     
     func dismissDropDown() {
+        
+        if (labelValue == "Select Music"){
+            delegate?.showMusicSelect()
+        }
+        if (labelValue == "Duration"){
+            delegate?.showDurationSelect()
+        }
         isOpen = false
         NSLayoutConstraint.deactivate([self.height])
         self.height.constant = 0
@@ -156,9 +185,7 @@ class DropDownView: UIView, UITableViewDelegate, UITableViewDataSource  {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        //tableView.backgroundColor = UIColor.basic_light_blue
-        //self.backgroundColor = UIColor.green
+     
         self.layer.cornerRadius = 30
   
         tableView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
@@ -169,11 +196,12 @@ class DropDownView: UIView, UITableViewDelegate, UITableViewDataSource  {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         
         self.addSubview(tableView)
-        
-        tableView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
-        tableView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-        tableView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        NSLayoutConstraint.activate([
+            tableView.leftAnchor.constraint(equalTo: self.leftAnchor),
+            tableView.rightAnchor.constraint(equalTo: self.rightAnchor),
+            tableView.topAnchor.constraint(equalTo: self.topAnchor),
+            tableView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+        ])
         
         
     }
@@ -195,6 +223,7 @@ class DropDownView: UIView, UITableViewDelegate, UITableViewDataSource  {
         
         cell.textLabel?.text = dropDownOptions[indexPath.row]
         cell.backgroundColor = UIColor.basic_light_blue
+        //cell.translatesAutoresizingMaskIntoConstraints = false
         return cell
     }
     
