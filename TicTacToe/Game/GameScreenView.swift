@@ -39,7 +39,7 @@ final class GameScreenView: UIView {
         return imageView
     }()
     
-    private let moveLabel = UILabel.createLabel(text: "Now move...", fontSize: 24, isBold: true)
+    private let moveLabel = UILabel.createLabel(text: "", fontSize: 24, isBold: true)
     
     private let gameField: UIView = {
         let view = UIView()
@@ -104,7 +104,7 @@ final class GameScreenView: UIView {
     
     func setMove(_ image: UIImage, _ text: String) {
         moveImageView.image = image
-        moveLabel.text = "\(text) turn"
+        moveLabel.text = text
     }
 }
 

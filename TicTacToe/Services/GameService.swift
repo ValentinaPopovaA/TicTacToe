@@ -7,9 +7,13 @@
 
 import Foundation
 
-enum PlayerFigure {
-    case circle
-    case cross
+enum Turn {
+    case playerOne
+    case playerTwo
+    
+    mutating func tonggle() {
+        self = self == .playerOne ? .playerTwo : .playerOne
+    }
 }
 
 enum RoundResult {
@@ -34,8 +38,7 @@ final class GameService {
     private var playerTwoCombination: Set<Int> = []
     private var moveCounter = 0
     private var availableCells: Set<Int> = Set(1...9)
-    
-    
+    private(set) var currentTurn = Turn.playerOne
     
     let gameMode: GameMode
     let gameDifficulty: GameDifficulty
@@ -58,19 +61,32 @@ final class GameService {
         return nil
     }
     
-    func moveMade(by player: PlayerFigure, at position: Int) -> RoundResult? {
+    func moveMade(at position: Int) -> RoundResult? {
         moveCounter += 1
         availableCells.remove(position)
-        if player == .circle {
+        if currentTurn == .playerOne {
             playerOneCombination.insert(position)
         } else {
             playerTwoCombination.insert(position)
         }
+        currentTurn.tonggle()
         return getResult()
     }
     
-    private func findWinningMove(for player: PlayerFigure) -> Int? {
-        let currentCombination = player == .circle ? playerOneCombination : playerTwoCombination
+    func getComputerMove() -> Int? {
+        if let winningMove = findWinningMove(for: .playerTwo) {
+            return winningMove
+        }
+
+        if let blockingMove = findWinningMove(for: .playerOne) {
+            return blockingMove
+        }
+
+        return chooseOptimalMove()
+    }
+    
+    private func findWinningMove(for player: Turn) -> Int? {
+        let currentCombination = player == .playerOne ? playerOneCombination : playerTwoCombination
         
         for combination in winningCombinations {
             let missingCells = combination.subtracting(currentCombination)
@@ -88,25 +104,10 @@ final class GameService {
             return 5
         }
         
-        let corners = [1, 3, 7, 9]
-        let availableCorners = corners.filter { availableCells.contains($0) }
-        
-        if let cornerMove = availableCorners.randomElement() {
-            return cornerMove
+        if let corner = Set([1, 3, 7, 9]).intersection(availableCells).randomElement() {
+            return corner
         }
         
         return availableCells.randomElement()
-    }
-    
-    func getComputerMove() -> Int? {
-        if let winningMove = findWinningMove(for: .cross) {
-            return winningMove
-        }
-
-        if let blockingMove = findWinningMove(for: .circle) {
-            return blockingMove
-        }
-
-        return chooseOptimalMove()
     }
 }
