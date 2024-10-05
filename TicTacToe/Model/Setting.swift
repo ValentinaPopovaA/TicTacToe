@@ -23,6 +23,6 @@ struct Setting: Codable {
     let musicEnable: Bool
     let selectedMusic: String
     let player1Image: String
-    let palyer2Image: String
+    let player2Image: String
     let selectedPairNumber: Int
 }

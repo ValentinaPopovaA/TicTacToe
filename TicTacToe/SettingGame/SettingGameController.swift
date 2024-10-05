@@ -119,9 +119,15 @@ class SettingGameController: UIViewController, UIScrollViewDelegate, UICollectio
     private lazy var dropDownDuration : DropDownButton = {
         let element = DropDownButton.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         element.setLabel(string: "Duration")
-        let sec = switch gameSetting.duration { case 120 :  "120 sec" case 60 :  "60 sec"
+        let sec: String
+        switch gameSetting.duration {
+        case 120:
+            sec = "120 sec"
+        case 60 :
+            sec = "60 sec"
         default:
-             "30 sec" }
+            sec = "30 sec"
+        }
         element.setValue(string: sec)
         element.layer.cornerRadius = 30
         element.delegate = self
@@ -208,7 +214,7 @@ class SettingGameController: UIViewController, UIScrollViewDelegate, UICollectio
                               musicEnable: gameSetting.musicEnable,
                               selectedMusic: gameSetting.selectedMusic,
                               player1Image: gameSetting.player1Image,
-                              palyer2Image: gameSetting.player1Image,
+                              player2Image: gameSetting.player2Image,
                               selectedPairNumber: gameSetting.selectedPairNumber)
         
         GameSettings.shared.saveSettings(gameSetting)
@@ -243,7 +249,7 @@ class SettingGameController: UIViewController, UIScrollViewDelegate, UICollectio
                               musicEnable: sender.isOn,
                               selectedMusic: gameSetting.selectedMusic,
                               player1Image: gameSetting.player1Image,
-                              palyer2Image: gameSetting.player1Image,
+                              player2Image: gameSetting.player2Image,
                               selectedPairNumber: gameSetting.selectedPairNumber)
         
         GameSettings.shared.saveSettings(gameSetting)
@@ -280,7 +286,7 @@ class SettingGameController: UIViewController, UIScrollViewDelegate, UICollectio
                               musicEnable: gameSetting.musicEnable ,
                               selectedMusic: gameSetting.selectedMusic,
                               player1Image: "x_pair\(index)",
-                              palyer2Image: "o_pair\(index)",
+                              player2Image: "o_pair\(index)",
                               selectedPairNumber: index)
         
         GameSettings.shared.saveSettings(gameSetting)

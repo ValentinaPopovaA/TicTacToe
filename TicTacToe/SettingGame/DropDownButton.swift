@@ -27,18 +27,26 @@ class DropDownButton: UIButton, DropDownProtocol {
                                   musicEnable: gameSetting.musicEnable,
                                   selectedMusic: string,
                                   player1Image: gameSetting.player1Image,
-                                  palyer2Image: gameSetting.player1Image,
+                                  player2Image: gameSetting.player2Image,
                                   selectedPairNumber: gameSetting.selectedPairNumber)
         }
         if (labelValue == "Duration"){
-            let duration = switch string { case "120 sec" : 120 case "60 sec": 60 default: 30 }
+            let duration: Int
+            switch string {
+            case "120 sec":
+                duration = 120
+            case "60 sec":
+                duration = 60
+            default:
+                duration = 30
+            }
             
             gameSetting = Setting(gameTime: gameSetting.gameTime,
                                   duration: duration,
                                   musicEnable: gameSetting.musicEnable,
                                   selectedMusic: gameSetting.selectedMusic,
                                   player1Image: gameSetting.player1Image,
-                                  palyer2Image: gameSetting.player1Image,
+                                  player2Image: gameSetting.player2Image,
                                   selectedPairNumber: gameSetting.selectedPairNumber)
         }        
         
