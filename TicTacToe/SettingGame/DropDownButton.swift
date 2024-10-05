@@ -27,7 +27,7 @@ class DropDownButton: UIButton, DropDownProtocol {
                                   musicEnable: gameSetting.musicEnable,
                                   selectedMusic: string,
                                   player1Image: gameSetting.player1Image,
-                                  palyer2Image: gameSetting.player1Image,
+                                  player2Image: gameSetting.player2Image,
                                   selectedPairNumber: gameSetting.selectedPairNumber)
         }
         if (labelValue == "Duration"){
@@ -46,7 +46,7 @@ class DropDownButton: UIButton, DropDownProtocol {
                                   musicEnable: gameSetting.musicEnable,
                                   selectedMusic: gameSetting.selectedMusic,
                                   player1Image: gameSetting.player1Image,
-                                  palyer2Image: gameSetting.player1Image,
+                                  player2Image: gameSetting.player2Image,
                                   selectedPairNumber: gameSetting.selectedPairNumber)
         }        
         

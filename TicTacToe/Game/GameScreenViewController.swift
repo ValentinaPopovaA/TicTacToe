@@ -29,7 +29,7 @@ final class GameScreenViewController: UIViewController {
             name: gameService.gameMode == .singlePlayer ? "You" : "Player One"
         )
         player2 = Player(
-            image: UIImage(named: gameSettings.palyer2Image) ?? UIImage.pair1Circle,
+            image: UIImage(named: gameSettings.player2Image) ?? UIImage.pair1Circle,
             name: gameService.gameMode == .singlePlayer ? "Computer" : "Player Two"
         )
         
