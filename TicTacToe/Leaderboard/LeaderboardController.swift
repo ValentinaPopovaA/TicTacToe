@@ -9,7 +9,7 @@ import UIKit
 
 class LeaderboardViewController: UIViewController {
     
-    var leaderboardData = [Int]()
+    var leaderboardData: [Int] = LeaderboardService.shared.getTimeList()
     
     let scrollView = UIScrollView()
     let stackView = UIStackView()
