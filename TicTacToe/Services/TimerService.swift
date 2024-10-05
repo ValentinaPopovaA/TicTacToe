@@ -11,7 +11,7 @@ protocol TimerServiceDelegate: AnyObject {
     func timerTick()
 }
 
-final class TamerService {
+final class TimerService {
     private var timer: Timer?
     private let timeInterval: TimeInterval = 1.0
     

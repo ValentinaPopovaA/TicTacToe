@@ -16,7 +16,7 @@ final class GameScreenViewController: UIViewController {
     
     private let gameScreenView = GameScreenView()
     private var gameService: GameService
-    private var timer = TamerService()
+    private var timer = TimerService()
     
     private let gameSettings = GameSettings.shared.getSettingsLoad()
     private let gameMode: GameMode
