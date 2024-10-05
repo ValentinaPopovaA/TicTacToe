@@ -31,6 +31,7 @@ class DropDownButton: UIButton, DropDownProtocol {
                                   selectedPairNumber: gameSetting.selectedPairNumber)
         }
         if (labelValue == "Duration"){
+
             var duration = 0
             switch string
             {
