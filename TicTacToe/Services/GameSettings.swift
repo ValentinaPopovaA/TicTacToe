@@ -19,7 +19,7 @@ final class GameSettings {
             musicEnable: false,
             selectedMusic: "",
             player1Image: "x_pair1",
-            palyer2Image: "o_pair1",
+            player2Image: "o_pair1",
             selectedPairNumber: 1
         )
     }

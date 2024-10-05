@@ -208,7 +208,7 @@ class SettingGameController: UIViewController, UIScrollViewDelegate, UICollectio
                               musicEnable: gameSetting.musicEnable,
                               selectedMusic: gameSetting.selectedMusic,
                               player1Image: gameSetting.player1Image,
-                              palyer2Image: gameSetting.player1Image,
+                              player2Image: gameSetting.player2Image,
                               selectedPairNumber: gameSetting.selectedPairNumber)
         
         GameSettings.shared.saveSettings(gameSetting)
@@ -243,7 +243,7 @@ class SettingGameController: UIViewController, UIScrollViewDelegate, UICollectio
                               musicEnable: sender.isOn,
                               selectedMusic: gameSetting.selectedMusic,
                               player1Image: gameSetting.player1Image,
-                              palyer2Image: gameSetting.player1Image,
+                              player2Image: gameSetting.player2Image,
                               selectedPairNumber: gameSetting.selectedPairNumber)
         
         GameSettings.shared.saveSettings(gameSetting)
@@ -280,7 +280,7 @@ class SettingGameController: UIViewController, UIScrollViewDelegate, UICollectio
                               musicEnable: gameSetting.musicEnable ,
                               selectedMusic: gameSetting.selectedMusic,
                               player1Image: "x_pair\(index)",
-                              palyer2Image: "o_pair\(index)",
+                              player2Image: "o_pair\(index)",
                               selectedPairNumber: index)
         
         GameSettings.shared.saveSettings(gameSetting)
