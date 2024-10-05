@@ -295,8 +295,7 @@ class SettingGameController: UIViewController, UIScrollViewDelegate, UICollectio
         GameSettings.shared.saveSettings(gameSetting)
         
         for i in 0...5 {
-            let cell = self.collectionview.cellForItem(at: NSIndexPath(row: i, section: 0) as IndexPath) as? PairCollectionViewCell
-            if let cell = cell as? PairCollectionViewCell {
+            if let cell = self.collectionview.cellForItem(at: NSIndexPath(row: i, section: 0) as IndexPath) as? PairCollectionViewCell {
                 if (i+1) == index {
                    cell.button.backgroundColor = UIColor.basic_blue
                    cell.button.setTitleColor(UIColor.basic_white, for: .normal)

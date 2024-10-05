@@ -99,6 +99,7 @@ final class GameScreenViewController: UIViewController {
                     button.isUserInteractionEnabled = false
 
                     if let _ = self.gameService.moveMade(at: computerMove) {
+                        self.timer.stop()
                         self.handleGameResult(.computerWin)
                     }
                     else {
@@ -111,6 +112,9 @@ final class GameScreenViewController: UIViewController {
     }
     
     private func handleGameResult(_ result: GameResult) {
+        if gameSettings.gameTime && [.playerWin, .playerOneWin, .playerTwoWin].contains(result) {
+            LeaderboardService.shared.addLeader(gameSettings.duration - timeRemaining)
+        }
         let resultVC = ResultController()
         resultVC.gameResult = result
         navigationController?.pushViewController(resultVC, animated: true)

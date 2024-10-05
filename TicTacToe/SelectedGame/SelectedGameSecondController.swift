@@ -98,7 +98,6 @@ class SelectedGameSecondController: UIViewController {
     
     @objc func goToGame(_ sender: UIButton) {
         let gameDifficulty: GameDifficulty
-        #warning("TO DO: реализовать передачу данных с кнопок с помощью tag-ов")
         switch sender.tag {
         case 3:
             gameDifficulty = .hard

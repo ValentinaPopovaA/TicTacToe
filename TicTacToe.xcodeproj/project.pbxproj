@@ -12,6 +12,7 @@
 		24D12E6F2CAE041A00907359 /* PlayerBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D12E6D2CAE041A00907359 /* PlayerBadgeView.swift */; };
 		24D12E702CAE041A00907359 /* GameScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D12E6C2CAE041A00907359 /* GameScreenViewController.swift */; };
 		24D12E722CAE042900907359 /* UIImage_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D12E712CAE042900907359 /* UIImage_Extension.swift */; };
+		24D964F42CB1AE0F009B1421 /* LeaderboardService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D964F32CB1AE0F009B1421 /* LeaderboardService.swift */; };
 		24EAF8AC2CAF097A00F1EF6F /* GameService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EAF8AB2CAF097A00F1EF6F /* GameService.swift */; };
 		24EAF8B12CAF0F6800F1EF6F /* GameSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EAF8B02CAF0F6800F1EF6F /* GameSettings.swift */; };
 		378D3F8F2CB11DD10053E4B3 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378D3F8E2CB11DD10053E4B3 /* SoundManager.swift */; };
@@ -50,6 +51,7 @@
 		24D12E6C2CAE041A00907359 /* GameScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScreenViewController.swift; sourceTree = "<group>"; };
 		24D12E6D2CAE041A00907359 /* PlayerBadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerBadgeView.swift; sourceTree = "<group>"; };
 		24D12E712CAE042900907359 /* UIImage_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage_Extension.swift; sourceTree = "<group>"; };
+		24D964F32CB1AE0F009B1421 /* LeaderboardService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardService.swift; sourceTree = "<group>"; };
 		24EAF8AB2CAF097A00F1EF6F /* GameService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameService.swift; sourceTree = "<group>"; };
 		24EAF8B02CAF0F6800F1EF6F /* GameSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSettings.swift; sourceTree = "<group>"; };
 		378D3F8E2CB11DD10053E4B3 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 				24EAF8B02CAF0F6800F1EF6F /* GameSettings.swift */,
 				378D3F972CB1227C0053E4B3 /* SoundManager */,
 				2423E41A2CB15DDD0030F0D5 /* TimerService.swift */,
+				24D964F32CB1AE0F009B1421 /* LeaderboardService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -363,6 +366,7 @@
 				24EAF8B12CAF0F6800F1EF6F /* GameSettings.swift in Sources */,
 				A7F2F5022CA9A4240025A490 /* SceneDelegate.swift in Sources */,
 				794245032CAAA1920048F08C /* UIColor_Extension.swift in Sources */,
+				24D964F42CB1AE0F009B1421 /* LeaderboardService.swift in Sources */,
 				A7F2F5222CA9E6BF0025A490 /* GameController.swift in Sources */,
 				378D3F9B2CB135080053E4B3 /* SoundPlayerFactory.swift in Sources */,
 				794245A42CADB2520048F08C /* Setting.swift in Sources */,
