@@ -103,7 +103,7 @@ class SettingGameController: UIViewController, UIScrollViewDelegate, UICollectio
         element.setValue(string: gameSetting.selectedMusic)
         element.layer.cornerRadius = 30
         element.delegate = self
-        element.dropView.dropDownOptions = ["Classical", "Instrumental", "Nature"]
+        element.dropView.dropDownOptions = ["donkey", "neighbour", "country"]
         
         element.translatesAutoresizingMaskIntoConstraints = false
         return element

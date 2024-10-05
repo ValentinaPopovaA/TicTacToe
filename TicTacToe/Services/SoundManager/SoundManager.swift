@@ -15,7 +15,7 @@ import AVFoundation
 
 
 protocol SoundManagerProtocol {
-    func playSound(_ audio: Audio)
+    func playSound(_ audio: Audio, repeatSound: Bool)
     func stopSound()
 }
 
@@ -32,12 +32,13 @@ class SoundManager: SoundManagerProtocol {
         self.soundPlayerFactory = soundPlayerFactory
     }
     
-    func playSound(_ audio: Audio) {
+    func playSound(_ audio: Audio, repeatSound: Bool = false) {
         if let soundPlayer = soundPlayers[audio] {
             soundPlayer.play()
         } else {
             do {
                 let soundPlayer = try AVAudioPlayer(contentsOf: audio.filePath)
+                if repeatSound { soundPlayer.numberOfLoops = -1 }
                 soundPlayer.prepareToPlay()
                 soundPlayer.play()
                 soundPlayers[audio] = soundPlayer
@@ -48,7 +49,7 @@ class SoundManager: SoundManagerProtocol {
     }
     
     func stopSound() {
-        for (audio, soundPlayer) in soundPlayers {
+        for (_, soundPlayer) in soundPlayers {
             soundPlayer.stop()
         }
         soundPlayers.removeAll()

@@ -87,11 +87,25 @@ final class GameScreenViewController: UIViewController {
         if gameSettings.gameTime {
             timer.start()
         }
+        
+        if gameSettings.musicEnable {
+            SoundManager.sharedInstance.playSound(
+                Audio.giveAudioWith(name: gameSettings.selectedMusic) ?? .country,
+                repeatSound: true
+            )
+        }
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        SoundManager.sharedInstance.stopSound()
     }
     
     private func performComputerMove() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
             guard let self = self else { return }
+            
+            SoundManager.sharedInstance.playSound(.move)
 
             if let computerMove = self.gameService.getComputerMove() {
                 if let button = self.gameScreenView.viewWithTag(computerMove) as? UIButton {
@@ -142,6 +156,8 @@ final class GameScreenViewController: UIViewController {
 extension GameScreenViewController: GameScreenViewDelegate {
     func cellPressed(_ sender: UIButton) {
         disableBoard()
+        
+        SoundManager.sharedInstance.playSound(.move)
         
         let currentPlayer = gameService.currentTurn == .playerOne ? player1 : player2
         sender.setImage(currentPlayer.image, for: .normal)
