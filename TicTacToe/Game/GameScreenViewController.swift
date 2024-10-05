@@ -75,14 +75,17 @@ final class GameScreenViewController: UIViewController {
             }
         }
         
+        if gameSettings.gameTime {
+            timeRemaining = gameSettings.duration
+            gameScreenView.updateTimer(to: timeRemaining, UIColor.basic_black ?? .black)
+        }
+        
         enableBoard()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         if gameSettings.gameTime {
-            timeRemaining = gameSettings.duration
             timer.start()
-            timerTick()
         }
     }
     
