@@ -119,19 +119,18 @@ class SettingGameController: UIViewController, UIScrollViewDelegate, UICollectio
     private lazy var dropDownDuration : DropDownButton = {
         let element = DropDownButton.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         element.setLabel(string: "Duration")
-        let sec: String
-        switch gameSetting.duration {
-        case 120:
-            sec = "120 sec"
-        case 60 :
-            sec = "60 sec"
-        default:
-            sec = "30 sec"
+
+        var sec = ""
+        switch gameSetting.duration
+        {
+            case 60 : sec = "60 sec"
+            case 30 : sec = "30 sec"
+            default: sec = "10 sec"
         }
         element.setValue(string: sec)
         element.layer.cornerRadius = 30
         element.delegate = self
-        element.dropView.dropDownOptions = ["30 sec", "60 sec", "120 sec"]
+        element.dropView.dropDownOptions = ["10 sec", "30 sec", "60 sec"]
         element.translatesAutoresizingMaskIntoConstraints = false
         return element
     }()
@@ -209,6 +208,7 @@ class SettingGameController: UIViewController, UIScrollViewDelegate, UICollectio
     @objc func switchGameTimeDidChange(_ sender: UISwitch!)
     {
         // MARK:  Save setting Game Time
+        gameSetting = GameSettings.shared.getSettingsLoad() // load last
         gameSetting = Setting(gameTime: sender.isOn,
                               duration: gameSetting.duration,
                               musicEnable: gameSetting.musicEnable,
@@ -244,6 +244,8 @@ class SettingGameController: UIViewController, UIScrollViewDelegate, UICollectio
     {
         
         // MARK:  Save setting Game Time
+        gameSetting = GameSettings.shared.getSettingsLoad() // load last
+        
         gameSetting = Setting(gameTime: gameSetting.gameTime,
                               duration: gameSetting.duration,
                               musicEnable: sender.isOn,
@@ -281,6 +283,7 @@ class SettingGameController: UIViewController, UIScrollViewDelegate, UICollectio
     func pairChoosed(index:Int)
     {
         // MARK:  Save setting Choose pair Cross Circle
+        gameSetting = GameSettings.shared.getSettingsLoad() // load last
         gameSetting = Setting(gameTime: gameSetting.gameTime,
                               duration: gameSetting.duration,
                               musicEnable: gameSetting.musicEnable ,
@@ -291,22 +294,21 @@ class SettingGameController: UIViewController, UIScrollViewDelegate, UICollectio
         
         GameSettings.shared.saveSettings(gameSetting)
         
-        var i = 0
-        for cell in self.collectionview.visibleCells {
-            i = i + 1
+        for i in 0...5 {
+            let cell = self.collectionview.cellForItem(at: NSIndexPath(row: i, section: 0) as IndexPath) as? PairCollectionViewCell
             if let cell = cell as? PairCollectionViewCell {
-                if i == index {
+                if (i+1) == index {
                    cell.button.backgroundColor = UIColor.basic_blue
                    cell.button.setTitleColor(UIColor.basic_white, for: .normal)
                    cell.button.setTitle("Picked", for: .normal)
                 } else {
                     cell.button.backgroundColor = .basic_light_blue
-                    cell.button.setTitleColor(UIColor.basic_black, for: .normal)   
+                    cell.button.setTitleColor(UIColor.basic_black, for: .normal)
                     cell.button.setTitle("Choose", for: .normal)
                 }
                    
-                }
             }
+        }
     }
     
     func showMusicSelect() {
@@ -362,6 +364,7 @@ private extension SettingGameController {
         collectionview = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
         collectionview.dataSource = self
         collectionview.delegate = self
+        //collectionview.isPrefetchingEnabled = false
         collectionview.register(PairCollectionViewCell.self, forCellWithReuseIdentifier: cellId)
         collectionview.showsVerticalScrollIndicator = false
         collectionview.backgroundColor = UIColor.basic_background

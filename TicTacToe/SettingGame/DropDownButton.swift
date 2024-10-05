@@ -31,14 +31,13 @@ class DropDownButton: UIButton, DropDownProtocol {
                                   selectedPairNumber: gameSetting.selectedPairNumber)
         }
         if (labelValue == "Duration"){
-            let duration: Int
-            switch string {
-            case "120 sec":
-                duration = 120
-            case "60 sec":
-                duration = 60
-            default:
-                duration = 30
+
+            var duration = 0
+            switch string
+            {
+                case "60 sec" : duration = 60
+                case "30 sec": duration = 30
+                default: duration = 10
             }
             
             gameSetting = Setting(gameTime: gameSetting.gameTime,
