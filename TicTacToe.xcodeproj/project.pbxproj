@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2423E41B2CB15DDD0030F0D5 /* TimerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2423E41A2CB15DDD0030F0D5 /* TimerService.swift */; };
 		24D12E6E2CAE041A00907359 /* GameScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D12E6B2CAE041A00907359 /* GameScreenView.swift */; };
 		24D12E6F2CAE041A00907359 /* PlayerBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D12E6D2CAE041A00907359 /* PlayerBadgeView.swift */; };
 		24D12E702CAE041A00907359 /* GameScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D12E6C2CAE041A00907359 /* GameScreenViewController.swift */; };
@@ -44,6 +45,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2423E41A2CB15DDD0030F0D5 /* TimerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerService.swift; sourceTree = "<group>"; };
 		24D12E6B2CAE041A00907359 /* GameScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScreenView.swift; sourceTree = "<group>"; };
 		24D12E6C2CAE041A00907359 /* GameScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScreenViewController.swift; sourceTree = "<group>"; };
 		24D12E6D2CAE041A00907359 /* PlayerBadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerBadgeView.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 				24EAF8AB2CAF097A00F1EF6F /* GameService.swift */,
 				24EAF8B02CAF0F6800F1EF6F /* GameSettings.swift */,
 				378D3F972CB1227C0053E4B3 /* SoundManager */,
+				2423E41A2CB15DDD0030F0D5 /* TimerService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -347,6 +350,7 @@
 				A7F2F5002CA9A4240025A490 /* AppDelegate.swift in Sources */,
 				24D12E6E2CAE041A00907359 /* GameScreenView.swift in Sources */,
 				24D12E722CAE042900907359 /* UIImage_Extension.swift in Sources */,
+				2423E41B2CB15DDD0030F0D5 /* TimerService.swift in Sources */,
 				24D12E6F2CAE041A00907359 /* PlayerBadgeView.swift in Sources */,
 				24D12E702CAE041A00907359 /* GameScreenViewController.swift in Sources */,
 				24EAF8AC2CAF097A00F1EF6F /* GameService.swift in Sources */,
