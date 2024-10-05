@@ -17,8 +17,8 @@ enum Turn {
 }
 
 enum RoundResult {
-    case win
-    case lose
+    case playerOneWin
+    case playerTwoWin
     case draw
 }
 
@@ -40,20 +40,18 @@ final class GameService {
     private var availableCells: Set<Int> = Set(1...9)
     private(set) var currentTurn = Turn.playerOne
     
-    let gameMode: GameMode
     let gameDifficulty: GameDifficulty
     
-    init(gameMode: GameMode, gameDifficulty: GameDifficulty) {
-        self.gameMode = gameMode
+    init(gameDifficulty: GameDifficulty) {
         self.gameDifficulty = gameDifficulty
     }
     
     private func getResult() -> RoundResult? {
         for combination in winningCombinations {
             if combination.isSubset(of: playerOneCombination) {
-                return .win
+                return .playerOneWin
             } else if combination.isSubset(of: playerTwoCombination) {
-                return .lose
+                return .playerTwoWin
             } else if moveCounter == 9 {
                 return .draw
             }

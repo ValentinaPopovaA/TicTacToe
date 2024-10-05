@@ -106,6 +106,11 @@ final class GameScreenView: UIView {
         moveImageView.image = image
         moveLabel.text = text
     }
+    
+    func updateTimer(to time: Int, _ color: UIColor) {
+        timerLabel.text = String(format: "%02i:%02i", (time / 60) % (60 * 60), time % 60)
+        timerLabel.textColor = color
+    }
 }
 
 // MARK: - Selectors
@@ -155,8 +160,6 @@ private extension GameScreenView {
             
             timerLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             timerLabel.centerYAnchor.constraint(equalTo: playerOneBadge.centerYAnchor),
-            timerLabel.leadingAnchor.constraint(equalTo: playerOneBadge.trailingAnchor),
-            timerLabel.trailingAnchor.constraint(equalTo: playerTwoBadge.leadingAnchor),
             
             playerTwoBadge.trailingAnchor.constraint(equalTo: trailingAnchor, constant:  -30.0),
             playerTwoBadge.topAnchor.constraint(equalTo: playerOneBadge.topAnchor),

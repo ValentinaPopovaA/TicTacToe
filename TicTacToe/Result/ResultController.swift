@@ -7,11 +7,19 @@
 
 import UIKit
 
+enum GameResult {
+    case playerOneWin
+    case playerTwoWin
+    case playerWin
+    case computerWin
+    case draw
+}
+
 final class ResultController: UIViewController {
     
     // MARK: - Properties
     
-    var gameResult: RoundResult?
+    var gameResult: GameResult?
     
     lazy var label = UILabel.createLabel(text: "You Lose!", fontSize: 20, isBold: true)
     lazy var imageView = UIImageView.makeSimpleImage(image: Images.lose)
@@ -46,15 +54,21 @@ final class ResultController: UIViewController {
         guard let result = gameResult else { return }
         
         switch result {
-        case .win:
+        case .playerOneWin:
             label.text = "Player One Win!"
             imageView.image = Images.win
+        case .playerTwoWin:
+            label.text = "Player Two Win!"
+            imageView.image = Images.win
+        case .playerWin:
+            label.text = "You Win!"
+            imageView.image = Images.win
+        case .computerWin:
+            label.text = "You Lose!"
+            imageView.image = Images.lose
         case .draw:
             label.text = "Draw!"
             imageView.image = Images.handshake
-        case .lose:
-            label.text = "You Lose!"
-            imageView.image = Images.lose
         }
     }
     
@@ -66,7 +80,6 @@ final class ResultController: UIViewController {
     }
     
     @objc private func backToSelectGame() {
-        #warning("есть ощущение, что мы тут на второй круг пошли переполнять память")
         if let selectGameVC = navigationController?.viewControllers.first(where: { $0 is SelectedGameController }) {
             navigationController?.popToViewController(selectGameVC, animated: true)
         }
