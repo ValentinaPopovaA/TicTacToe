@@ -20,3 +20,18 @@
 <img src="https://img.shields.io/badge/Tretyakov-lightgoldenrodyellow"/></a>
 <a href="https://github.com/Qewhouse">
 <img src="https://img.shields.io/badge/Qewhouse-azure"/></a>
+
+This is a modern implementation of the classic Tic-Tac-Toe game for iOS. The project offers multiple game modes, including a single-player mode against AI with adjustable difficulty levels, as well as a two-player mode.
+
+## Features:
+- Two game modes: against AI (3 difficulty levels) and with a friend.
+- Customization of the appearance of game elements.
+- Game history tracking with data persistence.
+- Timer mode for timed games and the option to select background music.
+
+The project demonstrates flexibility and adaptability through customizable game settings and interface, while maintaining simplicity and ease of use.
+
+## Technologies:
+- MVC Architecture
+- UIKit for interface design
+- UserDefaults for data storage
