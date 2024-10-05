@@ -68,10 +68,8 @@ class DropDownButton: UIButton, DropDownProtocol {
         element.alignment = .center
         element.distribution = .fill
         element.isUserInteractionEnabled = false
+        
         let label = UILabel()
-//        label.text = labelValue
-//        
-//        label.font = .systemFont(ofSize: 20, weight: .bold)
         label.text = labelValue
         label.font = .systemFont(ofSize: 20, weight: .bold)
         element.addArrangedSubview(label)

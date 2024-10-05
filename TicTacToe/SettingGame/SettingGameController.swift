@@ -32,7 +32,7 @@ class SettingGameController: UIViewController, UIScrollViewDelegate, UICollectio
 //            return scrollView
 //        }()
     
-    // Контейнер
+    // Контейнер с тенью
     private lazy var container: UIView = {
         let view = UIView()
         //view.frame = CGRect(x: 0, y: 0, width: 348, height: 287)
@@ -52,11 +52,10 @@ class SettingGameController: UIViewController, UIScrollViewDelegate, UICollectio
         return view
     }()
     
-    // Настройка 1
+    // Настройка Время игры
     private lazy var switchGameTime : UIStackView = {
         let element = UIStackView()
-        element.axis = .horizontal
-        //element.spacing = 10
+        element.axis = .horizontal        
         element.distribution = .equalSpacing
         element.backgroundColor = .basic_light_blue
                 
@@ -135,8 +134,6 @@ class SettingGameController: UIViewController, UIScrollViewDelegate, UICollectio
         let element = UIView()
         element.addSubview(dropDownDuration)
         element.translatesAutoresizingMaskIntoConstraints = false
-        //element.isHidden = false
-        //element.alpha = 0.0
         return element
     }()
     
@@ -182,14 +179,12 @@ class SettingGameController: UIViewController, UIScrollViewDelegate, UICollectio
     var cellId = "Cell"
 
     override func viewDidLoad() {
-//        title = "Setting"
+        title = "Setting"
+        
         setupUI()
         setupLayout()
-        
-        
-//        isHiddenMusicSelect = self.gameSetting.musicEnable
+  
         isMusic = self.gameSetting.musicEnable
-//        isHiddenGameTimeSelect = self.gameSetting.gameTime
         isGameTime = self.gameSetting.gameTime
         
         UIView.animate(
@@ -285,7 +280,7 @@ class SettingGameController: UIViewController, UIScrollViewDelegate, UICollectio
                               musicEnable: gameSetting.musicEnable ,
                               selectedMusic: gameSetting.selectedMusic,
                               player1Image: "x_pair\(index)",
-                              palyer2Image: "o_pair1\(index)",
+                              palyer2Image: "o_pair\(index)",
                               selectedPairNumber: index)
         
         GameSettings.shared.saveSettings(gameSetting)
