@@ -24,6 +24,7 @@
 		378D3F942CB120110053E4B3 /* loose.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 378D3F922CB120110053E4B3 /* loose.mp3 */; };
 		378D3F952CB120110053E4B3 /* win.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 378D3F932CB120110053E4B3 /* win.mp3 */; };
 		378D3F9B2CB135080053E4B3 /* SoundPlayerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378D3F9A2CB135080053E4B3 /* SoundPlayerFactory.swift */; };
+		378D3F9D2CB286F10053E4B3 /* draw.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 378D3F9C2CB286F10053E4B3 /* draw.mp3 */; };
 		794245032CAAA1920048F08C /* UIColor_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794245022CAAA1920048F08C /* UIColor_Extension.swift */; };
 		794245052CABEB460048F08C /* UI_Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794245042CABEB460048F08C /* UI_Images.swift */; };
 		7942452C2CAD30950048F08C /* DropDownButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7942452B2CAD30950048F08C /* DropDownButton.swift */; };
@@ -66,6 +67,7 @@
 		378D3F922CB120110053E4B3 /* loose.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = loose.mp3; sourceTree = "<group>"; };
 		378D3F932CB120110053E4B3 /* win.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = win.mp3; sourceTree = "<group>"; };
 		378D3F9A2CB135080053E4B3 /* SoundPlayerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayerFactory.swift; sourceTree = "<group>"; };
+		378D3F9C2CB286F10053E4B3 /* draw.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = draw.mp3; sourceTree = "<group>"; };
 		794245022CAAA1920048F08C /* UIColor_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor_Extension.swift; sourceTree = "<group>"; };
 		794245042CABEB460048F08C /* UI_Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UI_Images.swift; sourceTree = "<group>"; };
 		7942452B2CAD30950048F08C /* DropDownButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownButton.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				249818412CB1F98000B4C932 /* move.mp3 */,
 				249818432CB1F98A00B4C932 /* neighbour.mp3 */,
 				249818452CB202E400B4C932 /* donkey.mp3 */,
+				378D3F9C2CB286F10053E4B3 /* draw.mp3 */,
 			);
 			path = Sounds;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 			files = (
 				A7F2F50C2CA9A4280025A490 /* LaunchScreen.storyboard in Resources */,
 				A7F2F5092CA9A4280025A490 /* Assets.xcassets in Resources */,
+				378D3F9D2CB286F10053E4B3 /* draw.mp3 in Resources */,
 				249818462CB202E400B4C932 /* donkey.mp3 in Resources */,
 				2498183E2CB1F96600B4C932 /* country.mp3 in Resources */,
 				249818422CB1F98000B4C932 /* move.mp3 in Resources */,

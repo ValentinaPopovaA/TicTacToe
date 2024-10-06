@@ -39,7 +39,6 @@ final class ResultController: UIViewController {
                                                              action: #selector(backToSelectGame))
     
     // MARK: - Lifecycle Methods
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .basic_white
@@ -54,6 +53,8 @@ final class ResultController: UIViewController {
         
         if gameResult == .computerWin {
             SoundManager.sharedInstance.playSound(.loose)
+        } else if gameResult == .draw {
+            SoundManager.sharedInstance.playSound(.draw)
         } else {
             SoundManager.sharedInstance.playSound(.win)
         }
@@ -89,10 +90,8 @@ final class ResultController: UIViewController {
     }
     
     // MARK: - Actions
-    
     @objc private func goToNewGame() {
         navigationController?.popViewController(animated: true)
-        //print(navigationController == nil ? "No navigation controller" : "Navigation controller exists")
     }
     
     @objc private func backToSelectGame() {
@@ -103,7 +102,6 @@ final class ResultController: UIViewController {
 }
 
 // MARK: - Layout Configuration
-
 private extension ResultController {
     func setViews() {
         view.addSubview(playAgainButton)
