@@ -33,6 +33,8 @@ class SoundManager: SoundManagerProtocol {
     }
     
     func playSound(_ audio: Audio, repeatSound: Bool = false) {
+        if !GameSettings.shared.getSettingsLoad().musicEnable { return }
+        
         if let soundPlayer = soundPlayers[audio] {
             soundPlayer.play()
         } else {
