@@ -16,6 +16,7 @@ class PairCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
 
         addViews()
+        button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
     }
     
     var imageX = UIImageView.makeSimpleImage(image: UIImage.pair1Cross)
@@ -32,7 +33,7 @@ class PairCollectionViewCell: UICollectionViewCell {
         
         element.layer.cornerRadius = 20
         element.setTitle("Choose", for: .normal)
-        element.addTarget(PairCollectionViewCell.self, action: #selector(buttonPressed), for: .touchUpInside)
+        //element.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         element.translatesAutoresizingMaskIntoConstraints = false
         return element
     }()

@@ -51,6 +51,12 @@ final class ResultController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear (animated)
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        
+        if gameResult == .computerWin {
+            SoundManager.sharedInstance.playSound(.loose)
+        } else {
+            SoundManager.sharedInstance.playSound(.win)
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -86,7 +92,7 @@ final class ResultController: UIViewController {
     
     @objc private func goToNewGame() {
         navigationController?.popViewController(animated: true)
-        print(navigationController == nil ? "No navigation controller" : "Navigation controller exists")
+        //print(navigationController == nil ? "No navigation controller" : "Navigation controller exists")
     }
     
     @objc private func backToSelectGame() {

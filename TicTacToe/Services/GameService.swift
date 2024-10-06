@@ -46,20 +46,20 @@ final class GameService {
         self.gameDifficulty = gameDifficulty
     }
     
-    private func getResult() -> RoundResult? {
+    private func getResult() -> (combination: Set<Int>, result: RoundResult)? {
         for combination in winningCombinations {
             if combination.isSubset(of: playerOneCombination) {
-                return .playerOneWin
+                return (combination, .playerOneWin)
             } else if combination.isSubset(of: playerTwoCombination) {
-                return .playerTwoWin
+                return (combination, .playerTwoWin)
             } else if moveCounter == 9 {
-                return .draw
+                return (combination, .draw)
             }
         }
         return nil
     }
     
-    func moveMade(at position: Int) -> RoundResult? {
+    func moveMade(at position: Int) -> (combination: Set<Int>, result: RoundResult)? {
         moveCounter += 1
         availableCells.remove(position)
         if currentTurn == .playerOne {
