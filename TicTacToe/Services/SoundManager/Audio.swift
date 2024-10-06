@@ -18,6 +18,7 @@ enum Audio: String, CaseIterable {
     case donkey = "donkey"
     case neighbour = "neighbour"
     case move = "move"
+    case draw = "draw"
     
     var filePath: URL {
         URL(fileURLWithPath: Bundle.main.path(forResource: self.rawValue, ofType: "mp3") ?? "")
@@ -29,7 +30,6 @@ enum Audio: String, CaseIterable {
                 return audio
             }
         }
-        
         return nil
     }
 }

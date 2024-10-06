@@ -11,7 +11,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func setupNavigationBar() {
-        UINavigationBar.appearance().barTintColor = .clear
+        UINavigationBar.appearance().barTintColor = .basic_white
         UINavigationBar.appearance().tintColor = .basic_black
         UINavigationBar.appearance().backIndicatorImage = UIImage(named: "backArrow")
         UINavigationBar.appearance().backIndicatorTransitionMaskImage = UIImage(named: "backArrow")

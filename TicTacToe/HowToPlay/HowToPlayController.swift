@@ -7,8 +7,9 @@
 
 import UIKit
 
-class HowToPlayController: UIViewController {
+final class HowToPlayController: UIViewController {
     
+    //MARK: UI Elements
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.alwaysBounceVertical = true
@@ -196,13 +197,11 @@ class HowToPlayController: UIViewController {
         return label
     }()
     
+    //MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        scrollView.contentSize = CGSize(width: howToPlayStack.frame.width, height: howToPlayStack.frame.height + 200)
         setupUI()
         makeConstraints()
-        title = "How to play"
-        navigationItem.leftBarButtonItem?.image = UIImage(systemName: "icon-back")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -213,8 +212,11 @@ class HowToPlayController: UIViewController {
         fourthRuleTextView.layer.cornerRadius = 23
     }
     
+    //MARK: Orivate Methods
     private func setupUI() {
+        title = "How to play"
         view.backgroundColor = .basic_background
+        scrollView.contentSize = CGSize(width: howToPlayStack.frame.width, height: howToPlayStack.frame.height + 200)
         view.addSubview(scrollView)
         scrollView.addSubview(howToPlayStack)
 
@@ -253,7 +255,6 @@ class HowToPlayController: UIViewController {
     }
     
     private func makeConstraints() {
-        
         let scrollContentGuide = scrollView.contentLayoutGuide
         let scrollFrameGuide = scrollView.frameLayoutGuide
         
