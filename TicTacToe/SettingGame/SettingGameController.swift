@@ -120,11 +120,11 @@ class SettingGameController: UIViewController, UIScrollViewDelegate, UICollectio
         let element = DropDownButton.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         element.setLabel(string: "Duration")
 
-        var sec = ""
+        var sec : String
         switch gameSetting.duration
         {
-            case 60 : sec = "60 sec"
-            case 30 : sec = "30 sec"
+            case 60: sec = "60 sec"
+            case 30: sec = "30 sec"
             default: sec = "10 sec"
         }
         element.setValue(string: sec)

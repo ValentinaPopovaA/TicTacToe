@@ -32,10 +32,10 @@ class DropDownButton: UIButton, DropDownProtocol {
         }
         if (labelValue == "Duration"){
 
-            var duration = 0
+            var duration : Int
             switch string
             {
-                case "60 sec" : duration = 60
+                case "60 sec": duration = 60
                 case "30 sec": duration = 30
                 default: duration = 10
             }
