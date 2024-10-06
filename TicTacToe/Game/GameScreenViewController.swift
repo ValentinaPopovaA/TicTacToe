@@ -69,17 +69,12 @@ final class GameScreenViewController: UIViewController {
         )
         gameScreenView.setMove(player1.image, "\(player1.name) turn")
         
-        for tag in 1...9 {
-            if let button = gameScreenView.viewWithTag(tag) as? UIButton {
-                button.setImage(nil, for: .normal)
-            }
-        }
-        
         if gameSettings.gameTime {
             timeRemaining = gameSettings.duration
             gameScreenView.updateTimer(to: timeRemaining, UIColor.basic_black ?? .black)
         }
         
+        resetBoard()
         enableBoard()
     }
     
@@ -94,62 +89,10 @@ final class GameScreenViewController: UIViewController {
                 repeatSound: true
             )
         }
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         SoundManager.sharedInstance.stopSound()
-    }
-    
-    private func performComputerMove() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
-            guard let self = self else { return }
-            
-            SoundManager.sharedInstance.playSound(.move)
-
-            if let computerMove = self.gameService.getComputerMove() {
-                if let button = self.gameScreenView.viewWithTag(computerMove) as? UIButton {
-                    button.setImage(player2.image, for: .normal)
-                    button.isUserInteractionEnabled = false
-
-                    if let _ = self.gameService.moveMade(at: computerMove) {
-                        self.timer.stop()
-                        self.handleGameResult(.computerWin)
-                    }
-                    else {
-                        self.enableBoard()
-                        self.showTurn()
-                    }
-                }
-            }
-        }
-    }
-    
-    private func handleGameResult(_ result: GameResult) {
-        if gameSettings.gameTime && [.playerWin, .playerOneWin, .playerTwoWin].contains(result) {
-            LeaderboardService.shared.addLeader(gameSettings.duration - timeRemaining)
-        }
-        let resultVC = ResultController()
-        resultVC.gameResult = result
-        navigationController?.pushViewController(resultVC, animated: true)
-    }
-    
-    private func disableBoard() {
-        for tag in 1...9 {
-            if let button = gameScreenView.viewWithTag(tag) as? UIButton {
-                button.isUserInteractionEnabled = false
-            }
-        }
-    }
-    
-    private func enableBoard() {
-        for tag in 1...9 {
-            if let button = gameScreenView.viewWithTag(tag) as? UIButton {
-                if button.currentImage == nil {
-                    button.isUserInteractionEnabled = true
-                }
-            }
-        }
     }
 }
 
@@ -166,13 +109,13 @@ extension GameScreenViewController: GameScreenViewDelegate {
         if let result = gameService.moveMade(at: sender.tag) {
             timer.stop()
                         
-            switch result {
+            switch result.result {
             case .playerOneWin:
-                handleGameResult( gameMode == .singlePlayer ? .playerWin : .playerOneWin )
+                handleGameResult( gameMode == .singlePlayer ? .playerWin : .playerOneWin, result.combination )
             case .playerTwoWin:
-                handleGameResult( gameMode == .singlePlayer ? .computerWin : .playerTwoWin)
+                handleGameResult( gameMode == .singlePlayer ? .computerWin : .playerTwoWin, result.combination)
             case .draw:
-                handleGameResult(.draw)
+                handleGameResult(.draw, [])
             }
 
         } else if gameMode == .singlePlayer {
@@ -183,10 +126,92 @@ extension GameScreenViewController: GameScreenViewDelegate {
             enableBoard()
         }
     }
+}
+
+//MARK: - Gaming
+private extension GameScreenViewController {
+    func performComputerMove() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
+            guard let self = self else { return }
+            
+            SoundManager.sharedInstance.playSound(.move)
+
+            if let computerMove = self.gameService.getComputerMove() {
+                if let button = self.gameScreenView.viewWithTag(computerMove) as? UIButton {
+                    button.setImage(player2.image, for: .normal)
+                    button.isUserInteractionEnabled = false
+
+                    if let result = self.gameService.moveMade(at: computerMove) {
+                        self.timer.stop()
+                        self.handleGameResult(.computerWin, result.combination)
+                    }
+                    else {
+                        self.enableBoard()
+                        self.showTurn()
+                    }
+                }
+            }
+        }
+    }
+    
+    func handleGameResult(_ result: GameResult, _ combination: Set<Int>) {
+        showCombination(combination)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
+            guard let self = self else { return }
+            
+            if gameSettings.gameTime && [.playerWin, .playerOneWin, .playerTwoWin].contains(result) {
+                LeaderboardService.shared.addLeader(gameSettings.duration - timeRemaining)
+            }
+            let resultVC = ResultController()
+            resultVC.gameResult = result
+            navigationController?.pushViewController(resultVC, animated: true)
+        }
+    }
+    
+    func disableBoard() {
+        for tag in 1...9 {
+            if let button = gameScreenView.viewWithTag(tag) as? UIButton {
+                button.isUserInteractionEnabled = false
+            }
+        }
+    }
+    
+    func enableBoard() {
+        for tag in 1...9 {
+            if let button = gameScreenView.viewWithTag(tag) as? UIButton {
+                if button.currentImage == nil {
+                    button.isUserInteractionEnabled = true
+                }
+            }
+        }
+    }
     
     func showTurn() {
         let currentPlayer = gameService.currentTurn == .playerOne ? player1 : player2
         gameScreenView.setMove(currentPlayer.image, "\(currentPlayer.name) turn")
+    }
+    
+    func showCombination(_ combination: Set<Int>) {
+        for tag in 1...9 {
+            if let button = gameScreenView.viewWithTag(tag) as? UIButton {
+                if combination.contains(tag) {
+                    button.backgroundColor = .systemGreen
+                } else {
+                    button.alpha = 0.3
+                }
+            }
+        }
+    }
+    
+    func resetBoard() {
+        for tag in 1...9 {
+            if let button = gameScreenView.viewWithTag(tag) as? UIButton {
+                button.setImage(nil, for: .normal)
+                button.alpha = 1
+                button.backgroundColor = UIColor.basic_light_blue
+            }
+        }
     }
 }
 
@@ -198,9 +223,9 @@ extension GameScreenViewController: TimerServiceDelegate {
             timer.stop()
             
             if gameMode == .singlePlayer {
-                handleGameResult(gameService.currentTurn == .playerOne ? .computerWin : .playerWin)
+                handleGameResult(gameService.currentTurn == .playerOne ? .computerWin : .playerWin, [])
             } else {
-                handleGameResult(gameService.currentTurn == .playerOne ? .playerTwoWin : .playerOneWin)
+                handleGameResult(gameService.currentTurn == .playerOne ? .playerTwoWin : .playerOneWin, [])
             }
             
         } else if timeRemaining <= 5 {
